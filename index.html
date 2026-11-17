@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield 8 - MPI Informatika Kelas VIII | UPT SMPN 1 Kenduruan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg-cream: #FDF8EE;
+      --bg-cream-soft: #FAF2E1;
+      --ochre-main: #D99B16;
+      --ochre-dark: #B57D0B;
+      --ochre-light: #FFF5DC;
+      --espresso: #231A10;
+      --espresso-muted: #5C4B37;
+      --border-warm: #E6D8BE;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--espresso);
+    }
+
+    /* Pola Vektor Seamless Batik Gedog Tuban (Ochre Emas + Motif Hitam-Cokelat Cecek Putih) */
+    .bg-batik-gedog {
+      background-color: #DDA014;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' fill='%23DDA014'/%3E%3Cg fill='%2321170E'%3E%3Cpath d='M32 18c16-6 34 4 38 20 3 12-5 24-16 29 12 3 21 14 19 27-2 15-17 24-31 20-12-3-20-15-18-27-10-4-17-15-14-26 3-11 11-19 22-23z'/%3E%3Cpath d='M118 86c16-6 34 4 38 20 3 12-5 24-16 29 12 3 21 14 19 27-2 15-17 24-31 20-12-3-20-15-18-27-10-4-17-15-14-26 3-11 11-19 22-23z'/%3E%3Cpath d='M105 16c9-3 18 2 21 11 2 7-2 14-8 17 6 2 11 8 10 15-1 8-9 13-17 11-7-2-11-8-10-15-6-2-9-8-8-15 2-6 6-11 12-14z'/%3E%3Cpath d='M22 104c9-3 18 2 21 11 2 7-2 14-8 17 6 2 11 8 10 15-1 8-9 13-17 11-7-2-11-8-10-15-6-2-9-8-8-15 2-6 6-11 12-14z'/%3E%3Cpath d='M76 66c6-12 20-16 30-8-8 6-12 16-9 26-10-2-19-8-21-18z'/%3E%3Cpath d='M6 58c8-10 22-11 31-2-9 4-14 13-13 23-9-3-17-11-18-21z'/%3E%3C/g%3E%3Cg fill='%23FFF8E7'%3E%3Ccircle cx='35' cy='38' r='1.7'/%3E%3Ccircle cx='44' cy='34' r='1.5'/%3E%3Ccircle cx='52' cy='41' r='1.7'/%3E%3Ccircle cx='42' cy='47' r='1.6'/%3E%3Ccircle cx='31' cy='49' r='1.4'/%3E%3Ccircle cx='50' cy='54' r='1.5'/%3E%3Ccircle cx='38' cy='60' r='1.7'/%3E%3Ccircle cx='47' cy='67' r='1.5'/%3E%3Ccircle cx='34' cy='73' r='1.6'/%3E%3Ccircle cx='54' cy='77' r='1.6'/%3E%3Ccircle cx='42' cy='83' r='1.5'/%3E%3Ccircle cx='28' cy='81' r='1.4'/%3E%3Ccircle cx='121' cy='106' r='1.7'/%3E%3Ccircle cx='130' cy='102' r='1.5'/%3E%3Ccircle cx='138' cy='109' r='1.7'/%3E%3Ccircle cx='128' cy='115' r='1.6'/%3E%3Ccircle cx='117' cy='117' r='1.4'/%3E%3Ccircle cx='136' cy='122' r='1.5'/%3E%3Ccircle cx='124' cy='128' r='1.7'/%3E%3Ccircle cx='133' cy='135' r='1.5'/%3E%3Ccircle cx='120' cy='141' r='1.6'/%3E%3Ccircle cx='140' cy='145' r='1.6'/%3E%3Ccircle cx='128' cy='151' r='1.5'/%3E%3Ccircle cx='111' cy='31' r='1.4'/%3E%3Ccircle cx='117' cy='37' r='1.4'/%3E%3Ccircle cx='110' cy='44' r='1.4'/%3E%3Ccircle cx='28' cy='119' r='1.4'/%3E%3Ccircle cx='34' cy='125' r='1.4'/%3E%3Ccircle cx='27' cy='132' r='1.4'/%3E%3C/g%3E%3Cg stroke='%238C4A19' stroke-width='1.5' fill='none' opacity='0.75'%3E%3Cpath d='M68 25c8 4 14 11 16 20'/%3E%3Cpath d='M82 115c8 4 14 11 16 20'/%3E%3Cpath d='M12 78c10 2 18 8 22 17'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 160px 160px;
+    }
+
+    /* Strip Aksen Tipis Batik Gedog untuk Header/Divider */
+    .batik-ribbon {
+      height: 8px;
+      background-color: #DDA014;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='8' viewBox='0 0 80 8'%3E%3Crect width='80' height='8' fill='%23DDA014'/%3E%3Ccircle cx='10' cy='4' r='2.5' fill='%2321170E'/%3E%3Ccircle cx='10' cy='4' r='0.9' fill='%23FFF8E7'/%3E%3Cpath d='M25 1l6 3-6 3-6-3z' fill='%2321170E'/%3E%3Ccircle cx='45' cy='4' r='2.5' fill='%238C4A19'/%3E%3Ccircle cx='45' cy='4' r='0.9' fill='%23FFF8E7'/%3E%3Cpath d='M65 1l6 3-6 3-6-3z' fill='%2321170E'/%3E%3C/svg%3E");
+    }
+
+    .syntax-section { display: none; animation: fadeIn 0.35s ease; }
+    .syntax-section.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @media print {
+      body { background: #ffffff !important; color: #0f172a !important; }
+      header, footer, main, #beranda-poster, #teacher-modal, .no-print { display: none !important; }
+      #print-fallback-sheet { display: block !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#D99B16]/30">
+
+  <!-- =========================================================
+       HALAMAN BERANDA POSTER SATU HALAMAN PENUH (IDENTITAS MPI)
+       Mengadopsi Desain Split-Card Batik Gedog Tuban
+  ========================================================== -->
+  <section id="beranda-poster" class="min-h-screen w-full bg-[#FDF8EE] flex flex-col justify-between no-print">
+    <div class="batik-ribbon w-full"></div>
+
+    <div class="flex-1 flex items-center justify-center p-4 sm:p-8">
+      <div class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl shadow-[#231A10]/10 border border-[#E6D8BE] overflow-hidden grid lg:grid-cols-12">
+
+        <!-- SISI KIRI: PANEL BATIK GEDOG TUBAN + KARTU IDENTITAS SEKOLAH -->
+        <div class="lg:col-span-5 bg-batik-gedog p-6 sm:p-8 flex items-center justify-center relative">
+          <div class="w-full bg-[#FDF8EE]/95 backdrop-blur-sm rounded-2xl p-6 sm:p-7 border border-[#E6D8BE] shadow-lg space-y-5">
+            <!-- Lambang / Ikon Identitas Daerah & Sekolah -->
+            <div class="flex items-center gap-3.5">
+              <div class="w-14 h-14 rounded-2xl bg-[#D99B16]/15 border-2 border-[#D99B16] flex items-center justify-center text-[#B57D0B] shrink-0 shadow-sm">
+                <i class="fa-solid fa-shield-halved text-2xl"></i>
+              </div>
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#D99B16]/20 text-[#8F6004] text-[10px] font-extrabold uppercase tracking-wider">
+                  Kabupaten Tuban • Jawa Timur
+                </span>
+                <p class="text-xs font-bold text-[#5C4B37] mt-0.5">Kearifan Lokal Batik Gedog Tuban</p>
+              </div>
+            </div>
+
+            <div class="border-t border-[#E6D8BE] pt-4">
+              <p class="text-[11px] font-bold uppercase tracking-widest text-[#B57D0B]">Media Pembelajaran Interaktif</p>
+              <h1 id="poster-mpi-title" class="text-2xl sm:text-3xl font-extrabold text-[#231A10] leading-tight mt-1">
+                CyberShield 8: Stop Cyberbullying
+              </h1>
+              <p id="poster-mpi-subtitle" class="text-xs text-[#5C4B37] mt-1.5 leading-relaxed">
+                Inovasi Media Pembelajaran Berbasis TIK • Kompetisi HUT PGRI & Hari Guru Nasional PGRI Cabang Kenduruan 2026
+              </p>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-[#3D2E1E] pt-1">
+              <li class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-[#D99B16]/20 text-[#B57D0B] flex items-center justify-center shrink-0"><i class="fa-solid fa-layer-group"></i></span>
+                <span>9 Sintak Pembelajaran Aktif & Terstruktur</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-[#D99B16]/20 text-[#B57D0B] flex items-center justify-center shrink-0"><i class="fa-solid fa-gamepad"></i></span>
+                <span>Simulasi Kasus, Gamifikasi & Video Edukasi</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-[#D99B16]/20 text-[#B57D0B] flex items-center justify-center shrink-0"><i class="fa-solid fa-file-pdf"></i></span>
+                <span>Pre-Test, Post-Test & Laporan Belajar PDF</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SISI KANAN: POSTER IDENTITAS RESMI MPI -->
+        <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between bg-white">
+          <div class="space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#E6D8BE] pb-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-[#FFF5DC] border border-[#D99B16]/40 text-[#9C6A06] text-xs font-extrabold uppercase tracking-wider">
+                  Identitas Media Pembelajaran Interaktif (MPI)
+                </span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-2">
+                  Selamat Datang di Ruang Belajar Digital
+                </h2>
+              </div>
+            </div>
+
+            <!-- Kartu Tabel Identitas Lengkap Sesuai Permintaan -->
+            <div class="bg-[#FDF8EE] border border-[#E6D8BE] rounded-2xl p-5 space-y-3.5">
+              <div class="grid sm:grid-cols-12 gap-1 sm:gap-3 items-center border-b border-[#E6D8BE]/70 pb-3">
+                <span class="sm:col-span-4 text-xs font-bold uppercase tracking-wider text-[#6E5A43]">Nama Sekolah</span>
+                <span id="poster-school-name" class="sm:col-span-8 text-sm sm:text-base font-extrabold text-[#231A10]">
+                  : UPT SMPN 1 KENDURUAN
+                </span>
+              </div>
+
+              <div class="grid sm:grid-cols-12 gap-1 sm:gap-3 items-center border-b border-[#E6D8BE]/70 pb-3">
+                <span class="sm:col-span-4 text-xs font-bold uppercase tracking-wider text-[#6E5A43]">Mata Pelajaran</span>
+                <span id="poster-subject-name" class="sm:col-span-8 text-sm sm:text-base font-extrabold text-[#231A10]">
+                  : INFORMATIKA
+                </span>
+              </div>
+
+              <div class="grid sm:grid-cols-12 gap-1 sm:gap-3 items-center border-b border-[#E6D8BE]/70 pb-3">
+                <span class="sm:col-span-4 text-xs font-bold uppercase tracking-wider text-[#6E5A43]">Nama Penyusun</span>
+                <span id="poster-author-name" class="sm:col-span-8 text-sm sm:text-base font-extrabold text-[#231A10]">
+                  : MINYANI HARIANTO, S.Kom.
+                </span>
+              </div>
+
+              <div class="grid sm:grid-cols-12 gap-1 sm:gap-3 items-center">
+                <span class="sm:col-span-4 text-xs font-bold uppercase tracking-wider text-[#6E5A43]">Jenjang / Fase / Kelas</span>
+                <span id="poster-grade-level" class="sm:col-span-8 text-sm sm:text-base font-extrabold text-[#B57D0B]">
+                  : SMP / FASE D / KELAS 8
+                </span>
+              </div>
+            </div>
+
+            <!-- Tombol Masuk Pembelajaran & Akses Panel Guru -->
+            <div class="space-y-3 pt-1">
+              <button onclick="enterLearningApp(1)" class="w-full py-3.5 px-6 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-[#D99B16]/25 transition flex items-center justify-center gap-2.5">
+                <i class="fa-solid fa-play-circle text-lg"></i>
+                <span>Mulai Pembelajaran Sekarang (9 Sintak)</span>
+              </button>
+
+              <div class="grid sm:grid-cols-2 gap-3">
+                <button onclick="enterLearningApp(5)" class="py-2.5 px-4 rounded-xl bg-[#FFF5DC] hover:bg-[#FCEAC0] border border-[#D99B16]/50 text-[#7A5204] font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>Langsung ke Materi & Video</span>
+                </button>
+                <button onclick="openTeacherModal()" class="py-2.5 px-4 rounded-xl bg-white hover:bg-[#FDF8EE] border border-[#D6C5A5] text-[#3D2E1E] font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-user-gear text-[#B57D0B]"></i>
+                  <span>Panel Guru (CRUD Materi)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-[#6E5A43] mt-6 pt-3 border-t border-[#E6D8BE] flex flex-wrap items-center justify-between gap-2">
+            <span>Kurikulum Merdeka • Elemen Dampak Sosial Informatika (DSI)</span>
+            <span class="font-semibold text-[#9C6A06]">PGRI Cabang Kenduruan • 2026</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="batik-ribbon w-full"></div>
+  </section>
+
+  <!-- =========================================================
+       APLIKASI UTAMA PEMBELAJARAN (9 SINTAK)
+  ========================================================== -->
+  <div id="learning-app-wrapper" class="hidden flex-col min-h-screen">
+    <div class="batik-ribbon w-full no-print"></div>
+
+    <!-- HEADER & STEPPER 9 SINTAK -->
+    <header class="bg-white/95 border-b border-[#E6D8BE] sticky top-0 z-40 backdrop-blur shadow-sm no-print">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <button onclick="showPosterHome()" title="Kembali ke Poster Identitas MPI" class="w-10 h-10 rounded-xl bg-batik-gedog p-0.5 flex items-center justify-center shadow-sm hover:scale-105 transition">
+            <div class="w-full h-full bg-[#FDF8EE] rounded-[10px] flex items-center justify-center text-[#B57D0B]">
+              <i class="fa-solid fa-shield-halved text-lg"></i>
+            </div>
+          </button>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 id="hdr-mpi-title" class="font-extrabold text-base sm:text-lg tracking-tight text-[#231A10]">CyberShield 8</h1>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FFF5DC] text-[#9C6A06] border border-[#D99B16]/40">Fase D • Kelas 8</span>
+            </div>
+            <p id="hdr-school-sub" class="text-xs text-[#5C4B37]">Informatika • UPT SMPN 1 Kenduruan</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button onclick="showPosterHome()" class="px-3 py-1.5 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-id-card text-[#B57D0B]"></i>
+            <span class="hidden sm:inline">Beranda Poster</span>
+          </button>
+
+          <button onclick="openTeacherModal()" class="px-3 py-1.5 rounded-xl bg-[#FFF5DC] hover:bg-[#FCEAC0] border border-[#D99B16]/50 text-[#8F6004] text-xs font-bold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Panel Guru</span>
+          </button>
+
+          <div class="hidden lg:flex items-center gap-2 bg-[#FDF8EE] border border-[#E6D8BE] px-3 py-1.5 rounded-xl text-xs">
+            <i class="fa-solid fa-user-graduate text-[#B57D0B]"></i>
+            <span id="header-student-badge" class="text-[#3D2E1E] font-semibold">Siswa: Belum diisi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar Progress -->
+      <div class="w-full bg-[#EFE5D1] h-1.5">
+        <div id="global-progress-bar" class="bg-gradient-to-r from-[#D99B16] to-[#B57D0B] h-1.5 transition-all duration-500" style="width: 11.1%"></div>
+      </div>
+
+      <!-- Navigasi 9 Sintak Pembelajaran -->
+      <nav id="syntax-nav" class="max-w-6xl mx-auto px-4 py-2.5 flex overflow-x-auto gap-2 no-scrollbar bg-[#FDF8EE]/70"></nav>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-1 w-full no-print">
+
+      <!-- =========================================================
+           SINTAK 1: VIDEO APERSEPSI
+      ========================================================== -->
+      <section id="step-1" class="syntax-section active space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 1 dari 9 • Orientasi Masalah</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Apersepsi: "Dari Ruang Kelas ke Ruang Digital"</h2>
+            </div>
+            <span class="text-xs bg-[#FFF5DC] text-[#8F6004] px-3 py-1.5 rounded-lg border border-[#D99B16]/40 font-semibold">
+              <i class="fa-solid fa-film mr-1.5 text-[#B57D0B]"></i>Ilustrasi Kasus Kontekstual
+            </span>
+          </div>
+
+          <div class="bg-[#FDF8EE] border border-[#E6D8BE] rounded-2xl overflow-hidden">
+            <div id="video-stage" class="relative min-h-[260px] sm:min-h-[300px] p-6 sm:p-10 flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#FFFDF9] via-[#FDF8EE] to-[#F8EED8]">
+              <div id="scene-badge" class="px-3.5 py-1 rounded-full bg-[#D99B16]/15 border border-[#D99B16]/30 text-[#8F6004] text-xs font-bold mb-4">
+                Adegan 1 / 4 • Ruang Ujian & Koridor SMP
+              </div>
+              <div id="scene-visual" class="w-16 h-16 rounded-2xl bg-white border-2 border-[#D99B16] flex items-center justify-center text-3xl text-[#B57D0B] mb-4 shadow-sm">
+                <i class="fa-solid fa-book-open-reader"></i>
+              </div>
+              <h3 id="scene-title" class="text-lg sm:text-xl font-extrabold text-[#231A10] max-w-2xl mb-2">
+                Berawal dari Penolakan Memberi Contekan
+              </h3>
+              <p id="scene-caption" class="text-sm sm:text-base text-[#5C4B37] max-w-2xl leading-relaxed">
+                Mira mempertahankan kejujuran saat ujian dengan tidak memberi contekan. Namun, hal itu memicu perlakuan tidak menyenangkan, ejekan "anak sok pintar", hingga pemalakan di sekolah.
+              </p>
+            </div>
+
+            <div class="bg-white px-4 py-3 border-t border-[#E6D8BE] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <button onclick="togglePlayVideo()" id="btn-play-video" class="px-4 py-2 rounded-lg bg-[#D99B16] hover:bg-[#B57D0B] text-white text-xs font-bold flex items-center gap-2 transition">
+                  <i class="fa-solid fa-play"></i> <span>Putar Ilustrasi</span>
+                </button>
+                <button onclick="nextScene()" class="px-3 py-2 rounded-lg bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold transition">
+                  Adegan Berikutnya <i class="fa-solid fa-forward-step ml-1"></i>
+                </button>
+              </div>
+              <div class="flex items-center gap-1.5" id="scene-dots"></div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3.5 rounded-xl bg-[#FDF8EE] border border-[#E6D8BE] text-xs text-[#5C4B37] flex flex-wrap items-center justify-between gap-2">
+            <span>
+              <strong class="text-[#231A10]">Konteks Pembelajaran:</strong> Simulasi pengantar menuju studi kasus video <em>"Bersama Atasi Perundungan: Reda yang Meredakan"</em> pada bagian Materi.
+            </span>
+            <button onclick="completeAndNext(1)" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm transition ml-auto shadow-sm">
+              Lanjut ke Pertanyaan Pemantik <i class="fa-solid fa-arrow-right ml-1.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 2: PERTANYAAN PEMANTIK
+      ========================================================== -->
+      <section id="step-2" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 2 dari 9 • Aktivasi Berpikir Kritis</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Pertanyaan Pemantik</h2>
+            <p class="text-sm text-[#5C4B37] mt-1">Renungkan ketiga pertanyaan pemantik berikut sebelum menyimak materi dan video studi kasus.</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-[#FDF8EE] border border-[#D99B16]/40 rounded-xl p-4 space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#D99B16] text-white font-extrabold text-xs flex items-center justify-center">?1</span>
+              <h3 class="font-bold text-sm text-[#231A10]">Candaan vs Perundungan</h3>
+              <p class="text-xs text-[#5C4B37] leading-relaxed">Mengapa ejekan seperti <em>"anak sok pintar"</em> atau membuat meme teman di grup chat tidak bisa dianggap sekadar bercanda?</p>
+            </div>
+            <div class="bg-[#FDF8EE] border border-[#D99B16]/40 rounded-xl p-4 space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#D99B16] text-white font-extrabold text-xs flex items-center justify-center">?2</span>
+              <h3 class="font-bold text-sm text-[#231A10]">Menjadi Penengah (Upstander)</h3>
+              <p class="text-xs text-[#5C4B37] leading-relaxed">Jika melihat temanmu diolok-olok baik secara langsung maupun di media sosial, langkah berani apa yang dapat "meredakan" situasi tersebut?</p>
+            </div>
+            <div class="bg-[#FDF8EE] border border-[#D99B16]/40 rounded-xl p-4 space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#D99B16] text-white font-extrabold text-xs flex items-center justify-center">?3</span>
+              <h3 class="font-bold text-sm text-[#231A10]">Jejak Digital & Masa Depan</h3>
+              <p class="text-xs text-[#5C4B37] leading-relaxed">Bagaimana perilaku perundungan di usia remaja SMP dapat berdampak pada psikologis korban maupun masa depan pelakunya?</p>
+            </div>
+          </div>
+
+          <div class="bg-[#FDF8EE] border border-[#E6D8BE] rounded-xl p-4 space-y-3">
+            <label class="block text-xs font-bold text-[#8F6004]">
+              <i class="fa-solid fa-pen-nib mr-1.5"></i>Tuliskan Hipotesis / Pendapat Awalmu (Tercatat otomatis di Laporan PDF):
+            </label>
+            <textarea id="pemantik-input" rows="3" placeholder="Menurut saya, perundungan terjadi ketika..." class="w-full rounded-xl bg-white border border-[#D6C5A5] p-3 text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]"></textarea>
+          </div>
+
+          <div class="flex justify-between items-center pt-2">
+            <button onclick="goToStep(1)" class="px-4 py-2 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold">
+              <i class="fa-solid fa-arrow-left mr-1.5"></i>Kembali
+            </button>
+            <button onclick="completeAndNext(2)" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm shadow-sm">
+              Simpan & Lanjut ke Tujuan Pembelajaran <i class="fa-solid fa-arrow-right ml-1.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 3: TUJUAN PEMBELAJARAN (DINAMIS DARI CRUD)
+      ========================================================== -->
+      <section id="step-3" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-6">
+          <div class="bg-gradient-to-r from-[#FFF5DC] to-[#FDF8EE] border border-[#D99B16]/40 rounded-2xl p-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#9C6A06]">Sintak 3 dari 9 • Arah & Target Kompetensi</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-1">Tujuan Pembelajaran (Kurikulum Merdeka Fase D)</h2>
+            <p class="text-xs sm:text-sm text-[#5C4B37] mt-1">
+              Mata Pelajaran: <strong id="tp-subject-label">Informatika Kelas VIII</strong> • Elemen: <strong>Dampak Sosial Informatika (DSI)</strong>
+            </p>
+          </div>
+
+          <div id="tujuan-list-container" class="grid sm:grid-cols-2 gap-4"></div>
+
+          <div class="p-4 rounded-xl bg-[#FDF8EE] border border-[#E6D8BE] flex flex-wrap items-center gap-3 text-xs text-[#3D2E1E]">
+            <span class="font-bold text-[#9C6A06]"><i class="fa-solid fa-star mr-1"></i>Dimensi Profil Pelajar Pancasila:</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-[#E6D8BE]">Berakhlak Mulia (Saling Menghormati & Mengasihi)</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-[#E6D8BE]">Bernalar Kritis</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-[#E6D8BE]">Mandiri</span>
+          </div>
+
+          <div class="flex justify-between items-center pt-2">
+            <button onclick="goToStep(2)" class="px-4 py-2 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold">
+              <i class="fa-solid fa-arrow-left mr-1.5"></i>Kembali
+            </button>
+            <button onclick="completeAndNext(3)" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm shadow-sm">
+              Lanjut ke Pre-Test Diagnostik <i class="fa-solid fa-arrow-right ml-1.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 4: PRE-TEST DIAGNOSTIK (DINAMIS DARI CRUD)
+      ========================================================== -->
+      <section id="step-4" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 4 dari 9 • Asesmen Diagnostik Awal</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Pre-Test Pemahaman Awal</h2>
+            <p class="text-xs sm:text-sm text-[#5C4B37] mt-1">Isi identitas terlebih dahulu, lalu jawab soal diagnostik berikut untuk mengukur pengetahuan awalmu sebelum menyimak video & materi.</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 bg-[#FDF8EE] p-4 rounded-xl border border-[#E6D8BE]">
+            <div>
+              <label class="block text-xs font-bold text-[#3D2E1E] mb-1.5">Nama Lengkap Siswa *</label>
+              <input type="text" id="student-name" oninput="syncStudentIdentity('main')" placeholder="Ketik nama lengkapmu..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D6C5A5] text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-[#3D2E1E] mb-1.5">Kelas *</label>
+              <select id="student-class" onchange="syncStudentIdentity('main')" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D6C5A5] text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]">
+                <option value="VIII-A">Kelas VIII-A</option>
+                <option value="VIII-B">Kelas VIII-B</option>
+                <option value="VIII-C">Kelas VIII-C</option>
+                <option value="VIII-D">Kelas VIII-D</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="pretest-form" class="space-y-4">
+            <div id="pretest-questions" class="space-y-4"></div>
+            <button onclick="submitPretest()" class="px-6 py-3 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-sm shadow-md transition">
+              <i class="fa-solid fa-check-double mr-2"></i>Simpan Jawaban Pre-Test
+            </button>
+          </div>
+
+          <div id="pretest-result" class="hidden p-5 rounded-2xl bg-[#FFF5DC] border border-[#D99B16]/50 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <p class="text-xs font-bold text-[#8F6004] uppercase">Skor Awal (Pre-Test) Tercatat</p>
+                <h3 id="pretest-score-text" class="text-3xl font-black text-[#231A10] mt-1">0 / 100</h3>
+                <p id="pretest-level-text" class="text-xs text-[#5C4B37] mt-1"></p>
+              </div>
+              <button onclick="completeAndNext(4)" class="px-5 py-3 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-sm shadow-sm">
+                Lanjut ke Video & Materi <i class="fa-solid fa-arrow-right ml-1.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 5: MATERI / EKSPLORASI KONSEP (EMBED DRIVE + CRUD)
+      ========================================================== -->
+      <section id="step-5" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 5 dari 9 • Video Edukasi & Eksplorasi Konsep</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Materi: Bersama Atasi Perundungan & Cyberbullying</h2>
+            </div>
+            <span class="text-xs bg-[#FFF5DC] text-[#8F6004] border border-[#D99B16]/40 px-3 py-1.5 rounded-lg font-semibold">
+              <i class="fa-brands fa-google-drive mr-1.5 text-[#B57D0B]"></i>Pemutar Video Tersemat (06:05)
+            </span>
+          </div>
+
+          <!-- PEMUTAR VIDEO GOOGLE DRIVE TERSEMAT -->
+          <div class="bg-[#FDF8EE] border border-[#E6D8BE] rounded-2xl overflow-hidden shadow-sm">
+            <div class="aspect-video w-full bg-black">
+              <iframe
+                id="main-video-iframe"
+                class="w-full h-full"
+                src="https://drive.google.com/file/d/1bOmvJrSxBfFS19CQfV_d4HObODxQnx-W/preview"
+                title="Bersama Atasi Perundungan: Reda yang Meredakan"
+                frameborder="0"
+                allow="autoplay; fullscreen"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <!-- KOTAK ATRIBUSI SUMBER & HAK CIPTA -->
+            <div class="p-4 bg-[#FDF8EE] border-t border-[#E6D8BE] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="space-y-1 text-xs">
+                <p class="font-bold text-[#231A10] flex items-center gap-1.5">
+                  <i class="fa-solid fa-copyright text-[#B57D0B]"></i>
+                  Sumber Media & Hak Cipta Video:
+                </p>
+                <p id="video-source-text" class="text-[#3D2E1E]">
+                  Judul: <strong>"Bersama Atasi Perundungan: Reda yang Meredakan"</strong> • Kanal Resmi: <strong>Cerdas Berkarakter Kemendikdasmen RI</strong> (Rilis: 29 Juli 2024)
+                </p>
+                <p class="text-[#5C4B37]">
+                  URL Sumber: <a id="video-copyright-link" href="https://www.youtube.com/watch?v=a5uucUirD8c" target="_blank" rel="noopener" class="text-[#B57D0B] font-semibold underline">https://www.youtube.com/watch?v=a5uucUirD8c</a> • <em>Disematkan untuk penguatan materi pembelajaran non-komersial (Ketentuan Lomba Poin 8).</em>
+                </p>
+              </div>
+              <a href="https://www.youtube.com/watch?v=a5uucUirD8c" target="_blank" rel="noopener" class="shrink-0 px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold inline-flex items-center gap-1.5 transition">
+                <i class="fa-brands fa-youtube"></i> Sumber Asli YouTube
+              </a>
+            </div>
+          </div>
+
+          <!-- RINGKASAN INTISARI VIDEO -->
+          <div class="bg-[#FDF8EE] border border-[#D99B16]/40 rounded-2xl p-5 space-y-3">
+            <h3 class="text-sm sm:text-base font-extrabold text-[#231A10] flex items-center gap-2">
+              <i class="fa-solid fa-clapperboard text-[#B57D0B]"></i> Ringkasan Materi dari Video & Keterkaitannya dengan Ruang Digital:
+            </h3>
+            <div class="grid md:grid-cols-3 gap-3 text-xs text-[#3D2E1E]">
+              <div class="bg-white border border-[#E6D8BE] p-3.5 rounded-xl space-y-1">
+                <p class="font-bold text-[#231A10]">1. Akar & Bentuk Perundungan</p>
+                <p class="leading-relaxed text-[#5C4B37]">Dalam video, Mira dirundung Aldi karena menolak memberi contekan ujian, diejek <em>"anak sok pinter"</em>, dan dipalak di kantin, sementara Sarah lelah terus diolok-olok. Di era digital, perilaku ini sering berlanjut menjadi <strong>cyberbullying</strong> (ejekan di grup chat, meme, dan teror DM).</p>
+              </div>
+              <div class="bg-white border border-[#E6D8BE] p-3.5 rounded-xl space-y-1">
+                <p class="font-bold text-[#231A10]">2. Peran "Reda yang Meredakan"</p>
+                <p class="leading-relaxed text-[#5C4B37]">Reda menunjukkan sikap <strong>Upstander</strong> (pembela): peduli dan menguatkan mental korban (<em>"Kamu pasti kuat, kamu pasti bisa bangkit"</em>), serta mengajak teman-teman menyuarakan gerakan anti-perundungan lewat edukasi/brosur di sekolah.</p>
+              </div>
+              <div class="bg-white border border-[#E6D8BE] p-3.5 rounded-xl space-y-1">
+                <p class="font-bold text-[#231A10]">3. Refleksi Karakter & Pemulihan</p>
+                <p class="leading-relaxed text-[#5C4B37]">Guru mengingatkan bahwa siswa SMP berada di fase peralihan menuju remaja yang wajib saling menghormati sebagai makhluk Tuhan, karena perbuatan hari ini menentukan masa depan—hingga pelaku (Aldi) sadar dan meminta maaf dengan tulus.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NAVIGASI SUB-MATERI LENGKAP -->
+          <div class="flex flex-wrap gap-2 border-b border-[#E6D8BE] pb-3">
+            <button onclick="switchMateriTab('m-konsep', this)" class="mat-tab active px-3.5 py-2 rounded-lg bg-[#D99B16] text-white text-xs font-bold">TP 1: Konsep & Candaan Digital</button>
+            <button onclick="switchMateriTab('m-bentuk', this)" class="mat-tab px-3.5 py-2 rounded-lg bg-[#FDF8EE] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold">TP 2: Bentuk Cyberbullying</button>
+            <button onclick="switchMateriTab('m-dampak', this)" class="mat-tab px-3.5 py-2 rounded-lg bg-[#FDF8EE] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold">TP 3: Dampak & Hukum UU ITE</button>
+            <button onclick="switchMateriTab('m-solusi', this)" class="mat-tab px-3.5 py-2 rounded-lg bg-[#FDF8EE] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold">TP 4: STOP-BLOCK-SAVE-TELL & Upstander</button>
+          </div>
+
+          <!-- TP 1 -->
+          <div id="m-konsep" class="mat-panel space-y-4">
+            <p class="text-sm text-[#3D2E1E] leading-relaxed">
+              <strong>Cyberbullying (Perundungan Siber)</strong> adalah tindakan agresif yang disengaja dan berulang menggunakan perangkat digital (media sosial, aplikasi pesan instan, atau gim daring) untuk mempermalukan, mengintimidasi, atau menyakiti korban yang sulit membela diri. Sebagaimana tampak pada kasus Mira dan Sarah di video, perundungan sering kali disamarkan sebagai "candaan" atau pelampiasan amarah.
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse border border-[#E6D8BE] rounded-xl overflow-hidden">
+                <thead class="bg-[#FFF5DC] text-[#231A10]">
+                  <tr>
+                    <th class="p-3 border border-[#E6D8BE]">Aspek Pembeda</th>
+                    <th class="p-3 border border-[#E6D8BE] text-emerald-700">Candaan Digital Sehat</th>
+                    <th class="p-3 border border-[#E6D8BE] text-rose-700">Cyberbullying</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white text-[#3D2E1E]">
+                  <tr>
+                    <td class="p-3 border border-[#E6D8BE] font-bold">Niat & Sikap</td>
+                    <td class="p-3 border border-[#E6D8BE]">Saling menghormati tanpa merendahkan martabat teman</td>
+                    <td class="p-3 border border-[#E6D8BE]">Mengolok-olok (misal: julukan merendahkan), memalak, atau mengintimidasi</td>
+                  </tr>
+                  <tr class="bg-[#FDF8EE]/60">
+                    <td class="p-3 border border-[#E6D8BE] font-bold">Perasaan Korban</td>
+                    <td class="p-3 border border-[#E6D8BE]">Kedua pihak merasa nyaman dan ikut tertawa</td>
+                    <td class="p-3 border border-[#E6D8BE]">Korban merasa lelah mental, tertekan, malu, dan takut</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 border border-[#E6D8BE] font-bold">Jejak & Pengulangan</td>
+                    <td class="p-3 border border-[#E6D8BE]">Langsung dihentikan saat ada yang tidak nyaman</td>
+                    <td class="p-3 border border-[#E6D8BE]">Berulang 24 jam nonstop dan jejak digital sulit dihapus</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TP 2 (DINAMIS DARI CRUD) -->
+          <div id="m-bentuk" class="mat-panel hidden space-y-3">
+            <p class="text-xs text-[#5C4B37]">Klik setiap kartu di bawah ini untuk melihat definisi dan contoh kasus remaja SMP:</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5" id="cards-container"></div>
+          </div>
+
+          <!-- TP 3 -->
+          <div id="m-dampak" class="mat-panel hidden grid sm:grid-cols-3 gap-4">
+            <div class="bg-[#FDF8EE] border border-rose-300 p-4 rounded-xl space-y-2">
+              <h4 class="font-bold text-sm text-rose-700"><i class="fa-solid fa-heart-crack mr-1.5"></i>Dampak Psikologis Korban</h4>
+              <p class="text-xs text-[#3D2E1E] leading-relaxed">Seperti pengakuan Sarah dalam video (<em>"Jujur aku capek diolok-olok terus"</em>), korban mengalami kelelahan emosional, kecemasan, hilangnya percaya diri, hingga trauma sosial.</p>
+            </div>
+            <div class="bg-[#FDF8EE] border border-[#D99B16]/50 p-4 rounded-xl space-y-2">
+              <h4 class="font-bold text-sm text-[#9C6A06]"><i class="fa-solid fa-compass mr-1.5"></i>Dampak Sosial & Masa Depan</h4>
+              <p class="text-xs text-[#3D2E1E] leading-relaxed">Sesuai pesan Ibu Guru dalam video, siswa SMP berada di masa peralihan menuju remaja. Menurunnya prestasi belajar dan rekam jejak digital buruk dapat menghambat masa depan korban maupun pelaku.</p>
+            </div>
+            <div class="bg-[#FDF8EE] border border-indigo-300 p-4 rounded-xl space-y-2">
+              <h4 class="font-bold text-sm text-indigo-700"><i class="fa-solid fa-scale-balanced mr-1.5"></i>Konsekuensi Hukum (UU ITE)</h4>
+              <p class="text-xs text-[#3D2E1E] leading-relaxed">Penghinaan, pencemaran nama baik, pemerasan/pemalakan elektronik, dan pengancaman melalui media digital diatur dalam <strong>UU ITE (Pasal 27A, 27B, dan 29)</strong> dengan sanksi pidana.</p>
+            </div>
+          </div>
+
+          <!-- TP 4 -->
+          <div id="m-solusi" class="mat-panel hidden space-y-4">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl">
+                <span class="text-rose-700 font-black text-lg">1. STOP</span>
+                <p class="text-xs text-[#3D2E1E] mt-1">Jangan membalas provokasi pelaku dengan kemarahan agar konflik tidak semakin membesar.</p>
+              </div>
+              <div class="bg-amber-50 border border-amber-300 p-4 rounded-xl">
+                <span class="text-amber-700 font-black text-lg">2. BLOCK</span>
+                <p class="text-xs text-[#3D2E1E] mt-1">Blokir akun pelaku dan ubah pengaturan privasi media sosial menjadi mode privat.</p>
+              </div>
+              <div class="bg-sky-50 border border-sky-200 p-4 rounded-xl">
+                <span class="text-sky-700 font-black text-lg">3. SAVE</span>
+                <p class="text-xs text-[#3D2E1E] mt-1">Simpan bukti tangkapan layar (<em>screenshot</em>) pesan, komentar, dan tautan akun pelaku.</p>
+              </div>
+              <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
+                <span class="text-emerald-700 font-black text-lg">4. TELL</span>
+                <p class="text-xs text-[#3D2E1E] mt-1">Berani bersuara dan melapor kepada Orang Tua, Guru BK, serta gunakan fitur <em>Report</em> platform.</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-xs text-emerald-900 leading-relaxed">
+              <strong><i class="fa-solid fa-hand-holding-heart mr-1.5 text-emerald-700"></i>Meneladani Sikap "Reda yang Meredakan" (Upstander):</strong> Jangan menjadi penonton diam (<em>bystander</em>). Dukung dan kuatkan teman yang menjadi korban, suarakan kampanye literasi anti-perundungan, dan ajak lingkungan kelas saling menghormati serta memaafkan saat pelaku menyadari kesalahannya.
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center pt-2 border-t border-[#E6D8BE]">
+            <button onclick="goToStep(4)" class="px-4 py-2 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold">
+              <i class="fa-solid fa-arrow-left mr-1.5"></i>Kembali
+            </button>
+            <button onclick="completeAndNext(5)" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm shadow-sm">
+              Lanjut ke Aktivitas Gamifikasi <i class="fa-solid fa-gamepad ml-1.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 6: AKTIVITAS GAMIFIKASI (DINAMIS DARI CRUD)
+      ========================================================== -->
+      <section id="step-6" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 6 dari 9 • Gamifikasi Simulasi Keputusan</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">CyberShield Arena: Misi Menjadi "Reda yang Meredakan"</h2>
+            </div>
+            <div class="flex items-center gap-3 bg-[#FDF8EE] border border-[#E6D8BE] px-4 py-2 rounded-xl text-xs font-bold">
+              <span class="text-rose-600" id="game-lives">❤️❤️❤️</span>
+              <span class="text-[#D6C5A5]">|</span>
+              <span class="text-[#B57D0B]"><i class="fa-solid fa-bolt mr-1"></i>Streak: <span id="game-streak">0</span></span>
+              <span class="text-[#D6C5A5]">|</span>
+              <span class="text-emerald-700"><i class="fa-solid fa-trophy mr-1"></i>Skor: <span id="game-score">0</span></span>
+            </div>
+          </div>
+
+          <div id="game-arena-box" class="bg-[#FDF8EE] border border-[#E6D8BE] rounded-2xl p-5 sm:p-6"></div>
+
+          <div class="flex justify-between items-center pt-2">
+            <button onclick="goToStep(5)" class="px-4 py-2 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold">
+              <i class="fa-solid fa-arrow-left mr-1.5"></i>Kembali
+            </button>
+            <button onclick="completeAndNext(6)" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm shadow-sm">
+              Lanjut ke Kuis Interaktif <i class="fa-solid fa-arrow-right ml-1.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 7: KUIS INTERAKTIF (KLASIFIKASI INSTAN)
+      ========================================================== -->
+      <section id="step-7" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 7 dari 9 • Latihan Formatif Instan</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Kuis Interaktif: Deteksi Jenis Kasus</h2>
+            </div>
+            <span class="text-xs bg-[#FFF5DC] border border-[#D99B16]/40 px-3 py-1.5 rounded-xl text-[#8F6004] font-bold">
+              Terjawab Benar: <span id="quick-quiz-counter">0</span> / 4
+            </span>
+          </div>
+
+          <div id="interactive-quiz-list" class="space-y-4"></div>
+
+          <div class="flex justify-between items-center pt-2">
+            <button onclick="goToStep(6)" class="px-4 py-2 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold">
+              <i class="fa-solid fa-arrow-left mr-1.5"></i>Kembali
+            </button>
+            <button onclick="completeAndNext(7)" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm shadow-sm">
+              Lanjut ke Post-Test Akhir <i class="fa-solid fa-arrow-right ml-1.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 8: POST-TEST & KOMPARASI HASIL BELAJAR
+      ========================================================== -->
+      <section id="step-8" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 8 dari 9 • Evaluasi Sumatif & Pengukuran Dampak</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Post-Test Pemahaman Cyberbullying</h2>
+            <p class="text-xs sm:text-sm text-[#5C4B37] mt-1">Kerjakan soal evaluasi akhir berikut untuk melihat peningkatan skor dibandingkan hasil Pre-Test awalmu.</p>
+          </div>
+
+          <div id="posttest-form" class="space-y-4">
+            <div id="posttest-questions" class="space-y-4"></div>
+            <button onclick="submitPosttest()" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition">
+              <i class="fa-solid fa-paper-plane mr-2"></i>Kirim Post-Test & Bandingkan Nilai
+            </button>
+          </div>
+
+          <div id="posttest-result" class="hidden space-y-5"></div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SINTAK 9: REFLEKSI & UNDUH / CETAK HASIL BELAJAR (.PDF)
+      ========================================================== -->
+      <section id="step-9" class="syntax-section space-y-6">
+        <div class="bg-white border border-[#E6D8BE] rounded-2xl p-6 shadow-md space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">Sintak 9 dari 9 • Metakognisi & Laporan Hasil Belajar</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-[#231A10] mt-0.5">Refleksi Diri & Unduh Laporan Hasil Belajar (.PDF)</h2>
+          </div>
+
+          <!-- Status Kelengkapan Belajar -->
+          <div class="bg-[#FDF8EE] border border-[#E6D8BE] p-4 rounded-xl space-y-2.5">
+            <p class="text-xs font-bold text-[#3D2E1E] flex items-center gap-1.5">
+              <i class="fa-solid fa-list-check text-[#B57D0B]"></i> Status Kelengkapan Asesmen & Aktivitas:
+            </p>
+            <div id="completion-badges-bar" class="flex flex-wrap gap-2 text-xs"></div>
+          </div>
+
+          <div id="refleksi-identity-box" class="grid sm:grid-cols-2 gap-4 bg-[#FDF8EE] p-4 rounded-xl border border-[#D99B16]/40">
+            <div>
+              <label class="block text-xs font-bold text-[#8F6004] mb-1.5">Nama Lengkap Siswa (Untuk Tercetak di PDF) *</label>
+              <input type="text" id="student-name-ref" oninput="syncStudentIdentity('ref')" placeholder="Masukkan nama lengkap siswa..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-[#D6C5A5] text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-[#8F6004] mb-1.5">Kelas *</label>
+              <select id="student-class-ref" onchange="syncStudentIdentity('ref')" class="w-full px-3.5 py-2 rounded-xl bg-white border border-[#D6C5A5] text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]">
+                <option value="VIII-A">Kelas VIII-A</option>
+                <option value="VIII-B">Kelas VIII-B</option>
+                <option value="VIII-C">Kelas VIII-C</option>
+                <option value="VIII-D">Kelas VIII-D</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="bg-[#FDF8EE] border border-[#E6D8BE] p-4 rounded-xl">
+            <p class="text-xs font-bold text-[#9C6A06] mb-1"><i class="fa-solid fa-lightbulb mr-1.5"></i>Catatan Pemantik Awalmu (Sintak 2):</p>
+            <p id="refleksi-pemantik-preview" class="text-xs sm:text-sm text-[#5C4B37] italic">"Belum diisi pada tahap Pertanyaan Pemantik."</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-[#231A10] mb-1.5">1. Pelajaran karakter & literasi digital paling penting apa yang kamu dapatkan dari video dan materi hari ini? *</label>
+              <textarea id="ref-q1" rows="3" placeholder="Saya memahami bahwa saling menghormati dan menjaga etika digital..." class="w-full rounded-xl bg-[#FDF8EE] border border-[#D6C5A5] p-3 text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-[#231A10] mb-1.5">2. Bagaimana kamu akan menerapkan semangat "Reda yang Meredakan" & STOP-BLOCK-SAVE-TELL saat melihat perundungan? *</label>
+              <textarea id="ref-q2" rows="3" placeholder="Saya akan menguatkan korban, menyimpan bukti, dan melapor..." class="w-full rounded-xl bg-[#FDF8EE] border border-[#D6C5A5] p-3 text-sm text-[#231A10] focus:outline-none focus:border-[#D99B16]"></textarea>
+            </div>
+          </div>
+
+          <div class="bg-[#FDF8EE] border border-[#E6D8BE] p-4 rounded-xl flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-bold text-[#231A10]">Penilaian Pengalaman Belajar (User Satisfaction)</p>
+              <p class="text-xs text-[#5C4B37]">Seberapa membantu media pembelajaran interaktif CyberShield 8 ini bagimu?</p>
+            </div>
+            <div class="flex items-center gap-2" id="star-rating">
+              <button type="button" onclick="setRating(1)" class="star-btn text-2xl text-slate-300 hover:text-[#D99B16] transition">★</button>
+              <button type="button" onclick="setRating(2)" class="star-btn text-2xl text-slate-300 hover:text-[#D99B16] transition">★</button>
+              <button type="button" onclick="setRating(3)" class="star-btn text-2xl text-slate-300 hover:text-[#D99B16] transition">★</button>
+              <button type="button" onclick="setRating(4)" class="star-btn text-2xl text-slate-300 hover:text-[#D99B16] transition">★</button>
+              <button type="button" onclick="setRating(5)" class="star-btn text-2xl text-slate-300 hover:text-[#D99B16] transition">★</button>
+            </div>
+          </div>
+
+          <label class="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-300 cursor-pointer text-xs sm:text-sm text-emerald-900">
+            <input type="checkbox" id="ikrar-check" class="w-4 h-4 accent-emerald-600" />
+            <span>Saya berkomitmen menjaga etika digital, menghormati sesama, menolak <em>cyberbullying</em>, dan berani menjadi <strong>Upstander</strong> yang meredakan perundungan.</span>
+          </label>
+
+          <div class="flex flex-wrap justify-between items-center gap-3 pt-2">
+            <button onclick="goToStep(8)" class="px-4 py-2.5 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] text-[#3D2E1E] text-xs font-semibold">
+              <i class="fa-solid fa-arrow-left mr-1.5"></i>Kembali
+            </button>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <button onclick="printBrowserFallback()" class="px-4 py-3 rounded-xl bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#D6C5A5] text-[#231A10] font-bold text-xs sm:text-sm transition">
+                <i class="fa-solid fa-print mr-1.5 text-[#B57D0B]"></i>Cetak Printer
+              </button>
+              <button onclick="finishAndDownloadPDF()" class="px-6 py-3 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs sm:text-sm shadow-lg shadow-[#D99B16]/25 transition">
+                <i class="fa-solid fa-file-pdf mr-2"></i>Selesai & Unduh Hasil Belajar (.pdf)
+              </button>
+            </div>
+          </div>
+
+          <div id="pdf-preview-card" class="hidden mt-6 bg-white text-slate-900 rounded-2xl p-6 sm:p-8 shadow-xl border-2 border-[#D99B16] space-y-4"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-[#E6D8BE] py-4 text-center text-xs text-[#5C4B37] no-print">
+      Kompetisi Inovasi Media Pembelajaran Berbasis TIK • PGRI Cabang Kenduruan 2026 • UPT SMPN 1 Kenduruan
+    </footer>
+    <div class="batik-ribbon w-full no-print"></div>
+  </div>
+
+  <!-- =========================================================
+       MODAL PANEL GURU (CRUD MATERI, VIDEO, TP, SOAL, MISI)
+  ========================================================== -->
+  <div id="teacher-modal" class="fixed inset-0 z-50 hidden bg-[#231A10]/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 no-print">
+    <div class="bg-white border border-[#E6D8BE] rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+
+      <!-- Header Modal Panel Guru -->
+      <div class="bg-batik-gedog p-1">
+        <div class="bg-[#FDF8EE] px-5 py-4 rounded-t-[20px] flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#D99B16] text-white flex items-center justify-center font-bold">
+              <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-base sm:text-lg text-[#231A10]">Panel Guru — Manajemen & CRUD Konten MPI</h3>
+              <p class="text-xs text-[#5C4B37]">Perubahan otomatis tersimpan ke perangkat dan langsung memperbarui tampilan siswa.</p>
+            </div>
+          </div>
+          <button onclick="closeTeacherModal()" class="w-9 h-9 rounded-xl bg-white hover:bg-rose-50 border border-[#E6D8BE] text-[#3D2E1E] hover:text-rose-600 flex items-center justify-center transition">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Layar Kunci PIN Guru -->
+      <div id="teacher-auth-screen" class="p-8 text-center space-y-4 max-w-md mx-auto my-auto">
+        <div class="w-14 h-14 rounded-2xl bg-[#FFF5DC] border border-[#D99B16] text-[#B57D0B] flex items-center justify-center text-2xl mx-auto">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h4 class="text-lg font-extrabold text-[#231A10]">Verifikasi Akses Guru</h4>
+        <p class="text-xs text-[#5C4B37]">Masukkan PIN Guru untuk mengelola materi, video, tujuan pembelajaran, dan bank soal. (PIN Demo: <strong>1234</strong>)</p>
+        <input type="password" id="teacher-pin-input" onkeydown="if(event.key==='Enter') unlockTeacherPanel()" placeholder="Masukkan PIN (1234)" class="w-full px-4 py-2.5 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5] text-center font-bold tracking-widest text-[#231A10] focus:outline-none focus:border-[#D99B16]" />
+        <button onclick="unlockTeacherPanel()" class="w-full py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-sm transition">
+          Buka Panel CRUD Guru
+        </button>
+      </div>
+
+      <!-- Konten CRUD Utama (Muncul Setelah PIN Benar) -->
+      <div id="teacher-cms-body" class="hidden flex-1 flex flex-col overflow-hidden">
+        <!-- Tab Navigasi CRUD -->
+        <div class="px-5 pt-3 pb-2 bg-[#FDF8EE] border-b border-[#E6D8BE] flex overflow-x-auto gap-2 no-scrollbar">
+          <button onclick="switchCmsTab('cms-general', this)" class="cms-tab active px-3.5 py-2 rounded-lg bg-[#D99B16] text-white text-xs font-bold whitespace-nowrap">1. Identitas & Video</button>
+          <button onclick="switchCmsTab('cms-tp', this)" class="cms-tab px-3.5 py-2 rounded-lg bg-white border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold whitespace-nowrap">2. Tujuan Pembelajaran</button>
+          <button onclick="switchCmsTab('cms-materi', this)" class="cms-tab px-3.5 py-2 rounded-lg bg-white border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold whitespace-nowrap">3. Kartu Materi</button>
+          <button onclick="switchCmsTab('cms-soal', this)" class="cms-tab px-3.5 py-2 rounded-lg bg-white border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold whitespace-nowrap">4. Bank Soal Tes</button>
+          <button onclick="switchCmsTab('cms-game', this)" class="cms-tab px-3.5 py-2 rounded-lg bg-white border border-[#E6D8BE] text-[#3D2E1E] text-xs font-bold whitespace-nowrap">5. Misi Gamifikasi</button>
+        </div>
+
+        <!-- Area Scrollable Form CRUD -->
+        <div class="p-5 overflow-y-auto flex-1 space-y-5 text-xs sm:text-sm">
+
+          <!-- CMS 1: IDENTITAS & VIDEO -->
+          <div id="cms-general" class="cms-panel space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-[#3D2E1E] mb-1">Judul Utama MPI</label>
+                <input type="text" id="cms-title" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#3D2E1E] mb-1">Nama Sekolah</label>
+                <input type="text" id="cms-school" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#3D2E1E] mb-1">Mata Pelajaran</label>
+                <input type="text" id="cms-subject" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#3D2E1E] mb-1">Nama Penyusun</label>
+                <input type="text" id="cms-author" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#3D2E1E] mb-1">Jenjang / Fase / Kelas</label>
+                <input type="text" id="cms-grade" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#3D2E1E] mb-1">URL Embed Video (Google Drive /preview atau YouTube /embed)</label>
+                <input type="text" id="cms-video-url" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-[#3D2E1E] mb-1">Keterangan Sumber & Hak Cipta Video</label>
+              <input type="text" id="cms-video-source" class="w-full px-3 py-2 rounded-xl bg-[#FDF8EE] border border-[#D6C5A5]" />
+            </div>
+            <button onclick="saveCmsGeneral()" class="px-5 py-2.5 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-xs">
+              <i class="fa-solid fa-floppy-disk mr-1.5"></i>Simpan Identitas & Video
+            </button>
+          </div>
+
+          <!-- CMS 2: CRUD TUJUAN PEMBELAJARAN -->
+          <div id="cms-tp" class="cms-panel hidden space-y-4">
+            <div class="bg-[#FDF8EE] p-4 rounded-xl border border-[#E6D8BE] space-y-3">
+              <p class="font-bold text-xs text-[#8F6004]" id="tp-form-mode">Tambah Tujuan Pembelajaran Baru</p>
+              <input type="hidden" id="tp-edit-idx" value="-1" />
+              <input type="text" id="tp-input-title" placeholder="Judul Kompetensi (Contoh: Memahami Konsep Dasar)" class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+              <textarea id="tp-input-desc" rows="2" placeholder="Deskripsi Tujuan Pembelajaran..." class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs"></textarea>
+              <div class="flex gap-2">
+                <button onclick="saveCmsTp()" class="px-4 py-2 rounded-lg bg-[#D99B16] text-white font-bold text-xs">Simpan Tujuan</button>
+                <button onclick="resetTpForm()" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs">Batal</button>
+              </div>
+            </div>
+            <div id="cms-tp-list" class="space-y-2"></div>
+          </div>
+
+          <!-- CMS 3: CRUD KARTU MATERI -->
+          <div id="cms-materi" class="cms-panel hidden space-y-4">
+            <div class="bg-[#FDF8EE] p-4 rounded-xl border border-[#E6D8BE] space-y-3">
+              <p class="font-bold text-xs text-[#8F6004]" id="mat-form-mode">Tambah Kartu Bentuk Cyberbullying</p>
+              <input type="hidden" id="mat-edit-idx" value="-1" />
+              <input type="text" id="mat-input-title" placeholder="Nama Istilah (Contoh: Cyberstalking)" class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+              <textarea id="mat-input-desc" rows="2" placeholder="Definisi singkat..." class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs"></textarea>
+              <input type="text" id="mat-input-contoh" placeholder="Contoh kasus di lingkungan remaja SMP..." class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+              <div class="flex gap-2">
+                <button onclick="saveCmsMateri()" class="px-4 py-2 rounded-lg bg-[#D99B16] text-white font-bold text-xs">Simpan Materi</button>
+                <button onclick="resetMatForm()" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs">Batal</button>
+              </div>
+            </div>
+            <div id="cms-materi-list" class="space-y-2"></div>
+          </div>
+
+          <!-- CMS 4: CRUD BANK SOAL PRE-TEST & POST-TEST -->
+          <div id="cms-soal" class="cms-panel hidden space-y-4">
+            <div class="bg-[#FDF8EE] p-4 rounded-xl border border-[#E6D8BE] space-y-3">
+              <p class="font-bold text-xs text-[#8F6004]" id="soal-form-mode">Tambah Soal Pre-Test & Post-Test</p>
+              <input type="hidden" id="soal-edit-idx" value="-1" />
+              <textarea id="soal-input-q" rows="2" placeholder="Tulis pertanyaan soal..." class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs"></textarea>
+              <div class="grid sm:grid-cols-2 gap-2">
+                <input type="text" id="soal-opt-0" placeholder="Pilihan A" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+                <input type="text" id="soal-opt-1" placeholder="Pilihan B" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+                <input type="text" id="soal-opt-2" placeholder="Pilihan C" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+                <input type="text" id="soal-opt-3" placeholder="Pilihan D" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <label class="text-xs font-bold">Kunci Jawaban Benar:</label>
+                <select id="soal-input-ans" class="px-3 py-1.5 rounded-lg bg-white border border-[#D6C5A5] text-xs font-bold">
+                  <option value="0">Pilihan A</option>
+                  <option value="1">Pilihan B</option>
+                  <option value="2">Pilihan C</option>
+                  <option value="3">Pilihan D</option>
+                </select>
+                <button onclick="saveCmsSoal()" class="px-4 py-2 rounded-lg bg-[#D99B16] text-white font-bold text-xs">Simpan Soal</button>
+                <button onclick="resetSoalForm()" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs">Batal</button>
+              </div>
+            </div>
+            <div id="cms-soal-list" class="space-y-2"></div>
+          </div>
+
+          <!-- CMS 5: CRUD MISI GAMIFIKASI -->
+          <div id="cms-game" class="cms-panel hidden space-y-4">
+            <div class="bg-[#FDF8EE] p-4 rounded-xl border border-[#E6D8BE] space-y-3">
+              <p class="font-bold text-xs text-[#8F6004]" id="game-form-mode">Tambah Misi Gamifikasi Arena</p>
+              <input type="hidden" id="game-edit-idx" value="-1" />
+              <input type="text" id="game-input-level" placeholder="Judul Misi (Contoh: Misi 4 • Etika Komentar)" class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs" />
+              <textarea id="game-input-prompt" rows="2" placeholder="Deskripsi situasi kasus..." class="w-full px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs"></textarea>
+              <input type="text" id="game-input-good" placeholder="Tindakan TEPAT (Upstander)..." class="w-full px-3 py-2 rounded-lg bg-emerald-50 border border-emerald-300 text-xs" />
+              <input type="text" id="game-input-bad" placeholder="Tindakan KURANG TEPAT..." class="w-full px-3 py-2 rounded-lg bg-rose-50 border border-rose-300 text-xs" />
+              <div class="flex gap-2">
+                <button onclick="saveCmsGame()" class="px-4 py-2 rounded-lg bg-[#D99B16] text-white font-bold text-xs">Simpan Misi</button>
+                <button onclick="resetGameForm()" class="px-3 py-2 rounded-lg bg-white border border-[#D6C5A5] text-xs">Batal</button>
+              </div>
+            </div>
+            <div id="cms-game-list" class="space-y-2"></div>
+          </div>
+
+        </div>
+
+        <!-- Footer Modal Panel Guru (Export / Import / Reset) -->
+        <div class="px-5 py-3 bg-[#FDF8EE] border-t border-[#E6D8BE] flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div class="flex flex-wrap gap-2">
+            <button onclick="exportCmsJson()" class="px-3 py-1.5 rounded-lg bg-white hover:bg-[#FFF5DC] border border-[#D6C5A5] font-bold text-[#3D2E1E]">
+              <i class="fa-solid fa-download mr-1 text-[#B57D0B]"></i>Backup JSON
+            </button>
+            <label class="px-3 py-1.5 rounded-lg bg-white hover:bg-[#FFF5DC] border border-[#D6C5A5] font-bold text-[#3D2E1E] cursor-pointer">
+              <i class="fa-solid fa-upload mr-1 text-[#B57D0B]"></i>Restore JSON
+              <input type="file" accept=".json" onchange="importCmsJson(event)" class="hidden" />
+            </label>
+            <button onclick="resetAllCmsDefault()" class="px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 border border-rose-200 font-bold text-rose-700">
+              <i class="fa-solid fa-rotate-left mr-1"></i>Reset Default
+            </button>
+          </div>
+          <button onclick="closeTeacherModal()" class="px-4 py-1.5 rounded-lg bg-[#231A10] text-white font-bold">
+            Selesai & Tutup
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LEMBAR CETAK KHUSUS BROWSER PRINT (@media print) -->
+  <div id="print-fallback-sheet" class="hidden p-8 text-slate-900 bg-white"></div>
+
+  <script>
+    // ==========================================
+    // DATA DEFAULT & PENYIMPANAN CRUD (LOCALSTORAGE)
+    // ==========================================
+    const STORAGE_KEY = "cybershield8_tuban_cms_v3";
+
+    const defaultCmsData = {
+      meta: {
+        title: "CyberShield 8: Stop Cyberbullying",
+        school: "UPT SMPN 1 KENDURUAN",
+        subject: "INFORMATIKA",
+        author: "MINYANI HARIANTO, S.Kom.",
+        grade: "SMP / FASE D / KELAS 8",
+        videoUrl: "https://drive.google.com/file/d/1bOmvJrSxBfFS19CQfV_d4HObODxQnx-W/preview",
+        videoSource: 'Judul: "Bersama Atasi Perundungan: Reda yang Meredakan" • Kanal Resmi: Cerdas Berkarakter Kemendikdasmen RI (Rilis: 29 Juli 2024)'
+      },
+      tujuan: [
+        { title: "Memahami Konsep & Karakteristik", desc: "Peserta didik mampu menjelaskan pengertian cyberbullying, keterkaitannya dengan perundungan di sekolah, serta membedakannya dengan candaan digital biasa." },
+        { title: "Mengidentifikasi Jenis Perundungan Siber", desc: "Peserta didik mampu mengklasifikasikan 6 bentuk utama cyberbullying (flaming, harassment, denigration, impersonation, outing, exclusion)." },
+        { title: "Menganalisis Dampak & Konsekuensi Hukum", desc: "Peserta didik mampu menganalisis dampak psikologis, sosial, nilai saling menghormati di masa remaja, serta ancaman pidana UU ITE bagi pelaku perundungan digital." },
+        { title: "Menerapkan Strategi Pencegahan & Aksi", desc: "Peserta didik mampu mempraktikkan langkah perlindungan diri (STOP – BLOCK – SAVE – TELL) dan berperan aktif sebagai Upstander yang meredakan konflik." }
+      ],
+      materiCards: [
+        { title: "Flaming", icon: "fa-fire", desc: "Mengirim pesan amarah, kasar, dan provokatif di grup chat atau kolom komentar.", contoh: "Menghina teman dengan julukan kasar ('sok pintar') di grup WhatsApp kelas karena menolak memberi contekan." },
+        { title: "Harassment", icon: "fa-comment-slash", desc: "Mengirim pesan gangguan, olok-olok, atau ancaman berulang kali lewat DM atau SMS.", contoh: "Mengirim pesan teror dan pemalakan berulang kali ke akun media sosial korban." },
+        { title: "Denigration", icon: "fa-bullhorn", desc: "Menyebarkan gosip palsu atau foto editan untuk merusak reputasi seseorang.", contoh: "Mengedit foto teman menjadi meme memalukan lalu disebar ke TikTok atau Story." },
+        { title: "Impersonation", icon: "fa-user-secret", desc: "Memakai akun palsu atas nama korban untuk mengirim hal buruk.", contoh: "Membuat akun Instagram palsu memakai foto teman lalu menghina guru." },
+        { title: "Outing & Trickery", icon: "fa-lock-open", desc: "Membocorkan rahasia atau percakapan pribadi seseorang ke publik tanpa izin.", contoh: "Menyebar tangkapan layar curhatan pribadi teman ke Story media sosial." },
+        { title: "Exclusion", icon: "fa-user-minus", desc: "Sengaja mengeluarkan atau mengucilkan seseorang dari grup daring.", contoh: "Mengeluarkan siswa dari grup belajar kelas karena tidak mau mengikuti kecurangan ujian." }
+      ],
+      questions: [
+        {
+          q: "Perbedaan mendasar antara perundungan tatap muka dan cyberbullying adalah...",
+          options: [
+            "Cyberbullying hanya terjadi pada jam pelajaran sekolah",
+            "Jejak digital pada cyberbullying sulit dihapus dan dapat menjangkau audiens luas dalam waktu singkat",
+            "Cyberbullying tidak menimbulkan dampak psikologis bagi korban",
+            "Cyberbullying selalu berhenti otomatis saat bel pulang berbunyi"
+          ],
+          ans: 1
+        },
+        {
+          q: "Tindakan membuat akun media sosial palsu memakai foto teman lalu mengunggah komentar negatif atas namanya disebut...",
+          options: ["Flaming", "Exclusion", "Impersonation", "Outing"],
+          ans: 2
+        },
+        {
+          q: "Urutan langkah teknis yang paling tepat saat menghadapi serangan cyberbullying adalah...",
+          options: [
+            "Balas komentar pelaku - Hapus akun - Diam saja",
+            "Stop (jangan membalas) - Block akun pelaku - Save bukti screenshot - Tell (lapor guru/orang tua)",
+            "Sebarkan balik foto pelaku - Blokir - Lupakan",
+            "Ganti nomor HP tanpa menyimpan bukti apa pun"
+          ],
+          ans: 1
+        },
+        {
+          q: "Berdasarkan nilai dalam video 'Reda yang Meredakan', sikap yang tepat ketika melihat teman menjadi korban perundungan adalah...",
+          options: [
+            "Menjadi penonton diam agar tidak ikut terbawa masalah",
+            "Ikut menertawakan supaya dianggap kompak oleh pelaku",
+            "Menjadi Upstander: menguatkan korban, menyuarakan penolakan perundungan, dan melapor ke guru",
+            "Membalas pelaku dengan tindakan kasar yang sama"
+          ],
+          ans: 2
+        },
+        {
+          q: "Membagikan tangkapan layar curhatan rahasia teman ke grup publik tanpa izin termasuk bentuk cyberbullying...",
+          options: ["Outing", "Flaming", "Cyberstalking", "Trolling"],
+          ans: 0
+        }
+      ],
+      missions: [
+        {
+          level: "Misi 1 • Solidaritas Kejujuran & Grup Kelas",
+          prompt: "Temanmu yang jujur menolak memberi contekan saat ujian lalu diolok-olok 'anak sok pinter' dan dijadikan meme di grup WhatsApp kelas.",
+          choices: [
+            { text: "Ikut mengirim emoji tertawa agar tidak dikucilkan pelaku.", ok: false, msg: "Kurang tepat! Ikut menertawakan memperkuat aksi pelaku (reinforcer)." },
+            { text: "Menjadi 'Reda yang Meredakan': menegur dengan santun di grup agar meme dihapus dan menyemangati korban.", ok: true, msg: "Hebat! Kamu berperan sebagai Upstander yang menghentikan perundungan dan menguatkan korban." },
+            { text: "Menyimpan meme tersebut untuk dikirim ulang ke grup lain.", ok: false, msg: "Salah! Menyebarluaskan konten penghinaan memperpanjang luka korban dan melanggar etika digital." }
+          ]
+        },
+        {
+          level: "Misi 2 • Pemalakan & Ancaman via DM",
+          prompt: "Akun anonim mengirim DM memaksa meminta uang jajan sambil mengancam akan menyebarkan fitnah tentangmu di sekolah.",
+          choices: [
+            { text: "Membalas dengan kata-kata kasar dan menantang berkelahi.", ok: false, msg: "Berbahaya! Membalas provokasi hanya memperpanjang konflik." },
+            { text: "Screenshot semua bukti chat, blokir akun, dan lapor ke Orang Tua / Guru BK.", ok: true, msg: "Tepat sekali! Prinsip SAVE – BLOCK – TELL mengamankan bukti dan menghentikan ancaman." },
+            { text: "Langsung menghapus chat tanpa menyimpan bukti lalu diam memendam ketakutan.", ok: false, msg: "Hati-hati! Menghapus bukti membuat pelaporan ke pihak sekolah menjadi sulit." }
+          ]
+        },
+        {
+          level: "Misi 3 • Kampanye Positif & Pemulihan",
+          prompt: "Pelaku perundungan menyadari kesalahannya setelah dinasihati guru dan datang meminta maaf dengan tulus kepada korban.",
+          choices: [
+            { text: "Merekam momen itu lalu mengunggahnya ke media sosial untuk mempermalukan balik pelaku.", ok: false, msg: "Tidak tepat! Mempermalukan balik hanya menciptakan siklus perundungan baru." },
+            { text: "Menerima permintaan maaf dengan lapang dada dan mengajak teman-teman menjaga suasana kelas yang saling menghormati.", ok: true, msg: "Luar biasa! Pemulihan hubungan dan saling menghormati adalah tujuan utama pendidikan karakter." }
+          ]
+        }
+      ]
+    };
+
+    let cmsData = loadCmsData();
+
+    function loadCmsData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {
+        console.warn("Gagal membaca localStorage:", e);
+      }
+      return JSON.parse(JSON.stringify(defaultCmsData));
+    }
+
+    function persistCmsData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cmsData));
+      applyCmsToUI();
+    }
+
+    function applyCmsToUI() {
+      // Update Poster Beranda & Header
+      document.getElementById("poster-mpi-title").innerText = cmsData.meta.title;
+      document.getElementById("poster-school-name").innerText = `: ${cmsData.meta.school}`;
+      document.getElementById("poster-subject-name").innerText = `: ${cmsData.meta.subject}`;
+      document.getElementById("poster-author-name").innerText = `: ${cmsData.meta.author}`;
+      document.getElementById("poster-grade-level").innerText = `: ${cmsData.meta.grade}`;
+
+      document.getElementById("hdr-mpi-title").innerText = cmsData.meta.title.split(":")[0];
+      document.getElementById("hdr-school-sub").innerText = `${cmsData.meta.subject} • ${cmsData.meta.school}`;
+      document.getElementById("tp-subject-label").innerText = `${cmsData.meta.subject} (${cmsData.meta.grade})`;
+
+      // Update Video & Sumber
+      const iframe = document.getElementById("main-video-iframe");
+      if (iframe && iframe.src !== cmsData.meta.videoUrl) {
+        iframe.src = cmsData.meta.videoUrl;
+      }
+      document.getElementById("video-source-text").innerText = cmsData.meta.videoSource;
+
+      // Render Ulang Komponen Dinamis
+      renderTujuanList();
+      renderBentukCards();
+      renderAssessment("pretest-questions", "pre");
+      renderAssessment("posttest-questions", "post");
+      gIdx = 0; gLives = 3; gStreak = 0; gScore = 0;
+      renderGameMission();
+    }
+
+    // ==========================================
+    // NAVIGASI BERANDA POSTER <-> APLIKASI 9 SINTAK
+    // ==========================================
+    function showPosterHome() {
+      document.getElementById("learning-app-wrapper").classList.add("hidden");
+      document.getElementById("learning-app-wrapper").classList.remove("flex");
+      document.getElementById("beranda-poster").classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function enterLearningApp(stepId = 1) {
+      document.getElementById("beranda-poster").classList.add("hidden");
+      document.getElementById("learning-app-wrapper").classList.remove("hidden");
+      document.getElementById("learning-app-wrapper").classList.add("flex");
+      goToStep(stepId);
+    }
+
+    // ==========================================
+    // STATE GLOBAL SISWA
+    // ==========================================
+    const appState = {
+      currentStep: 1,
+      completed: {},
+      studentName: "",
+      studentClass: "VIII-A",
+      preScore: null,
+      gameScore: 0,
+      gamePlayed: false,
+      quizCorrect: 0,
+      quizAnswered: {},
+      postScore: null,
+      rating: 5
+    };
+
+    const syntaxLabels = [
+      { id: 1, title: "1. Apersepsi", icon: "fa-film" },
+      { id: 2, title: "2. Pemantik", icon: "fa-circle-question" },
+      { id: 3, title: "3. Tujuan", icon: "fa-bullseye" },
+      { id: 4, title: "4. Pre-Test", icon: "fa-vial" },
+      { id: 5, title: "5. Materi & Video", icon: "fa-play-circle" },
+      { id: 6, title: "6. Gamifikasi", icon: "fa-gamepad" },
+      { id: 7, title: "7. Kuis Interaktif", icon: "fa-bolt" },
+      { id: 8, title: "8. Post-Test", icon: "fa-clipboard-check" },
+      { id: 9, title: "9. Refleksi & PDF", icon: "fa-file-pdf" }
+    ];
+
+    function renderNav() {
+      const nav = document.getElementById("syntax-nav");
+      nav.innerHTML = syntaxLabels.map(s => {
+        const isActive = appState.currentStep === s.id;
+        const isDone = appState.completed[s.id];
+        let cls = isActive
+          ? "bg-[#D99B16] text-white border-[#B57D0B] shadow-sm"
+          : isDone
+            ? "bg-emerald-50 text-emerald-800 border-emerald-300"
+            : "bg-white text-[#3D2E1E] border-[#E6D8BE] hover:bg-[#FFF5DC]";
+        return `
+          <button onclick="goToStep(${s.id})" class="px-3 py-1.5 rounded-lg border text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition ${cls}">
+            <i class="fa-solid ${isDone && !isActive ? 'fa-circle-check text-emerald-600' : s.icon}"></i>
+            <span>${s.title}</span>
+          </button>
+        `;
+      }).join("");
+
+      const pct = Math.round((appState.currentStep / 9) * 100);
+      document.getElementById("global-progress-bar").style.width = `${pct}%`;
+    }
+
+    function renderCompletionBadges() {
+      const badgeContainer = document.getElementById("completion-badges-bar");
+      if (!badgeContainer) return;
+
+      const items = [
+        { label: "Pre-Test", done: appState.preScore !== null, step: 4 },
+        { label: "Gamifikasi Arena", done: appState.gamePlayed, step: 6 },
+        { label: `Kuis Interaktif (${Object.keys(appState.quizAnswered).length}/4)`, done: Object.keys(appState.quizAnswered).length === 4, step: 7 },
+        { label: "Post-Test", done: appState.postScore !== null, step: 8 }
+      ];
+
+      badgeContainer.innerHTML = items.map(it => `
+        <button type="button" onclick="goToStep(${it.step})" class="px-3 py-1 rounded-lg border font-semibold flex items-center gap-1.5 transition ${
+          it.done
+            ? "bg-emerald-50 border-emerald-300 text-emerald-800"
+            : "bg-[#FFF5DC] border-[#D99B16]/50 text-[#8F6004] hover:bg-[#FCEAC0]"
+        }">
+          <i class="fa-solid ${it.done ? "fa-circle-check text-emerald-600" : "fa-clock text-[#B57D0B]"}"></i>
+          <span>${it.label}: ${it.done ? "Selesai" : "Belum"}</span>
+        </button>
+      `).join("");
+    }
+
+    function goToStep(stepId) {
+      appState.currentStep = stepId;
+      document.querySelectorAll(".syntax-section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(`step-${stepId}`).classList.add("active");
+
+      if (stepId === 9) {
+        const pemantik = document.getElementById("pemantik-input").value.trim();
+        document.getElementById("refleksi-pemantik-preview").innerText = pemantik ? `"${pemantik}"` : '"Belum diisi pada tahap Pertanyaan Pemantik."';
+        document.getElementById("student-name-ref").value = appState.studentName;
+        document.getElementById("student-class-ref").value = appState.studentClass;
+        renderCompletionBadges();
+      }
+      renderNav();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function completeAndNext(stepId) {
+      appState.completed[stepId] = true;
+      if (stepId < 9) goToStep(stepId + 1);
+    }
+
+    function syncStudentIdentity(source) {
+      if (source === "ref") {
+        appState.studentName = document.getElementById("student-name-ref").value.trim();
+        appState.studentClass = document.getElementById("student-class-ref").value;
+        document.getElementById("student-name").value = appState.studentName;
+        document.getElementById("student-class").value = appState.studentClass;
+      } else {
+        appState.studentName = document.getElementById("student-name").value.trim();
+        appState.studentClass = document.getElementById("student-class").value;
+        document.getElementById("student-name-ref").value = appState.studentName;
+        document.getElementById("student-class-ref").value = appState.studentClass;
+      }
+      const badge = document.getElementById("header-student-badge");
+      if (badge) badge.innerText = appState.studentName ? `${appState.studentName} (${appState.studentClass})` : "Siswa: Belum diisi";
+    }
+
+    // ==========================================
+    // SINTAK 1: ILUSTRASI APERSEPSI
+    // ==========================================
+    const scenes = [
+      {
+        badge: "Adegan 1 / 4 • Ruang Ujian & Koridor SMP",
+        icon: "fa-book-open-reader",
+        title: "Berawal dari Penolakan Memberi Contekan",
+        caption: "Mira mempertahankan kejujuran saat ujian dengan menolak memberi contekan. Namun, hal itu memicu perlakuan intimidasi, ejekan 'anak sok pintar', hingga pemalakan."
+      },
+      {
+        badge: "Adegan 2 / 4 • Olok-olok Berulang",
+        icon: "fa-comment-dots",
+        title: "Ketika Ejekan Terus Berulang di Sekolah & Grup Chat",
+        caption: "Perundungan tidak hanya terjadi secara tatap muka, tetapi mudah merembet ke media sosial dan grup chat kelas sehingga korban merasa tertekan sepanjang waktu."
+      },
+      {
+        badge: "Adegan 3 / 4 • Kehadiran Penengah (Upstander)",
+        icon: "fa-hand-holding-heart",
+        title: "Hadirnya 'Reda yang Meredakan'",
+        caption: "Reda hadir menguatkan korban, menyuarakan kampanye anti-perundungan, dan mengingatkan bahwa semua teman harus saling menghormati serta mengasihi."
+      },
+      {
+        badge: "Adegan 4 / 4 • Siap Eksplorasi Video & Materi",
+        icon: "fa-shield-halved",
+        title: "Mari Lindungi Diri & Sesama di Ruang Digital!",
+        caption: "Simak video lengkapnya pada bagian Materi untuk memahami cara memutus rantai perundungan dan cyberbullying."
+      }
+    ];
+
+    let sceneIdx = 0;
+    let videoTimer = null;
+
+    function renderScene() {
+      const s = scenes[sceneIdx];
+      document.getElementById("scene-badge").innerText = s.badge;
+      document.getElementById("scene-visual").innerHTML = `<i class="fa-solid ${s.icon}"></i>`;
+      document.getElementById("scene-title").innerText = s.title;
+      document.getElementById("scene-caption").innerText = s.caption;
+
+      document.getElementById("scene-dots").innerHTML = scenes.map((_, i) => `
+        <button onclick="sceneIdx=${i}; renderScene()" class="w-2.5 h-2.5 rounded-full transition ${i === sceneIdx ? 'bg-[#D99B16] w-6' : 'bg-[#D6C5A5]'}"></button>
+      `).join("");
+    }
+
+    function nextScene() {
+      sceneIdx = (sceneIdx + 1) % scenes.length;
+      renderScene();
+    }
+
+    function togglePlayVideo() {
+      const btn = document.getElementById("btn-play-video");
+      if (videoTimer) {
+        clearInterval(videoTimer);
+        videoTimer = null;
+        btn.innerHTML = `<i class="fa-solid fa-play"></i> <span>Putar Ilustrasi</span>`;
+      } else {
+        btn.innerHTML = `<i class="fa-solid fa-pause"></i> <span>Jeda Ilustrasi</span>`;
+        videoTimer = setInterval(() => {
+          if (sceneIdx < scenes.length - 1) {
+            sceneIdx++;
+            renderScene();
+          } else {
+            clearInterval(videoTimer);
+            videoTimer = null;
+            btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> <span>Putar Ulang</span>`;
+            sceneIdx = 0;
+          }
+        }, 4000);
+      }
+    }
+
+    // ==========================================
+    // SINTAK 3: RENDER TUJUAN PEMBELAJARAN
+    // ==========================================
+    function renderTujuanList() {
+      const container = document.getElementById("tujuan-list-container");
+      container.innerHTML = cmsData.tujuan.map((tp, idx) => `
+        <div class="bg-[#FDF8EE] border border-[#E6D8BE] p-4 rounded-xl flex gap-3.5">
+          <div class="w-9 h-9 rounded-xl bg-[#D99B16] text-white font-extrabold flex items-center justify-center shrink-0">0${idx + 1}</div>
+          <div>
+            <h3 class="font-bold text-sm text-[#231A10] mb-1">${tp.title}</h3>
+            <p class="text-xs text-[#5C4B37] leading-relaxed">${tp.desc}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // ==========================================
+    // SINTAK 4 & 8: PRE-TEST & POST-TEST
+    // ==========================================
+    function renderAssessment(containerId, prefix) {
+      const container = document.getElementById(containerId);
+      const ptsPerItem = cmsData.questions.length > 0 ? Math.round(100 / cmsData.questions.length) : 20;
+      container.innerHTML = cmsData.questions.map((item, idx) => `
+        <div class="bg-[#FDF8EE] border border-[#E6D8BE] p-4 rounded-xl space-y-2.5">
+          <p class="font-bold text-sm text-[#231A10]">${idx + 1}. ${item.q} <span class="text-[11px] font-normal text-[#8F6004]">(${ptsPerItem} poin)</span></p>
+          <div class="space-y-2">
+            ${item.options.map((opt, oIdx) => `
+              <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-white hover:bg-[#FFF5DC] border border-[#E6D8BE] cursor-pointer text-xs sm:text-sm text-[#231A10]">
+                <input type="radio" name="${prefix}_q${idx}" value="${oIdx}" class="mt-0.5 accent-[#D99B16]" />
+                <span>${opt}</span>
+              </label>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function submitPretest() {
+      syncStudentIdentity("main");
+      if (!appState.studentName) {
+        alert("Silakan isi Nama Lengkap Siswa terlebih dahulu.");
+        document.getElementById("student-name").focus();
+        return;
+      }
+      const totalQ = cmsData.questions.length;
+      let correctCount = 0;
+      for (let i = 0; i < totalQ; i++) {
+        const sel = document.querySelector(`input[name="pre_q${i}"]:checked`);
+        if (!sel) { alert(`Soal Pre-Test nomor ${i + 1} belum dijawab.`); return; }
+        if (parseInt(sel.value) === cmsData.questions[i].ans) correctCount++;
+      }
+      const score = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+      appState.preScore = score;
+      appState.completed[4] = true;
+      renderNav();
+
+      document.getElementById("pretest-form").classList.add("hidden");
+      const res = document.getElementById("pretest-result");
+      res.classList.remove("hidden");
+      document.getElementById("pretest-score-text").innerText = `${score} / 100`;
+      document.getElementById("pretest-level-text").innerText =
+        score >= 80 ? "Pemahaman awalmu sudah sangat baik! Mari pertajam melalui video studi kasus dan eksplorasi konsep."
+        : "Skor awalmu berhasil direkam. Mari simak video dan materi berikut untuk meningkatkan pemahamanmu!";
+    }
+
+    function submitPosttest() {
+      const totalQ = cmsData.questions.length;
+      let correctCount = 0;
+      let reviewHtml = "";
+      for (let i = 0; i < totalQ; i++) {
+        const sel = document.querySelector(`input[name="post_q${i}"]:checked`);
+        if (!sel) { alert(`Soal Post-Test nomor ${i + 1} belum dijawab.`); return; }
+        const val = parseInt(sel.value);
+        const isCorrect = val === cmsData.questions[i].ans;
+        if (isCorrect) correctCount++;
+
+        reviewHtml += `
+          <div class="p-3 rounded-xl border text-xs ${isCorrect ? 'bg-emerald-50 border-emerald-300' : 'bg-rose-50 border-rose-300'}">
+            <p class="font-bold text-[#231A10] mb-1">${i + 1}. ${cmsData.questions[i].q}</p>
+            <p class="${isCorrect ? 'text-emerald-800' : 'text-rose-800'}">Jawabanmu: ${cmsData.questions[i].options[val]} ${isCorrect ? '✔' : '✘'}</p>
+            ${!isCorrect ? `<p class="text-[#3D2E1E] mt-1">Kunci Jawaban: <strong>${cmsData.questions[i].options[cmsData.questions[i].ans]}</strong></p>` : ''}
+          </div>
+        `;
+      }
+
+      const score = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+      appState.postScore = score;
+      appState.completed[8] = true;
+      renderNav();
+
+      const pre = appState.preScore !== null ? appState.preScore : 0;
+      const diff = score - pre;
+      const diffLabel = appState.preScore === null
+        ? `${score} Poin (Pre-Test tidak diisi)`
+        : diff > 0 ? `+${diff} Poin (Meningkat)` : diff === 0 ? "0 Poin (Stabil)" : `${diff} Poin`;
+
+      document.getElementById("posttest-form").classList.add("hidden");
+      const resBox = document.getElementById("posttest-result");
+      resBox.classList.remove("hidden");
+      resBox.innerHTML = `
+        <div class="grid sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 rounded-2xl bg-[#FDF8EE] border border-[#E6D8BE]">
+            <p class="text-xs text-[#5C4B37] font-bold">Skor Pre-Test</p>
+            <p class="text-3xl font-black text-[#8F6004] mt-1">${appState.preScore !== null ? appState.preScore : '-'}</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-300">
+            <p class="text-xs text-emerald-800 font-bold">Skor Post-Test</p>
+            <p class="text-3xl font-black text-emerald-700 mt-1">${score}</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-[#FFF5DC] border border-[#D99B16]/50">
+            <p class="text-xs text-[#8F6004] font-bold">Peningkatan Belajar</p>
+            <p class="text-xl font-extrabold text-[#231A10] mt-2">${diffLabel}</p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h4 class="text-sm font-bold text-[#231A10]">Pembahasan Post-Test:</h4>
+          ${reviewHtml}
+        </div>
+        <button onclick="completeAndNext(8)" class="px-5 py-3 rounded-xl bg-[#D99B16] hover:bg-[#B57D0B] text-white font-bold text-sm shadow-sm">
+          Lanjut ke Refleksi & Unduh Hasil (.pdf) <i class="fa-solid fa-arrow-right ml-1.5"></i>
+        </button>
+      `;
+    }
+
+    // ==========================================
+    // SINTAK 5: KARTU MATERI BENTUK CYBERBULLYING
+    // ==========================================
+    function switchMateriTab(panelId, btn) {
+      document.querySelectorAll(".mat-panel").forEach(p => p.classList.add("hidden"));
+      document.getElementById(panelId).classList.remove("hidden");
+      document.querySelectorAll(".mat-tab").forEach(b => {
+        b.classList.remove("bg-[#D99B16]", "text-white");
+        b.classList.add("bg-[#FDF8EE]", "border", "border-[#E6D8BE]", "text-[#3D2E1E]");
+      });
+      btn.classList.remove("bg-[#FDF8EE]", "border", "border-[#E6D8BE]", "text-[#3D2E1E]");
+      btn.classList.add("bg-[#D99B16]", "text-white");
+    }
+
+    function renderBentukCards() {
+      document.getElementById("cards-container").innerHTML = cmsData.materiCards.map((item, i) => `
+        <div onclick="document.getElementById('b-det-${i}').classList.toggle('hidden')" class="cursor-pointer bg-[#FDF8EE] hover:bg-[#FFF5DC] border border-[#E6D8BE] rounded-xl p-4 transition">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-sm text-[#231A10]"><i class="fa-solid ${item.icon || 'fa-shield-virus'} text-[#B57D0B] mr-2"></i>${item.title}</span>
+            <i class="fa-solid fa-chevron-down text-xs text-[#8F6004]"></i>
+          </div>
+          <p class="text-xs text-[#5C4B37] leading-relaxed">${item.desc}</p>
+          <div id="b-det-${i}" class="hidden mt-2.5 pt-2.5 border-t border-[#E6D8BE] text-xs text-[#8F6004]">
+            <strong>Contoh Konteks SMP:</strong> ${item.contoh}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // ==========================================
+    // SINTAK 6: GAMIFIKASI (CYBERSHIELD ARENA)
+    // ==========================================
+    let gIdx = 0, gLives = 3, gStreak = 0, gScore = 0;
+
+    function updateGameHud() {
+      document.getElementById("game-lives").innerText = "❤️".repeat(Math.max(0, gLives)) + "🤍".repeat(Math.max(0, 3 - gLives));
+      document.getElementById("game-streak").innerText = gStreak;
+      document.getElementById("game-score").innerText = gScore;
+      appState.gameScore = gScore;
+    }
+
+    function renderGameMission() {
+      updateGameHud();
+      const box = document.getElementById("game-arena-box");
+      const missions = cmsData.missions;
+      if (gIdx >= missions.length || gLives <= 0) {
+        appState.gamePlayed = true;
+        appState.completed[6] = true;
+        renderNav();
+
+        const badge = gScore >= 250 ? "🏆 Lencana: Duta Reda & Cyber Defender" : gScore >= 150 ? "🛡️ Lencana: Sahabat Upstander" : "⭐ Lencana: Pengamat Digital";
+        box.innerHTML = `
+          <div class="text-center space-y-3 py-4">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-[#FFF5DC] border border-[#D99B16] text-[#8F6004] font-bold text-xs">${badge}</div>
+            <h3 class="text-2xl font-extrabold text-[#231A10]">Misi Gamifikasi Selesai!</h3>
+            <p class="text-sm text-[#5C4B37]">Total Skor Arena Kamu: <strong class="text-emerald-700 text-lg">${gScore} Poin</strong></p>
+            <button onclick="gIdx=0; gLives=3; gStreak=0; gScore=0; renderGameMission()" class="px-4 py-2 rounded-xl bg-white hover:bg-[#FFF5DC] border border-[#D6C5A5] text-xs font-bold text-[#231A10]">
+              <i class="fa-solid fa-rotate-right mr-1.5 text-[#B57D0B]"></i>Mainkan Ulang Misi
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const m = missions[gIdx];
+      box.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-[#B57D0B]">${m.level}</span>
+            <span class="text-xs text-[#6E5A43]">Tantangan ${gIdx + 1} dari ${missions.length}</span>
+          </div>
+          <p class="text-sm sm:text-base text-[#231A10] font-semibold leading-relaxed bg-white p-4 rounded-xl border border-[#E6D8BE]">${m.prompt}</p>
+          <div class="space-y-2">
+            ${m.choices.map((c, i) => `
+              <button onclick="answerGame(${i})" class="w-full text-left p-3.5 rounded-xl bg-white hover:bg-[#FFF5DC] border border-[#E6D8BE] text-xs sm:text-sm text-[#231A10] transition">
+                ${c.text}
+              </button>
+            `).join("")}
+          </div>
+          <div id="game-fb" class="hidden p-3.5 rounded-xl text-xs sm:text-sm"></div>
+        </div>
+      `;
+    }
+
+    function answerGame(cIdx) {
+      const choice = cmsData.missions[gIdx].choices[cIdx];
+      const fb = document.getElementById("game-fb");
+      fb.classList.remove("hidden");
+      if (choice.ok) {
+        gStreak++;
+        gScore += 100 + (gStreak > 1 ? 25 : 0);
+        fb.className = "p-3.5 rounded-xl text-xs sm:text-sm bg-emerald-50 border border-emerald-300 text-emerald-900";
+      } else {
+        gLives--;
+        gStreak = 0;
+        fb.className = "p-3.5 rounded-xl text-xs sm:text-sm bg-rose-50 border border-rose-300 text-rose-900";
+      }
+      updateGameHud();
+      fb.innerHTML = `
+        <p>${choice.msg}</p>
+        <button onclick="gIdx++; renderGameMission()" class="mt-2.5 px-4 py-1.5 rounded-lg bg-[#D99B16] text-white text-xs font-bold">
+          Lanjut →
+        </button>
+      `;
+    }
+
+    // ==========================================
+    // SINTAK 7: KUIS INTERAKTIF (KLASIFIKASI)
+    // ==========================================
+    const quickItems = [
+      { caseText: "“Kalau besok nggak bayar jajan kami, akunmu bakal kami teror terus!” (dikirim berulang via DM)", answer: "Harassment", explain: "Pesan ancaman, pemalakan, dan gangguan berulang secara pribadi termasuk Harassment." },
+      { caseText: "Mengedit wajah teman yang jujur saat ujian menjadi meme ejekan lalu disebar ke grup publik", answer: "Denigration", explain: "Memanipulasi konten visual untuk merusak reputasi seseorang disebut Denigration." },
+      { caseText: "Sengaja mengeluarkan satu anggota dari grup belajar kelas tanpa alasan jelas", answer: "Exclusion", explain: "Tindakan mengucilkan atau mengeluarkan seseorang dari komunitas daring disebut Exclusion." },
+      { caseText: "Menyebarkan tangkapan layar chat rahasia teman ke status WhatsApp", answer: "Outing", explain: "Membocorkan rahasia pribadi orang lain tanpa persetujuan termasuk Outing." }
+    ];
+
+    function renderInteractiveQuiz() {
+      const choices = ["Flaming", "Harassment", "Denigration", "Outing", "Exclusion"];
+      document.getElementById("interactive-quiz-list").innerHTML = quickItems.map((item, idx) => `
+        <div class="bg-[#FDF8EE] border border-[#E6D8BE] p-4 rounded-xl space-y-3">
+          <p class="text-xs sm:text-sm font-bold text-[#231A10]">Kasus #${idx + 1}: <span class="text-[#5C4B37] font-normal">${item.caseText}</span></p>
+          <div class="flex flex-wrap gap-2">
+            ${choices.map(ch => `
+              <button onclick="checkQuick(${idx}, '${ch}')" class="px-3 py-1.5 rounded-lg bg-white hover:bg-[#FFF5DC] border border-[#D6C5A5] text-xs font-semibold text-[#231A10] transition">
+                ${ch}
+              </button>
+            `).join("")}
+          </div>
+          <div id="q-fb-${idx}" class="hidden text-xs p-2.5 rounded-lg"></div>
+        </div>
+      `).join("");
+    }
+
+    function checkQuick(idx, picked) {
+      const item = quickItems[idx];
+      const fb = document.getElementById(`q-fb-${idx}`);
+      fb.classList.remove("hidden");
+      const ok = picked === item.answer;
+      if (ok && !appState.quizAnswered[idx]) {
+        appState.quizAnswered[idx] = true;
+        appState.quizCorrect++;
+        document.getElementById("quick-quiz-counter").innerText = appState.quizCorrect;
+        if (Object.keys(appState.quizAnswered).length === quickItems.length) {
+          appState.completed[7] = true;
+          renderNav();
+        }
+      }
+      fb.className = `text-xs p-2.5 rounded-lg ${ok ? 'bg-emerald-50 text-emerald-900 border border-emerald-300' : 'bg-rose-50 text-rose-900 border border-rose-300'}`;
+      fb.innerHTML = `${ok ? '✔ Tepat!' : `✘ Belum tepat (Jawaban: <strong>${item.answer}</strong>).`} ${item.explain}`;
+    }
+
+    // ==========================================
+    // SINTAK 9: REFLEKSI & UNDUH FILE .PDF LANGSUNG
+    // ==========================================
+    function setRating(val) {
+      appState.rating = val;
+      document.querySelectorAll(".star-btn").forEach((btn, i) => {
+        btn.classList.toggle("text-[#D99B16]", i < val);
+        btn.classList.toggle("text-slate-300", i >= val);
+      });
+    }
+
+    function validateReflectionData() {
+      syncStudentIdentity("ref");
+      const q1 = document.getElementById("ref-q1").value.trim();
+      const q2 = document.getElementById("ref-q2").value.trim();
+      const ikrar = document.getElementById("ikrar-check").checked;
+
+      if (!appState.studentName) {
+        alert("Silakan isi Nama Lengkap Siswa terlebih dahulu.");
+        document.getElementById("student-name-ref").focus();
+        return null;
+      }
+      if (!q1 || !q2) {
+        alert("Silakan isi kedua pertanyaan refleksi terlebih dahulu.");
+        return null;
+      }
+      if (!ikrar) {
+        alert("Silakan centang pernyataan komitmen warga digital terlebih dahulu.");
+        return null;
+      }
+
+      const missingSteps = [];
+      if (appState.preScore === null) missingSteps.push("Pre-Test");
+      if (!appState.gamePlayed) missingSteps.push("Gamifikasi Arena");
+      if (Object.keys(appState.quizAnswered).length < 4) missingSteps.push("Kuis Interaktif");
+      if (appState.postScore === null) missingSteps.push("Post-Test");
+
+      if (missingSteps.length > 0) {
+        const proceed = confirm(
+          `Aktivitas berikut belum diselesaikan:\n• ${missingSteps.join("\n• ")}\n\nTekan "Batal" untuk kembali mengerjakan kuis terlebih dahulu, atau tekan "OK" jika tetap ingin mengunduh/mencetak laporan PDF sekarang.`
+        );
+        if (!proceed) return null;
+      }
+
+      const pemantik = document.getElementById("pemantik-input").value.trim() || "Tidak diisi";
+      const preText = appState.preScore !== null ? `${appState.preScore} / 100` : "Belum dikerjakan";
+      const postText = appState.postScore !== null ? `${appState.postScore} / 100` : "Belum dikerjakan";
+      const deltaText = (appState.preScore !== null && appState.postScore !== null)
+        ? `${appState.postScore - appState.preScore >= 0 ? '+' : ''}${appState.postScore - appState.preScore} Poin`
+        : "-";
+      const tgl = new Date().toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+
+      return { q1, q2, pemantik, preText, postText, deltaText, tgl };
+    }
+
+    function buildHtmlReportSheet(data) {
+      return `
+        <div class="border-b-2 border-[#231A10] pb-4 mb-4 flex flex-wrap justify-between items-start gap-2">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-[#B57D0B]">${cmsData.meta.school} • KABUPATEN TUBAN</p>
+            <h3 class="text-lg sm:text-xl font-extrabold text-[#231A10]">LAPORAN HASIL BELAJAR INTERAKTIF (${cmsData.meta.title.toUpperCase()})</h3>
+            <p class="text-xs text-[#5C4B37]">Mata Pelajaran: ${cmsData.meta.subject} (${cmsData.meta.grade})</p>
+          </div>
+          <div class="text-left sm:text-right text-xs text-[#5C4B37]">
+            <p><strong>Tanggal:</strong> ${data.tgl}</p>
+            <p><strong>Status:</strong> Selesai (9 Sintak)</p>
+          </div>
+        </div>
+
+        <table class="w-full text-xs sm:text-sm border-collapse border border-slate-400 mb-4">
+          <tbody>
+            <tr class="bg-[#FDF8EE]"><td class="p-2.5 border border-slate-400 font-bold w-2/5">Nama Peserta Didik</td><td class="p-2.5 border border-slate-400 font-semibold">${appState.studentName}</td></tr>
+            <tr><td class="p-2.5 border border-slate-400 font-bold">Kelas</td><td class="p-2.5 border border-slate-400">${appState.studentClass}</td></tr>
+            <tr class="bg-[#FDF8EE]"><td class="p-2.5 border border-slate-400 font-bold">Skor Pre-Test (Asesmen Awal)</td><td class="p-2.5 border border-slate-400">${data.preText}</td></tr>
+            <tr><td class="p-2.5 border border-slate-400 font-bold">Skor Gamifikasi (CyberShield Arena)</td><td class="p-2.5 border border-slate-400">${appState.gameScore} Poin</td></tr>
+            <tr class="bg-[#FDF8EE]"><td class="p-2.5 border border-slate-400 font-bold">Kuis Interaktif (Klasifikasi Kasus)</td><td class="p-2.5 border border-slate-400">${appState.quizCorrect} / 4 Kasus Benar</td></tr>
+            <tr><td class="p-2.5 border border-slate-400 font-bold">Skor Post-Test (Evaluasi Akhir)</td><td class="p-2.5 border border-slate-400 font-extrabold text-emerald-700">${data.postText}</td></tr>
+            <tr class="bg-[#FDF8EE]"><td class="p-2.5 border border-slate-400 font-bold">Peningkatan Hasil Belajar</td><td class="p-2.5 border border-slate-400 font-bold text-[#9C6A06]">${data.deltaText}</td></tr>
+            <tr><td class="p-2.5 border border-slate-400 font-bold">Rating Kepuasan Media</td><td class="p-2.5 border border-slate-400">${appState.rating} / 5 Bintang</td></tr>
+          </tbody>
+        </table>
+
+        <div class="space-y-2.5 text-xs sm:text-sm text-[#231A10] bg-[#FDF8EE] p-4 rounded-xl border border-[#E6D8BE]">
+          <p><strong>Hipotesis Awal (Pertanyaan Pemantik):</strong> ${data.pemantik}</p>
+          <p><strong>Refleksi Pemahaman & Karakter:</strong> ${data.q1}</p>
+          <p><strong>Komitmen Aksi Nyata Upstander:</strong> ${data.q2}</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 pt-6 text-xs text-center text-[#231A10]">
+          <div>
+            <p>Mengetahui,</p>
+            <p class="font-bold">Guru Mata Pelajaran ${cmsData.meta.subject}</p>
+            <div class="h-14"></div>
+            <p class="font-bold underline">${cmsData.meta.author}</p>
+          </div>
+          <div>
+            <p>Kenduruan, ${data.tgl}</p>
+            <p class="font-bold">Peserta Didik</p>
+            <div class="h-14"></div>
+            <p class="font-bold underline">${appState.studentName}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function printBrowserFallback() {
+      const data = validateReflectionData();
+      if (!data) return;
+      appState.completed[9] = true;
+      renderNav();
+
+      const sheetHtml = buildHtmlReportSheet(data);
+      const previewCard = document.getElementById("pdf-preview-card");
+      previewCard.innerHTML = sheetHtml;
+      previewCard.classList.remove("hidden");
+
+      const printSheet = document.getElementById("print-fallback-sheet");
+      printSheet.innerHTML = sheetHtml;
+      window.print();
+    }
+
+    function finishAndDownloadPDF() {
+      const data = validateReflectionData();
+      if (!data) return;
+
+      appState.completed[9] = true;
+      renderNav();
+
+      const sheetHtml = buildHtmlReportSheet(data);
+      const previewCard = document.getElementById("pdf-preview-card");
+      previewCard.innerHTML = sheetHtml;
+      previewCard.classList.remove("hidden");
+      document.getElementById("print-fallback-sheet").innerHTML = sheetHtml;
+
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        alert("Mode luring terdeteksi. Membuka dialog cetak PDF browser...");
+        window.print();
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+      const margin = 18;
+      const pageWidth = 210;
+      const contentWidth = pageWidth - margin * 2;
+      let y = 18;
+
+      // Header Banner PDF bernuansa Emas Ochre & Espresso Tuban
+      doc.setFillColor(217, 155, 22);
+      doc.rect(margin, y, contentWidth, 24, "F");
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9);
+      doc.text(`${cmsData.meta.school} • KABUPATEN TUBAN`, margin + 5, y + 7);
+      doc.setFontSize(13);
+      doc.text("LAPORAN HASIL BELAJAR INTERAKTIF (CYBERSHIELD 8)", margin + 5, y + 14);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.text(`${cmsData.meta.subject} (${cmsData.meta.grade}) • Materi: Cyberbullying`, margin + 5, y + 20);
+      y += 31;
+
+      const rows = [
+        ["Nama Peserta Didik", appState.studentName],
+        ["Kelas", appState.studentClass],
+        ["Tanggal Pengerjaan", data.tgl],
+        ["Skor Pre-Test (Asesmen Awal)", data.preText],
+        ["Skor Gamifikasi (CyberShield Arena)", `${appState.gameScore} Poin`],
+        ["Kuis Interaktif (Deteksi Kasus)", `${appState.quizCorrect} / 4 Kasus Benar`],
+        ["Skor Post-Test (Evaluasi Akhir)", data.postText],
+        ["Peningkatan Hasil Belajar", data.deltaText],
+        ["Rating Kepuasan Media (User Satisfaction)", `${appState.rating} / 5 Bintang`]
+      ];
+
+      rows.forEach((row, idx) => {
+        if (idx % 2 === 0) {
+          doc.setFillColor(253, 248, 238);
+          doc.rect(margin, y, contentWidth, 8, "F");
+        }
+        doc.setDrawColor(214, 197, 165);
+        doc.rect(margin, y, contentWidth * 0.45, 8);
+        doc.rect(margin + contentWidth * 0.45, y, contentWidth * 0.55, 8);
+
+        doc.setTextColor(35, 26, 16);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9.5);
+        doc.text(row[0], margin + 3, y + 5.5);
+
+        doc.setFont("helvetica", idx >= 6 && idx <= 7 ? "bold" : "normal");
+        doc.text(String(row[1]), margin + contentWidth * 0.45 + 3, y + 5.5);
+        y += 8;
+      });
+
+      y += 7;
+
+      const reflectionBlocks = [
+        { label: "1. Catatan Pemantik Awal (Sintak 2):", text: data.pemantik },
+        { label: "2. Refleksi Pemahaman & Karakter:", text: data.q1 },
+        { label: "3. Komitmen Aksi Nyata Upstander:", text: data.q2 }
+      ];
+
+      reflectionBlocks.forEach(block => {
+        const wrappedLines = doc.splitTextToSize(block.text, contentWidth - 6);
+        const boxHeight = 8 + wrappedLines.length * 4.8;
+
+        if (y + boxHeight > 265) {
+          doc.addPage();
+          y = 20;
+        }
+
+        doc.setFillColor(253, 248, 238);
+        doc.setDrawColor(214, 197, 165);
+        doc.rect(margin, y, contentWidth, boxHeight, "FD");
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9.5);
+        doc.setTextColor(35, 26, 16);
+        doc.text(block.label, margin + 3, y + 5.5);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9.5);
+        doc.text(wrappedLines, margin + 3, y + 10.5);
+        y += boxHeight + 4;
+      });
+
+      if (y + 45 > 280) {
+        doc.addPage();
+        y = 20;
+      }
+
+      doc.setFillColor(236, 253, 245);
+      doc.setDrawColor(16, 185, 129);
+      doc.rect(margin, y, contentWidth, 12, "FD");
+      doc.setFont("helvetica", "italic");
+      doc.setFontSize(8.5);
+      doc.setTextColor(6, 95, 70);
+      doc.text("Ikrar Warga Digital: Berkomitmen menjaga etika digital, menolak cyberbullying, dan menjadi Upstander.", margin + 3, y + 7.5);
+      y += 20;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9.5);
+      doc.setTextColor(35, 26, 16);
+
+      doc.text("Mengetahui,", margin + 10, y);
+      doc.setFont("helvetica", "bold");
+      doc.text(`Guru Mata Pelajaran ${cmsData.meta.subject}`, margin + 10, y + 5);
+      doc.text(cmsData.meta.author, margin + 10, y + 25);
+
+      doc.setFont("helvetica", "normal");
+      doc.text(`Kenduruan, ${data.tgl}`, pageWidth - margin - 60, y);
+      doc.setFont("helvetica", "bold");
+      doc.text("Peserta Didik", pageWidth - margin - 60, y + 5);
+      doc.text(appState.studentName, pageWidth - margin - 60, y + 25);
+
+      const safeFilename = appState.studentName.replace(/[^a-zA-Z0-9_-]/g, "_");
+      doc.save(`Hasil_Belajar_CyberShield8_${safeFilename}.pdf`);
+    }
+
+    // ==========================================
+    // PANEL GURU (CRUD CONTROLLER)
+    // ==========================================
+    let teacherUnlocked = false;
+
+    function openTeacherModal() {
+      document.getElementById("teacher-modal").classList.remove("hidden");
+      if (teacherUnlocked) {
+        document.getElementById("teacher-auth-screen").classList.add("hidden");
+        document.getElementById("teacher-cms-body").classList.remove("hidden");
+        populateCmsForms();
+      } else {
+        document.getElementById("teacher-pin-input").value = "";
+        setTimeout(() => document.getElementById("teacher-pin-input").focus(), 100);
+      }
+    }
+
+    function closeTeacherModal() {
+      document.getElementById("teacher-modal").classList.add("hidden");
+    }
+
+    function unlockTeacherPanel() {
+      const pin = document.getElementById("teacher-pin-input").value.trim();
+      if (pin === "1234" || pin.toLowerCase() === "kenduruan") {
+        teacherUnlocked = true;
+        document.getElementById("teacher-auth-screen").classList.add("hidden");
+        document.getElementById("teacher-cms-body").classList.remove("hidden");
+        populateCmsForms();
+      } else {
+        alert("PIN salah. Gunakan PIN default: 1234");
+      }
+    }
+
+    function switchCmsTab(panelId, btn) {
+      document.querySelectorAll(".cms-panel").forEach(p => p.classList.add("hidden"));
+      document.getElementById(panelId).classList.remove("hidden");
+      document.querySelectorAll(".cms-tab").forEach(b => {
+        b.classList.remove("bg-[#D99B16]", "text-white");
+        b.classList.add("bg-white", "border", "border-[#E6D8BE]", "text-[#3D2E1E]");
+      });
+      btn.classList.remove("bg-white", "border", "border-[#E6D8BE]", "text-[#3D2E1E]");
+      btn.classList.add("bg-[#D99B16]", "text-white");
+    }
+
+    function populateCmsForms() {
+      document.getElementById("cms-title").value = cmsData.meta.title;
+      document.getElementById("cms-school").value = cmsData.meta.school;
+      document.getElementById("cms-subject").value = cmsData.meta.subject;
+      document.getElementById("cms-author").value = cmsData.meta.author;
+      document.getElementById("cms-grade").value = cmsData.meta.grade;
+      document.getElementById("cms-video-url").value = cmsData.meta.videoUrl;
+      document.getElementById("cms-video-source").value = cmsData.meta.videoSource;
+
+      renderCmsTpList();
+      renderCmsMateriList();
+      renderCmsSoalList();
+      renderCmsGameList();
+    }
+
+    // 1. CRUD Identitas & Video
+    function saveCmsGeneral() {
+      cmsData.meta.title = document.getElementById("cms-title").value.trim() || defaultCmsData.meta.title;
+      cmsData.meta.school = document.getElementById("cms-school").value.trim() || defaultCmsData.meta.school;
+      cmsData.meta.subject = document.getElementById("cms-subject").value.trim() || defaultCmsData.meta.subject;
+      cmsData.meta.author = document.getElementById("cms-author").value.trim() || defaultCmsData.meta.author;
+      cmsData.meta.grade = document.getElementById("cms-grade").value.trim() || defaultCmsData.meta.grade;
+      cmsData.meta.videoUrl = document.getElementById("cms-video-url").value.trim() || defaultCmsData.meta.videoUrl;
+      cmsData.meta.videoSource = document.getElementById("cms-video-source").value.trim() || defaultCmsData.meta.videoSource;
+      persistCmsData();
+      alert("Identitas MPI & tautan video berhasil diperbarui!");
+    }
+
+    // 2. CRUD Tujuan Pembelajaran
+    function renderCmsTpList() {
+      document.getElementById("cms-tp-list").innerHTML = cmsData.tujuan.map((item, i) => `
+        <div class="p-3 rounded-xl bg-white border border-[#E6D8BE] flex items-start justify-between gap-3">
+          <div>
+            <p class="font-bold text-xs text-[#231A10]">${i + 1}. ${item.title}</p>
+            <p class="text-xs text-[#5C4B37] mt-0.5">${item.desc}</p>
+          </div>
+          <div class="flex gap-1.5 shrink-0">
+            <button onclick="editCmsTp(${i})" class="px-2.5 py-1 rounded-lg bg-[#FFF5DC] text-[#8F6004] text-xs font-bold">Edit</button>
+            <button onclick="deleteCmsTp(${i})" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 text-xs font-bold">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function saveCmsTp() {
+      const idx = parseInt(document.getElementById("tp-edit-idx").value);
+      const title = document.getElementById("tp-input-title").value.trim();
+      const desc = document.getElementById("tp-input-desc").value.trim();
+      if (!title || !desc) { alert("Isi judul dan deskripsi tujuan pembelajaran."); return; }
+      if (idx >= 0) cmsData.tujuan[idx] = { title, desc };
+      else cmsData.tujuan.push({ title, desc });
+      resetTpForm();
+      persistCmsData();
+      renderCmsTpList();
+    }
+
+    function editCmsTp(idx) {
+      document.getElementById("tp-edit-idx").value = idx;
+      document.getElementById("tp-form-mode").innerText = `Edit Tujuan Pembelajaran #${idx + 1}`;
+      document.getElementById("tp-input-title").value = cmsData.tujuan[idx].title;
+      document.getElementById("tp-input-desc").value = cmsData.tujuan[idx].desc;
+    }
+
+    function deleteCmsTp(idx) {
+      if (!confirm("Hapus tujuan pembelajaran ini?")) return;
+      cmsData.tujuan.splice(idx, 1);
+      persistCmsData();
+      renderCmsTpList();
+    }
+
+    function resetTpForm() {
+      document.getElementById("tp-edit-idx").value = -1;
+      document.getElementById("tp-form-mode").innerText = "Tambah Tujuan Pembelajaran Baru";
+      document.getElementById("tp-input-title").value = "";
+      document.getElementById("tp-input-desc").value = "";
+    }
+
+    // 3. CRUD Kartu Materi
+    function renderCmsMateriList() {
+      document.getElementById("cms-materi-list").innerHTML = cmsData.materiCards.map((item, i) => `
+        <div class="p-3 rounded-xl bg-white border border-[#E6D8BE] flex items-start justify-between gap-3">
+          <div>
+            <p class="font-bold text-xs text-[#231A10]">${item.title}</p>
+            <p class="text-xs text-[#5C4B37]">${item.desc}</p>
+            <p class="text-[11px] text-[#8F6004] mt-0.5">Contoh: ${item.contoh}</p>
+          </div>
+          <div class="flex gap-1.5 shrink-0">
+            <button onclick="editCmsMateri(${i})" class="px-2.5 py-1 rounded-lg bg-[#FFF5DC] text-[#8F6004] text-xs font-bold">Edit</button>
+            <button onclick="deleteCmsMateri(${i})" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 text-xs font-bold">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function saveCmsMateri() {
+      const idx = parseInt(document.getElementById("mat-edit-idx").value);
+      const title = document.getElementById("mat-input-title").value.trim();
+      const desc = document.getElementById("mat-input-desc").value.trim();
+      const contoh = document.getElementById("mat-input-contoh").value.trim();
+      if (!title || !desc) { alert("Isi nama istilah dan definisi materi."); return; }
+      const obj = { title, icon: "fa-shield-halved", desc, contoh: contoh || "-" };
+      if (idx >= 0) cmsData.materiCards[idx] = { ...cmsData.materiCards[idx], ...obj };
+      else cmsData.materiCards.push(obj);
+      resetMatForm();
+      persistCmsData();
+      renderCmsMateriList();
+    }
+
+    function editCmsMateri(idx) {
+      document.getElementById("mat-edit-idx").value = idx;
+      document.getElementById("mat-form-mode").innerText = `Edit Kartu Materi: ${cmsData.materiCards[idx].title}`;
+      document.getElementById("mat-input-title").value = cmsData.materiCards[idx].title;
+      document.getElementById("mat-input-desc").value = cmsData.materiCards[idx].desc;
+      document.getElementById("mat-input-contoh").value = cmsData.materiCards[idx].contoh;
+    }
+
+    function deleteCmsMateri(idx) {
+      if (!confirm("Hapus kartu materi ini?")) return;
+      cmsData.materiCards.splice(idx, 1);
+      persistCmsData();
+      renderCmsMateriList();
+    }
+
+    function resetMatForm() {
+      document.getElementById("mat-edit-idx").value = -1;
+      document.getElementById("mat-form-mode").innerText = "Tambah Kartu Bentuk Cyberbullying";
+      document.getElementById("mat-input-title").value = "";
+      document.getElementById("mat-input-desc").value = "";
+      document.getElementById("mat-input-contoh").value = "";
+    }
+
+    // 4. CRUD Bank Soal Pre-Test & Post-Test
+    function renderCmsSoalList() {
+      const huruf = ["A", "B", "C", "D"];
+      document.getElementById("cms-soal-list").innerHTML = cmsData.questions.map((item, i) => `
+        <div class="p-3 rounded-xl bg-white border border-[#E6D8BE] flex items-start justify-between gap-3">
+          <div>
+            <p class="font-bold text-xs text-[#231A10]">${i + 1}. ${item.q}</p>
+            <p class="text-[11px] text-emerald-700 font-semibold mt-0.5">Kunci: ${huruf[item.ans]}. ${item.options[item.ans]}</p>
+          </div>
+          <div class="flex gap-1.5 shrink-0">
+            <button onclick="editCmsSoal(${i})" class="px-2.5 py-1 rounded-lg bg-[#FFF5DC] text-[#8F6004] text-xs font-bold">Edit</button>
+            <button onclick="deleteCmsSoal(${i})" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 text-xs font-bold">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function saveCmsSoal() {
+      const idx = parseInt(document.getElementById("soal-edit-idx").value);
+      const q = document.getElementById("soal-input-q").value.trim();
+      const options = [
+        document.getElementById("soal-opt-0").value.trim(),
+        document.getElementById("soal-opt-1").value.trim(),
+        document.getElementById("soal-opt-2").value.trim(),
+        document.getElementById("soal-opt-3").value.trim()
+      ];
+      const ans = parseInt(document.getElementById("soal-input-ans").value);
+      if (!q || options.some(o => !o)) { alert("Lengkapi pertanyaan dan keempat opsi jawaban."); return; }
+      if (idx >= 0) cmsData.questions[idx] = { q, options, ans };
+      else cmsData.questions.push({ q, options, ans });
+      resetSoalForm();
+      persistCmsData();
+      renderCmsSoalList();
+    }
+
+    function editCmsSoal(idx) {
+      const item = cmsData.questions[idx];
+      document.getElementById("soal-edit-idx").value = idx;
+      document.getElementById("soal-form-mode").innerText = `Edit Soal Nomor #${idx + 1}`;
+      document.getElementById("soal-input-q").value = item.q;
+      item.options.forEach((opt, i) => document.getElementById(`soal-opt-${i}`).value = opt);
+      document.getElementById("soal-input-ans").value = item.ans;
+    }
+
+    function deleteCmsSoal(idx) {
+      if (cmsData.questions.length <= 1) { alert("Minimal harus tersisa 1 soal."); return; }
+      if (!confirm("Hapus soal ini?")) return;
+      cmsData.questions.splice(idx, 1);
+      persistCmsData();
+      renderCmsSoalList();
+    }
+
+    function resetSoalForm() {
+      document.getElementById("soal-edit-idx").value = -1;
+      document.getElementById("soal-form-mode").innerText = "Tambah Soal Pre-Test & Post-Test";
+      document.getElementById("soal-input-q").value = "";
+      [0, 1, 2, 3].forEach(i => document.getElementById(`soal-opt-${i}`).value = "");
+      document.getElementById("soal-input-ans").value = 0;
+    }
+
+    // 5. CRUD Misi Gamifikasi
+    function renderCmsGameList() {
+      document.getElementById("cms-game-list").innerHTML = cmsData.missions.map((item, i) => `
+        <div class="p-3 rounded-xl bg-white border border-[#E6D8BE] flex items-start justify-between gap-3">
+          <div>
+            <p class="font-bold text-xs text-[#231A10]">${item.level}</p>
+            <p class="text-xs text-[#5C4B37] mt-0.5">${item.prompt}</p>
+          </div>
+          <div class="flex gap-1.5 shrink-0">
+            <button onclick="editCmsGame(${i})" class="px-2.5 py-1 rounded-lg bg-[#FFF5DC] text-[#8F6004] text-xs font-bold">Edit</button>
+            <button onclick="deleteCmsGame(${i})" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 text-xs font-bold">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function saveCmsGame() {
+      const idx = parseInt(document.getElementById("game-edit-idx").value);
+      const level = document.getElementById("game-input-level").value.trim();
+      const prompt = document.getElementById("game-input-prompt").value.trim();
+      const good = document.getElementById("game-input-good").value.trim();
+      const bad = document.getElementById("game-input-bad").value.trim();
+      if (!level || !prompt || !good || !bad) { alert("Lengkapi semua kolom misi gamifikasi."); return; }
+      const missionObj = {
+        level,
+        prompt,
+        choices: [
+          { text: bad, ok: false, msg: "Kurang tepat! Tindakan ini berpotensi memperpanjang konflik." },
+          { text: good, ok: true, msg: "Tepat sekali! Kamu menerapkan sikap Upstander dan perlindungan digital." }
+        ]
+      };
+      if (idx >= 0) cmsData.missions[idx] = missionObj;
+      else cmsData.missions.push(missionObj);
+      resetGameForm();
+      persistCmsData();
+      renderCmsGameList();
+    }
+
+    function editCmsGame(idx) {
+      const item = cmsData.missions[idx];
+      const goodChoice = item.choices.find(c => c.ok) || item.choices[0];
+      const badChoice = item.choices.find(c => !c.ok) || item.choices[1] || item.choices[0];
+      document.getElementById("game-edit-idx").value = idx;
+      document.getElementById("game-form-mode").innerText = `Edit Misi Gamifikasi #${idx + 1}`;
+      document.getElementById("game-input-level").value = item.level;
+      document.getElementById("game-input-prompt").value = item.prompt;
+      document.getElementById("game-input-good").value = goodChoice ? goodChoice.text : "";
+      document.getElementById("game-input-bad").value = badChoice ? badChoice.text : "";
+    }
+
+    function deleteCmsGame(idx) {
+      if (cmsData.missions.length <= 1) { alert("Minimal harus tersisa 1 misi."); return; }
+      if (!confirm("Hapus misi ini?")) return;
+      cmsData.missions.splice(idx, 1);
+      persistCmsData();
+      renderCmsGameList();
+    }
+
+    function resetGameForm() {
+      document.getElementById("game-edit-idx").value = -1;
+      document.getElementById("game-form-mode").innerText = "Tambah Misi Gamifikasi Arena";
+      document.getElementById("game-input-level").value = "";
+      document.getElementById("game-input-prompt").value = "";
+      document.getElementById("game-input-good").value = "";
+      document.getElementById("game-input-bad").value = "";
+    }
+
+    // Export / Import / Reset CRUD
+    function exportCmsJson() {
+      const blob = new Blob([JSON.stringify(cmsData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Backup_Materi_CyberShield8_Tuban.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importCmsJson(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed.meta && parsed.questions) {
+            cmsData = parsed;
+            persistCmsData();
+            populateCmsForms();
+            alert("Data materi & soal berhasil dipulihkan dari file JSON!");
+          } else {
+            alert("Format file JSON tidak sesuai.");
+          }
+        } catch (err) {
+          alert("Gagal membaca file JSON.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetAllCmsDefault() {
+      if (!confirm("Kembalikan seluruh materi, tujuan pembelajaran, dan bank soal ke pengaturan awal?")) return;
+      cmsData = JSON.parse(JSON.stringify(defaultCmsData));
+      persistCmsData();
+      populateCmsForms();
+      alert("Seluruh konten berhasil dikembalikan ke pengaturan awal.");
+    }
+
+    // Inisialisasi Awal
+    applyCmsToUI();
+    renderNav();
+    renderScene();
+    renderInteractiveQuiz();
+    setRating(5);
+  </script>
+</body>
+</html>
