@@ -72,6 +72,7 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
 }
 @media print{body{background:#fff!important}header,footer,main,#beranda-poster,#teacher-modal,.no-print{display:none!important}#print-sheet{display:block!important}}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body class="min-h-screen flex flex-col">
 
@@ -409,6 +410,7 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
         <button onclick="cmsTab('c-soal',this)" class="tab cms-tab">4. Bank Soal Tes</button>
         <button onclick="cmsTab('c-game',this)" class="tab cms-tab">5. Arena Bercabang</button>
         <button onclick="cmsTab('c-pin',this)" class="tab cms-tab">6. Ganti PIN</button>
+        <button onclick="cmsTab('c-rekap',this);renderRekap()" class="tab cms-tab">7. Rekap Hasil</button>
       </div>
       <div class="p-5 overflow-y-auto flex-1 space-y-5 text-xs sm:text-sm">
 
@@ -447,6 +449,14 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
           <div id="soal-cms" class="space-y-2"></div>
         </div>
 
+        <div id="c-rekap" class="cms-panel hidden space-y-4">
+          <div class="soft space-y-3"><p class="font-bold text-xs" style="color:#8F6004">Rekap Hasil Peserta Didik (perangkat ini)</p>
+            <p class="text-xs mut">Hasil dicatat otomatis setiap peserta didik menekan tombol unduh atau cetak laporan di perangkat ini. Peserta didik dengan nama dan kelas yang sama akan diperbarui, bukan digandakan.</p>
+            <div id="rk-sum" class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs"></div>
+            <div class="overflow-x-auto"><table class="t text-xs w-full"><thead><tr><th>Nama</th><th>Kelas</th><th>Pre</th><th>Post</th><th>Naik</th><th>Arena</th></tr></thead><tbody id="rk-body"></tbody></table></div>
+            <div class="flex flex-wrap gap-2"><button onclick="downloadRekap()" class="btn btn-s"><i class="fa-solid fa-file-excel"></i>Unduh XLS</button><button onclick="clearRekap()" class="btn btn-g btn-s">Hapus Rekap</button></div>
+            <p class="text-xs mut">Data berisi nama peserta didik. Simpan berkas hanya untuk keperluan evaluasi guru.</p></div>
+        </div>
         <div id="c-pin" class="cms-panel hidden space-y-4">
           <div class="soft space-y-3"><p class="font-bold text-xs" style="color:#8F6004">Ganti PIN Panel Guru</p>
             <input type="password" id="pin-new" placeholder="PIN baru (minimal 4 karakter)" class="inp" />
@@ -774,6 +784,25 @@ let MOOD="-"; function setMood(v,b){ MOOD=v; document.querySelectorAll(".mood-bt
 function refText(){ return `Perasaan: ${MOOD}; Ingin dipahami lebih baik: ${$("ref-bingung").value}; Harapan untuk guru: ${$("ref-asp").value.trim()||"-"}`; }
 function svText(){ return `Seru: ${$("sv-1").value}; Mudah dipahami: ${$("sv-2").value}; Lebih berani: ${$("sv-3").value}; Cara belajar paling membantu: ${$("sv-fav").value}; Bagian kurang jelas: ${$("sv-sulit").value}; Waktu belajar: ${$("sv-waktu").value}`+($("sv-saran").value.trim()?`; Saran: ${$("sv-saran").value.trim()}`:""); }
 
+
+// ===== REKAP HASIL (PERANGKAT GURU) =====
+const RK_COLS=["Tanggal","Nama","Kelas","Kelompok","Pre-Test","Post-Test","Peningkatan","Skor Arena","Akhir Cerita Arena","Kuis Benar","Bintang","Slogan Kampanye","Kesan Siswa","Angket","Hal Baru yang Dipelajari","Aksi Jika Melihat Perundungan","Hipotesis Awal"];
+function rkLoad(){ try{ return JSON.parse(localStorage.getItem("cs8_rekap")||"[]"); }catch(e){ return []; } }
+function saveRekap(d){ try{
+  const pre=(typeof st.pre==="number")?st.pre:"", post=(typeof st.post==="number")?st.post:"";
+  const r=[d.tgl||new Date().toLocaleDateString("id-ID"),st.name,st.cls,st.team||"-",pre,post,(pre!==""&&post!=="")?post-pre:"",st.game||0,st.ending||"-",`${st.qCorrect||0}/${QUICK.length}`,st.rating||"",st.campaign?st.campaign.slogan:"-",refText(),svText(),d.q1,d.q2,d.pemantik];
+  const a=rkLoad(), k=(String(st.name)+"|"+st.cls).toLowerCase(), i=a.findIndex(x=>(String(x[1])+"|"+x[2]).toLowerCase()===k);
+  if(i>=0) a[i]=r; else a.push(r); localStorage.setItem("cs8_rekap",JSON.stringify(a)); }catch(e){ console.warn(e); } }
+function renderRekap(){ const a=rkLoad(), num=v=>typeof v==="number", avg=i=>{ const v=a.map(x=>x[i]).filter(num); return v.length?Math.round(v.reduce((p,c)=>p+c,0)/v.length):"-"; };
+  $("rk-sum").innerHTML=[["Peserta",a.length],["Rata-rata Pre",avg(4)],["Rata-rata Post",avg(5)],["Rata-rata Naik",avg(6)]].map(([l,v])=>`<div class="bg-white rounded-xl p-2 text-center" style="border:1px solid var(--b)"><p class="mut">${l}</p><p class="font-extrabold text-base">${v}</p></div>`).join("");
+  $("rk-body").innerHTML=a.length?a.map(x=>`<tr><td>${esc(x[1])}</td><td>${esc(x[2])}</td><td>${esc(x[4])}</td><td>${esc(x[5])}</td><td>${esc(x[6])}</td><td>${esc(x[7])}</td></tr>`).join(""):'<tr><td colspan="6" class="mut">Belum ada hasil yang tercatat di perangkat ini.</td></tr>'; }
+function downloadRekap(){ const a=rkLoad(); if(!a.length){ alert("Belum ada hasil untuk diunduh."); return; }
+  const fn="Rekap_CyberShield8_"+new Date().toISOString().slice(0,10)+".xls";
+  if(window.XLSX){ const ws=XLSX.utils.aoa_to_sheet([RK_COLS,...a]); ws["!cols"]=RK_COLS.map((c,i)=>({wch:i>=11?36:16})); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,"Rekap Hasil"); XLSX.writeFile(wb,fn,{bookType:"biff8"}); return; }
+  const h='<html><head><meta charset="utf-8"></head><body><table border="1"><tr>'+RK_COLS.map(c=>`<th>${esc(c)}</th>`).join("")+"</tr>"+a.map(r=>"<tr>"+r.map(v=>`<td>${esc(v)}</td>`).join("")+"</tr>").join("")+"</table></body></html>";
+  const l=document.createElement("a"); l.href=URL.createObjectURL(new Blob(["\ufeff"+h],{type:"application/vnd.ms-excel"})); l.download=fn; l.click(); }
+function clearRekap(){ if(!confirm("Hapus seluruh rekap hasil di perangkat ini?")) return; try{ localStorage.removeItem("cs8_rekap"); }catch(e){} renderRekap(); }
+
 // ===== SINTAK 7 =====
 function renderQuick(){
   const ch = ["Flaming","Harassment","Denigration","Outing","Exclusion"];
@@ -816,7 +845,7 @@ function reportHtml(d){
     <div><p>Kenduruan, ${d.tgl}</p><p class="font-bold">Peserta Didik</p><div class="h-14"></div><p class="font-bold underline">${esc(st.name)}</p></div></div>`;
 }
 function showReport(d){ const h = reportHtml(d); $("pdf-preview").innerHTML = h; $("pdf-preview").classList.remove("hidden"); $("print-sheet").innerHTML = h; }
-function printSheet(){ const d = validate(); if(!d) return; st.done[9]=true; renderNav(); showReport(d); window.print(); }
+function printSheet(){ const d = validate(); if(!d) return; st.done[9]=true; renderNav(); saveRekap(d); showReport(d); window.print(); }
 
 let pdfP = null;
 function loadJsPDF(){
@@ -825,7 +854,7 @@ function loadJsPDF(){
 }
 async function downloadPDF(){
   const d = validate(); if(!d) return;
-  st.done[9]=true; renderNav(); showReport(d);
+  st.done[9]=true; renderNav(); saveRekap(d); showReport(d);
   try{ await loadJsPDF(); }catch(e){}
   if(!window.jspdf || !window.jspdf.jsPDF){ alert("Pustaka PDF tidak dapat dimuat. Membuka dialog cetak browser..."); window.print(); return; }
   const m = cms.meta, doc = new window.jspdf.jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
