@@ -33,7 +33,22 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--c);color:var(--
 .pick{padding:.35rem .75rem;border-radius:.5rem;background:#fff;border:1px solid #D6C5A5;font-size:.75rem;font-weight:600;cursor:pointer}
 .ok{background:#ecfdf5;border:1px solid #6ee7b7;color:#064e3b}
 .no{background:#fff1f2;border:1px solid #fda4af;color:#881337}
-.note{padding:.75rem;border-radius:.75rem;font-size:.8rem}
+.note{padding:.75rem;border-radius:.75rem;font-size:.8rem}.gr{background:#FEF3C7;border:1px solid #F59E0B}
+.bgmove{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}.bgmove svg{width:100%;height:100%;display:block}
+path.wv1,path.wv2,path.wv3{animation:wvx 9s linear infinite}path.wv2{animation-duration:7s;animation-direction:reverse}path.wv3{animation-duration:12s}
+@keyframes wvx{from{transform:translateX(-400px)}to{transform:translateX(0)}}
+.bob{animation:bob 4.5s ease-in-out infinite;transform-origin:0 0}.drift{animation:dr 26s ease-in-out infinite alternate}
+@keyframes bob{0%,100%{transform:translateY(-4px) rotate(-1.6deg)}50%{transform:translateY(5px) rotate(1.8deg)}}
+@keyframes dr{from{transform:translateX(-40px)}to{transform:translateX(50px)}}
+.sway{animation:sway 5s ease-in-out infinite;transform-origin:0 0}.fr{animation:fr 3.8s ease-in-out infinite;transform-origin:0 0}
+@keyframes sway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.8deg)}}@keyframes fr{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3.5deg)}}
+.drift1{animation:cl 110s linear infinite}.drift2{animation:cl 150s linear infinite;animation-delay:-60s}.drift3{animation:cl 130s linear infinite;animation-delay:-90s}
+@keyframes cl{from{transform:translateX(-500px)}to{transform:translateX(1900px)}}
+.gull{animation:gl 30s linear infinite}@keyframes gl{from{transform:translate(-80px,150px)}50%{transform:translate(800px,110px)}to{transform:translate(1700px,160px)}}
+.foam{animation:foam 5s ease-in-out infinite}@keyframes foam{0%,100%{transform:translate(0,0);opacity:.9}50%{transform:translate(14px,-8px);opacity:.45}}
+.pulse{animation:pulse 6s ease-in-out infinite;transform-origin:1290px 140px}@keyframes pulse{50%{transform:scale(1.15);opacity:.8}}
+@media (prefers-reduced-motion:reduce){.bgmove *{animation:none!important}}
+@keyframes fall{to{transform:translateY(105vh) rotate(360deg);opacity:.2}}@keyframes pop{0%{transform:translate(-50%,-20px) scale(.6);opacity:0}12%{transform:translate(-50%,0) scale(1.06);opacity:1}20%{transform:translate(-50%,0) scale(1)}88%{opacity:1}100%{transform:translate(-50%,-10px);opacity:0}}
 .row{display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;padding-top:.5rem}
 .tab{flex-shrink:0;line-height:1.35;padding:.5rem .9rem;border-radius:.5rem;background:var(--c);border:1px solid var(--b);color:#3D2E1E;font-size:.75rem;font-weight:700;white-space:nowrap;cursor:pointer}
 .tab.on{background:var(--o);color:#2A1A0C;border-color:var(--od)}
@@ -61,11 +76,34 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
 <body class="min-h-screen flex flex-col">
 
 <!-- ============ BERANDA POSTER ============ -->
-<section id="beranda-poster" class="min-h-screen w-full flex flex-col justify-between no-print">
-  <div class="ribbon w-full"></div>
-  <div class="flex-1 flex items-center justify-center p-4 sm:p-8">
-    <div class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl border overflow-hidden grid lg:grid-cols-12" style="border-color:var(--b)">
-      <div class="lg:col-span-4 bg-batik p-5 sm:p-6 flex items-center justify-center">
+<section id="beranda-poster" class="relative min-h-screen w-full flex flex-col justify-between no-print overflow-hidden">
+  <div class="bgmove" aria-hidden="true"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FB0EE"/><stop offset="1" stop-color="#D4EEFB"/></linearGradient>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2CC4D6"/><stop offset="1" stop-color="#0B7BA6"/></linearGradient>
+<linearGradient id="sand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3B0"/><stop offset="1" stop-color="#E7C887"/></linearGradient>
+<radialGradient id="sun"><stop offset="0" stop-color="#FFF6C8"/><stop offset="1" stop-color="#FFF6C800"/></radialGradient></defs>
+<rect width="1600" height="480" fill="url(#sky)"/>
+<circle cx="1290" cy="140" r="150" fill="url(#sun)" class="pulse"/><circle cx="1290" cy="140" r="52" fill="#FFE27A"/>
+<g class="drift1"><g transform="translate(300 120) scale(1.1)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="90" ry="30"/><circle cx="-40" cy="-22" r="34"/><circle cx="10" cy="-36" r="42"/><circle cx="55" cy="-14" r="30"/></g></g><g class="drift2"><g transform="translate(820 70) scale(0.8)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="90" ry="30"/><circle cx="-40" cy="-22" r="34"/><circle cx="10" cy="-36" r="42"/><circle cx="55" cy="-14" r="30"/></g></g><g class="drift3"><g transform="translate(1100 210) scale(0.9)" fill="#fff" opacity=".92"><ellipse cx="0" cy="0" rx="90" ry="30"/><circle cx="-40" cy="-22" r="34"/><circle cx="10" cy="-36" r="42"/><circle cx="55" cy="-14" r="30"/></g></g>
+<path d="M0 470 Q200 420 420 458 T800 450 T1200 440 T1600 452 V490 H0Z" fill="#5E9C86" opacity=".75"/>
+<rect y="470" width="1600" height="430" fill="url(#sea)"/>
+<g transform="translate(1160 478) scale(0.8)"><g class="sway" style="animation-duration:7s"><ellipse cx="0" cy="-34" rx="46" ry="30" fill="#1F5E3A"/><ellipse cx="-30" cy="-22" rx="30" ry="22" fill="#2A7447"/><ellipse cx="32" cy="-24" rx="30" ry="22" fill="#276B43"/></g><g stroke="#4A3320" stroke-width="3" fill="none"><path d="M-22 -8 Q-30 4 -34 14"/><path d="M-8 -6 Q-10 6 -8 14"/><path d="M10 -6 Q14 4 18 14"/><path d="M24 -8 Q32 2 36 14"/></g></g><g transform="translate(1260 480) scale(1)"><g class="sway" style="animation-duration:7s"><ellipse cx="0" cy="-34" rx="46" ry="30" fill="#1F5E3A"/><ellipse cx="-30" cy="-22" rx="30" ry="22" fill="#2A7447"/><ellipse cx="32" cy="-24" rx="30" ry="22" fill="#276B43"/></g><g stroke="#4A3320" stroke-width="3" fill="none"><path d="M-22 -8 Q-30 4 -34 14"/><path d="M-8 -6 Q-10 6 -8 14"/><path d="M10 -6 Q14 4 18 14"/><path d="M24 -8 Q32 2 36 14"/></g></g><g transform="translate(1400 478) scale(0.9)"><g class="sway" style="animation-duration:7s"><ellipse cx="0" cy="-34" rx="46" ry="30" fill="#1F5E3A"/><ellipse cx="-30" cy="-22" rx="30" ry="22" fill="#2A7447"/><ellipse cx="32" cy="-24" rx="30" ry="22" fill="#276B43"/></g><g stroke="#4A3320" stroke-width="3" fill="none"><path d="M-22 -8 Q-30 4 -34 14"/><path d="M-8 -6 Q-10 6 -8 14"/><path d="M10 -6 Q14 4 18 14"/><path d="M24 -8 Q32 2 36 14"/></g></g><g transform="translate(1530 480) scale(1.1)"><g class="sway" style="animation-duration:7s"><ellipse cx="0" cy="-34" rx="46" ry="30" fill="#1F5E3A"/><ellipse cx="-30" cy="-22" rx="30" ry="22" fill="#2A7447"/><ellipse cx="32" cy="-24" rx="30" ry="22" fill="#276B43"/></g><g stroke="#4A3320" stroke-width="3" fill="none"><path d="M-22 -8 Q-30 4 -34 14"/><path d="M-8 -6 Q-10 6 -8 14"/><path d="M10 -6 Q14 4 18 14"/><path d="M24 -8 Q32 2 36 14"/></g></g>
+<g transform="translate(0 520)"><path class="wv1" transform="translate(-400 0)" d="M0 0 Q100.0 -10 200.0 0 T400.0 0 T600.0 0 T800.0 0 T1000.0 0 T1200.0 0 T1400.0 0 T1600.0 0 T1800.0 0 T2000.0 0 T2200.0 0 T2400.0 0 T2600.0 0 T2800.0 0 T3000.0 0 T3200.0 0 T3400.0 0 T3600.0 0 V700 H0Z" fill="#46D0DD" opacity="0.45"/></g><g transform="translate(1010 548)"><g class="drift"><g class="bob">
+<ellipse cx="0" cy="34" rx="120" ry="8" fill="#0A5E80" opacity=".35"/>
+<path d="M-150 22 L-92 4 M150 22 L100 4" stroke="#6B4526" stroke-width="5"/><ellipse cx="-155" cy="26" rx="26" ry="6" fill="#8B5A2B"/><ellipse cx="155" cy="26" rx="26" ry="6" fill="#8B5A2B"/>
+<path d="M-98 -2 Q-104 -26 -118 -44 L-92 -10 H104 Q96 20 62 32 H-62 Q-88 24 -98 -2Z" fill="#8B3A22"/><path d="M-92 -10 H104 L100 0 H-94Z" fill="#F5E2B3"/>
+<rect x="-18" y="-46" width="58" height="36" fill="#F5E2B3"/><path d="M-26 -46 L12 -66 L48 -46Z" fill="#D93A2B"/><rect x="-6" y="-36" width="14" height="16" fill="#5BB8F0"/>
+<path d="M60 -10 V-84" stroke="#6B4526" stroke-width="4"/><path d="M60 -84 L94 -74 L60 -64Z" fill="#E0A100"/></g></g></g><g transform="translate(0 590)"><path class="wv2" transform="translate(-400 0)" d="M0 0 Q100.0 -14 200.0 0 T400.0 0 T600.0 0 T800.0 0 T1000.0 0 T1200.0 0 T1400.0 0 T1600.0 0 T1800.0 0 T2000.0 0 T2200.0 0 T2400.0 0 T2600.0 0 T2800.0 0 T3000.0 0 T3200.0 0 T3400.0 0 T3600.0 0 V700 H0Z" fill="#1FA9C6" opacity="0.5"/></g><g transform="translate(0 690)"><path class="wv3" transform="translate(-400 0)" d="M0 0 Q100.0 -18 200.0 0 T400.0 0 T600.0 0 T800.0 0 T1000.0 0 T1200.0 0 T1400.0 0 T1600.0 0 T1800.0 0 T2000.0 0 T2200.0 0 T2400.0 0 T2600.0 0 T2800.0 0 T3000.0 0 T3200.0 0 T3400.0 0 T3600.0 0 V700 H0Z" fill="#0E86B0" opacity="0.55"/></g><g transform="translate(0 800)"><path class="wv1" transform="translate(-400 0)" d="M0 0 Q100.0 -22 200.0 0 T400.0 0 T600.0 0 T800.0 0 T1000.0 0 T1200.0 0 T1400.0 0 T1600.0 0 T1800.0 0 T2000.0 0 T2200.0 0 T2400.0 0 T2600.0 0 T2800.0 0 T3000.0 0 T3200.0 0 T3400.0 0 T3600.0 0 V700 H0Z" fill="#0A6C99" opacity="0.6"/></g>
+<path d="M0 560 C300 600 520 700 760 900 H0Z" fill="url(#sand)"/>
+<g class="foam"><path d="M0 556 C300 596 524 698 770 900" stroke="#fff" stroke-width="12" fill="none" opacity=".8" stroke-linecap="round"/><path d="M0 570 C296 612 506 708 742 900" stroke="#fff" stroke-width="5" fill="none" opacity=".6"/></g>
+<g transform="translate(380 690) scale(0.9)"><g class="sway" style="animation-duration:6s"><rect x="-6" y="-40" width="12" height="40" fill="#5E3C20"/><path d="M-78 -30 Q0 -10 78 -30 L0 -108Z" fill="#2A6035"/><path d="M-66 -80 Q0 -60 66 -80 L0 -158Z" fill="#2F6B3B"/><path d="M-54 -130 Q0 -110 54 -130 L0 -208Z" fill="#2A6035"/><path d="M-42 -178 Q0 -158 42 -178 L0 -256Z" fill="#2F6B3B"/><path d="M-30 -224 Q0 -204 30 -224 L0 -302Z" fill="#2A6035"/></g></g><g transform="translate(450 640) scale(0.7)"><g class="sway" style="animation-duration:6s"><rect x="-6" y="-40" width="12" height="40" fill="#5E3C20"/><path d="M-78 -30 Q0 -10 78 -30 L0 -108Z" fill="#2A6035"/><path d="M-66 -80 Q0 -60 66 -80 L0 -158Z" fill="#2F6B3B"/><path d="M-54 -130 Q0 -110 54 -130 L0 -208Z" fill="#2A6035"/><path d="M-42 -178 Q0 -158 42 -178 L0 -256Z" fill="#2F6B3B"/><path d="M-30 -224 Q0 -204 30 -224 L0 -302Z" fill="#2A6035"/></g></g><g transform="translate(300 780) scale(1.1)"><g class="sway" style="animation-duration:6s"><rect x="-6" y="-40" width="12" height="40" fill="#5E3C20"/><path d="M-78 -30 Q0 -10 78 -30 L0 -108Z" fill="#2A6035"/><path d="M-66 -80 Q0 -60 66 -80 L0 -158Z" fill="#2F6B3B"/><path d="M-54 -130 Q0 -110 54 -130 L0 -208Z" fill="#2A6035"/><path d="M-42 -178 Q0 -158 42 -178 L0 -256Z" fill="#2F6B3B"/><path d="M-30 -224 Q0 -204 30 -224 L0 -302Z" fill="#2A6035"/></g></g>
+<g transform="translate(110 720) scale(1.0)"><g class="sway" style="animation-delay:0s"><path d="M0 0 Q17.5 -150 70 -300" stroke="#7A5230" stroke-width="22" stroke-linecap="round" fill="none"/><path d="M0 0 Q17.5 -150 70 -300" stroke="#5E3C20" stroke-width="22" stroke-dasharray="3 14" stroke-linecap="butt" fill="none" opacity=".45"/><g transform="translate(70 -300)"><g class="fr" style="animation-delay:0s"><g transform="rotate(-35)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(10)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(55)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(110)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(165)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(205)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(250)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#34984A"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><circle r="14" cy="6" cx="-8" fill="#5E3C20"/><circle r="12" cy="10" cx="10" fill="#6B4526"/></g></g></g></g><g transform="translate(250 830) scale(1.25)"><g class="sway" style="animation-delay:-1.2s"><path d="M0 0 Q-15.0 -150 -60 -300" stroke="#7A5230" stroke-width="22" stroke-linecap="round" fill="none"/><path d="M0 0 Q-15.0 -150 -60 -300" stroke="#5E3C20" stroke-width="22" stroke-dasharray="3 14" stroke-linecap="butt" fill="none" opacity=".45"/><g transform="translate(-60 -300)"><g class="fr" style="animation-delay:-1.2s"><g transform="rotate(-35)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(10)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(55)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(110)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(165)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(205)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(250)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#34984A"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><circle r="14" cy="6" cx="-8" fill="#5E3C20"/><circle r="12" cy="10" cx="10" fill="#6B4526"/></g></g></g></g><g transform="translate(40 900) scale(1.5)"><g class="sway" style="animation-delay:-2.3s"><path d="M0 0 Q12.5 -150 50 -300" stroke="#7A5230" stroke-width="22" stroke-linecap="round" fill="none"/><path d="M0 0 Q12.5 -150 50 -300" stroke="#5E3C20" stroke-width="22" stroke-dasharray="3 14" stroke-linecap="butt" fill="none" opacity=".45"/><g transform="translate(50 -300)"><g class="fr" style="animation-delay:-2.3s"><g transform="rotate(-35)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(10)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(55)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(110)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(165)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#2E8B3E"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(205)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#3FA34D"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><g transform="rotate(250)"><path d="M0 0 Q95 -78 205 12 Q105 -30 0 0Z" fill="#34984A"/><path d="M0 0 Q100 -60 196 8" stroke="#1F6B2E" stroke-width="2" fill="none" opacity=".6"/></g><circle r="14" cy="6" cx="-8" fill="#5E3C20"/><circle r="12" cy="10" cx="10" fill="#6B4526"/></g></g></g></g>
+<g class="gull" style="animation-duration:26s;animation-delay:0s"><path transform="translate(0 0)" d="M0 0 Q8 -9 16 0 Q24 -9 32 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g><g class="gull" style="animation-duration:34s;animation-delay:-9s"><path transform="translate(0 60)" d="M0 0 Q8 -9 16 0 Q24 -9 32 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g><g class="gull" style="animation-duration:40s;animation-delay:-17s"><path transform="translate(0 -30)" d="M0 0 Q8 -9 16 0 Q24 -9 32 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+</svg></div>
+  <div class="ribbon w-full relative z-10"></div>
+  <div class="flex-1 flex items-center justify-center lg:justify-end lg:pr-[7vw] p-4 sm:p-8 relative z-10">
+    <div class="max-w-3xl w-full rounded-3xl shadow-2xl border overflow-hidden grid lg:grid-cols-12" style="border-color:var(--b);background:rgba(255,255,255,.95);backdrop-filter:blur(2px)">
+      <div class="lg:col-span-5 bg-batik p-5 sm:p-5 flex items-center justify-center">
         <div class="w-full max-w-[16rem] mx-auto rounded-2xl p-4 shadow-lg space-y-3" style="background:#FBF3DCf2;border:1px solid var(--b)">
           <div class="flex items-center gap-3">
             <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0" style="background:#E0A10026;border:2px solid var(--o);color:var(--od)"><i class="fa-solid fa-shield-halved"></i></div>
@@ -75,13 +113,13 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
             <p class="text-[11px] mut">Inovasi Media Pembelajaran Berbasis TIK</p>
           </div>
           <ul class="space-y-2 text-[11px]" style="color:#3D2E1E">
-            <li class="flex items-center gap-2.5"><i class="fa-solid fa-layer-group" style="color:var(--od)"></i>Pembelajaran Aktif & Terstruktur</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-layer-group" style="color:var(--od)"></i>Pembelajaran Interaktif dan Menyenangkan</li>
             <li class="flex items-center gap-2.5"><i class="fa-solid fa-gamepad" style="color:var(--od)"></i>Simulasi Kasus, Gamifikasi & Video Edukasi</li>
             <li class="flex items-center gap-2.5"><i class="fa-solid fa-file-pdf" style="color:var(--od)"></i>Pre-Test, Post-Test & Laporan Belajar PDF</li>
           </ul>
         </div>
       </div>
-      <div class="lg:col-span-8 p-6 sm:p-10 flex flex-col justify-between">
+      <div class="lg:col-span-7 p-5 sm:p-7 flex flex-col justify-between">
         <div class="space-y-6">
           <div class="pb-4" style="border-bottom:1px solid var(--b)">
             <span class="chip" style="background:var(--ol);color:#9C6A06;font-weight:800;text-transform:uppercase">Identitas Media Pembelajaran Interaktif (MPI)</span>
@@ -96,12 +134,12 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
           </div>
         </div>
         <p class="text-[11px] mut mt-6 pt-3 flex flex-wrap justify-between gap-2" style="border-top:1px solid var(--b)">
-          <span>Kurikulum Merdeka • Elemen Dampak Sosial Informatika (DSI)</span>
+          <span>Kurikulum Merdeka • Elemen Literasi Digital (LD)</span>
         </p>
       </div>
     </div>
   </div>
-  <div class="ribbon w-full"></div>
+  <div class="ribbon w-full relative z-10"></div>
 </section>
 
 <!-- ============ APLIKASI 9 SINTAK ============ -->
@@ -160,6 +198,9 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
         <label class="block text-xs font-bold" style="color:#8F6004"><i class="fa-solid fa-pen-nib mr-1.5"></i>Tuliskan Hipotesis / Pendapat Awalmu (tercatat di Laporan PDF):</label>
         <textarea id="pemantik-input" rows="3" placeholder="Menurut saya, perundungan terjadi ketika..." class="inp"></textarea>
       </div>
+      <div class="soft space-y-2" style="background:linear-gradient(90deg,var(--ol),var(--c))"><p class="text-xs font-bold" style="color:#8F6004"><i class="fa-solid fa-heart mr-1.5"></i>Motivasi</p>
+        <p id="mot-text" class="text-sm font-semibold leading-relaxed"></p>
+        <button onclick="newMot()" class="btn btn-g btn-s"><i class="fa-solid fa-shuffle" style="color:var(--od)"></i>Kartu Semangat Lainnya</button></div>
       <div class="row"><button onclick="go(1)" class="btn btn-g"><i class="fa-solid fa-arrow-left"></i>Kembali</button><button onclick="next(2)" class="btn">Simpan & Lanjut ke Tujuan <i class="fa-solid fa-arrow-right"></i></button></div>
     </div></section>
 
@@ -168,7 +209,7 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
       <div class="soft" style="background:linear-gradient(90deg,var(--ol),var(--c));padding:1.25rem">
         <span class="kick" style="color:#9C6A06">Sintak 3 dari 9 • Arah & Target Kompetensi</span>
         <h2 class="h2">Tujuan Pembelajaran (Kurikulum Merdeka Fase D)</h2>
-        <p class="text-xs sm:text-sm mut mt-1">Mata Pelajaran: <strong id="tp-subject"></strong> • Elemen: <strong>Dampak Sosial Informatika (DSI)</strong></p>
+        <p class="text-xs sm:text-sm mut mt-1">Mata Pelajaran: <strong id="tp-subject"></strong> • Elemen: <strong>Literasi Digital (LD)</strong></p>
       </div>
       <div id="tp-list" class="grid sm:grid-cols-2 gap-4"></div>
       <div class="soft flex flex-wrap items-center gap-2 text-xs">
@@ -256,10 +297,31 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
     <!-- 6 -->
     <section id="step-6" class="syntax-section"><div class="card space-y-5">
       <div class="flex flex-wrap items-center justify-between gap-3">
-        <div><span class="kick">Sintak 6 dari 9 • Gamifikasi Simulasi Keputusan</span><h2 class="h2">CyberShield Arena: Misi Menjadi "Reda yang Meredakan"</h2></div>
+        <div><span class="kick">Sintak 6 dari 9 • Gamifikasi Simulasi Keputusan</span><h2 class="h2">CyberShield Arena: Pilih Jalur Ceritamu</h2></div>
         <div class="soft flex items-center gap-3 text-xs font-bold" style="padding:.5rem 1rem"><span id="g-lives"></span><span>|</span><span style="color:var(--od)"><i class="fa-solid fa-bolt mr-1"></i>Streak: <span id="g-streak">0</span></span><span>|</span><span style="color:#047857"><i class="fa-solid fa-trophy mr-1"></i>Skor: <span id="g-score">0</span></span></div>
       </div>
       <div id="arena" class="soft" style="padding:1.25rem"></div>
+      <div class="soft space-y-3" style="border-color:#E0A10066">
+        <div><span class="kick">Tantangan Bonus • Aksi Nyata</span><h3 class="font-extrabold text-base">Buat Kampanye Antiperundungan</h3><p class="text-xs mut">Ubah pelajaranmu jadi poster ajakan untuk teman sekelas. Tanpa menyebut nama atau mempermalukan siapa pun.</p></div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <select id="cp-tema" class="inp"><option>STOP: jangan membalas</option><option>BLOCK: blokir pelaku</option><option>SAVE: simpan bukti</option><option>TELL: ceritakan ke orang dewasa</option><option>Jadilah Upstander</option><option>Saling menghormati di dunia maya</option></select>
+          <input id="cp-slogan" maxlength="60" class="inp" placeholder="Slogan singkat (maks. 60 huruf)" />
+        </div>
+        <textarea id="cp-pesan" rows="2" maxlength="160" class="inp" placeholder="Pesan ajakan untuk teman-temanmu (maks. 160 huruf)..."></textarea>
+        <div class="text-xs space-y-1.5"><p class="font-bold">Periksa kampanyemu:</p>
+          <label class="flex gap-2"><input type="checkbox" class="cp-chk" />Tidak menyebut nama atau mempermalukan siapa pun</label>
+          <label class="flex gap-2"><input type="checkbox" class="cp-chk" />Bahasanya positif dan mengajak, bukan menyalahkan</label>
+          <label class="flex gap-2"><input type="checkbox" class="cp-chk" />Ada langkah nyata yang bisa dilakukan teman-temanku</label></div>
+        <div class="flex flex-wrap gap-2"><button onclick="makeCampaign()" class="btn btn-s"><i class="fa-solid fa-wand-magic-sparkles"></i>Buat Poster</button><button id="cp-dl" onclick="dlCampaign()" class="btn btn-g btn-s hidden"><i class="fa-solid fa-download" style="color:var(--od)"></i>Unduh Gambar (PNG)</button></div>
+        <p id="cp-err" class="text-xs hidden" style="color:#BE123C"></p>
+        <canvas id="cp-canvas" width="1080" height="1080" class="hidden w-full max-w-sm rounded-2xl mx-auto" style="border:2px solid var(--o)"></canvas>
+      </div>
+      <div class="soft space-y-3" style="border-color:#E0A10066">
+        <div class="flex flex-wrap items-center justify-between gap-2"><div><span class="kick">Seru Bareng Kelompok</span><h3 class="font-extrabold text-base">Papan Skor Kelompok Batik</h3><p class="text-xs mut">Skor arena disetor ke kelompok, bukan atas nama pribadi. Papan tersimpan di perangkat ini (cocok untuk layar kelas).</p></div>
+          <select id="bd-team" class="inp" style="width:auto" onchange="st.team=this.value"><option value="">Pilih kelompokmu...</option><option>Parang</option><option>Kawung</option><option>Mega Mendung</option><option>Truntum</option><option>Sekar Jagad</option><option>Gedog</option></select></div>
+        <div id="bd-list" class="space-y-2"></div>
+        <button onclick="resetBoard()" class="btn btn-g btn-s"><i class="fa-solid fa-rotate-left" style="color:var(--od)"></i>Reset Papan (Guru)</button>
+      </div>
       <div class="row"><button onclick="go(5)" class="btn btn-g"><i class="fa-solid fa-arrow-left"></i>Kembali</button><button onclick="next(6)" class="btn">Lanjut ke Kuis Interaktif <i class="fa-solid fa-arrow-right"></i></button></div>
     </div></section>
 
@@ -289,14 +351,23 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
         <div><label class="block text-xs font-bold mb-1.5" style="color:#8F6004">Kelas *</label><select id="s-class-ref" onchange="syncId('ref')" class="inp"></select></div>
       </div>
       <div class="soft"><p class="text-xs font-bold mb-1" style="color:#9C6A06"><i class="fa-solid fa-lightbulb mr-1.5"></i>Catatan Pemantik Awalmu (Sintak 2):</p><p id="ref-pemantik" class="text-xs sm:text-sm mut italic"></p></div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div><label class="block text-xs font-bold mb-1.5">1. Pelajaran karakter & literasi digital paling penting apa yang kamu dapatkan hari ini? *</label><textarea id="ref-q1" rows="3" placeholder="Saya memahami bahwa saling menghormati dan menjaga etika digital..." class="inp" style="background:var(--c)"></textarea></div>
-        <div><label class="block text-xs font-bold mb-1.5">2. Bagaimana kamu menerapkan semangat "Reda yang Meredakan" & STOP-BLOCK-SAVE-TELL saat melihat perundungan? *</label><textarea id="ref-q2" rows="3" placeholder="Saya akan menguatkan korban, menyimpan bukti, dan melapor..." class="inp" style="background:var(--c)"></textarea></div>
-      </div>
+      <div class="soft space-y-3"><p class="text-xs font-bold" style="color:#8F6004"><i class="fa-solid fa-comment-dots mr-1.5"></i>Refleksi Diriku <span class="mut font-normal">(jawab singkat saja, tidak ada jawaban salah)</span></p>
+        <div><p class="text-xs font-bold mb-1.5">1. Bagaimana perasaanmu setelah belajar hari ini?</p><div id="ref-mood" class="flex flex-wrap gap-2"><button type="button" onclick="setMood('😄 Senang',this)" class="btn btn-g btn-s mood-btn">😄 Senang</button><button type="button" onclick="setMood('🙂 Biasa saja',this)" class="btn btn-g btn-s mood-btn">🙂 Biasa saja</button><button type="button" onclick="setMood('😕 Masih bingung',this)" class="btn btn-g btn-s mood-btn">😕 Masih bingung</button><button type="button" onclick="setMood('😟 Kurang nyaman',this)" class="btn btn-g btn-s mood-btn">😟 Kurang nyaman</button></div></div>
+        <div><label class="block text-xs font-bold mb-1.5">2. Hari ini aku belajar bahwa... *</label><input type="text" id="ref-q1" placeholder="Contoh: bercanda yang menyakiti teman itu bukan bercanda" class="inp" style="background:var(--c)" /></div>
+        <div><label class="block text-xs font-bold mb-1.5">3. Kalau aku melihat temanku diejek di chat, aku akan... *</label><input type="text" id="ref-q2" placeholder="Contoh: menegur dengan sopan, simpan bukti, lalu cerita ke guru" class="inp" style="background:var(--c)" /></div>
+        <div><label class="block text-xs font-bold mb-1.5">4. Bagian yang masih ingin kupahami lebih baik:</label><select id="ref-bingung" class="inp" style="background:var(--c)"><option>Tidak ada, aku sudah paham</option><option>Bentuk-bentuk cyberbullying</option><option>Langkah STOP – BLOCK – SAVE – TELL</option><option>Dampak dan aturan hukum (UU ITE)</option><option>Cara melapor dan meminta bantuan</option></select></div>
+        <div><label class="block text-xs font-bold mb-1.5">5. Pesan atau harapanku untuk Bapak/Ibu Guru <span class="mut font-normal">(boleh dikosongkan)</span></label><input type="text" id="ref-asp" placeholder="Contoh: Aku ingin belajar kelompok lebih sering" class="inp" style="background:var(--c)" /></div></div>
       <div class="soft flex flex-wrap items-center justify-between gap-4">
         <div><p class="text-xs font-bold">Penilaian Pengalaman Belajar (User Satisfaction)</p><p class="text-xs mut">Seberapa membantu media CyberShield 8 ini bagimu?</p></div>
         <div class="flex items-center gap-2" id="stars"></div>
       </div>
+      <div class="soft space-y-3"><p class="text-xs font-bold" style="color:#8F6004"><i class="fa-solid fa-clipboard-question mr-1.5"></i>Suara Siswa untuk Guru <span class="mut font-normal">(membantu guru memperbaiki pembelajaran)</span></p>
+        <div class="grid sm:grid-cols-2 gap-2 items-center text-xs"><span>Pembelajaran ini seru dan membuatku bersemangat.</span><select id="sv-1" class="inp"><option>Sangat setuju</option><option>Setuju</option><option>Kurang setuju</option><option>Tidak setuju</option></select></div><div class="grid sm:grid-cols-2 gap-2 items-center text-xs"><span>Materi dan alurnya mudah kupahami.</span><select id="sv-2" class="inp"><option>Sangat setuju</option><option>Setuju</option><option>Kurang setuju</option><option>Tidak setuju</option></select></div><div class="grid sm:grid-cols-2 gap-2 items-center text-xs"><span>Aku lebih berani bertindak jika melihat perundungan.</span><select id="sv-3" class="inp"><option>Sangat setuju</option><option>Setuju</option><option>Kurang setuju</option><option>Tidak setuju</option></select></div>
+        <div class="grid sm:grid-cols-2 gap-2 items-center text-xs"><span>Bagian yang paling kusuka:</span><select id="sv-fav" class="inp"><option>Video</option><option>Arena Bercabang</option><option>Kampanye</option><option>Kuis</option><option>Papan Skor Kelompok</option></select></div>
+        <div class="grid sm:grid-cols-2 gap-2 items-center text-xs"><span>Bagian yang paling kurang jelas:</span><select id="sv-sulit" class="inp"><option>Tidak ada</option><option>Pemantik</option><option>Materi dan video</option><option>Arena</option><option>Kuis</option><option>Pre/Post-Test</option></select></div>
+        <div class="grid sm:grid-cols-2 gap-2 items-center text-xs"><span>Waktu belajar terasa:</span><select id="sv-waktu" class="inp"><option>Pas</option><option>Terlalu cepat</option><option>Terlalu lama</option></select></div>
+        <textarea id="sv-saran" rows="2" class="inp" placeholder="Saran perbaikan untuk guru (boleh dikosongkan)..."></textarea></div>
+      <div class="soft"><p class="text-xs font-bold mb-2" style="color:#8F6004"><i class="fa-solid fa-award mr-1.5"></i>Koleksi Stiker Batik</p><div id="stickers" class="flex flex-wrap gap-2 text-xs"></div></div>
       <label class="note ok flex items-center gap-3 cursor-pointer"><input type="checkbox" id="ikrar" class="w-4 h-4" style="accent-color:#059669" /><span>Saya berkomitmen menjaga etika digital, menghormati sesama, menolak <em>cyberbullying</em>, dan berani menjadi <strong>Upstander</strong>.</span></label>
       <div class="row">
         <button onclick="go(8)" class="btn btn-g"><i class="fa-solid fa-arrow-left"></i>Kembali</button>
@@ -325,7 +396,7 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
     <div id="auth" class="p-8 text-center space-y-4 max-w-md mx-auto my-auto">
       <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto" style="background:var(--ol);border:1px solid var(--o);color:var(--od)"><i class="fa-solid fa-lock"></i></div>
       <h4 class="text-lg font-extrabold">Verifikasi Akses Guru</h4>
-      <p class="text-xs mut">Masukkan PIN Guru untuk mengelola materi, video, tujuan pembelajaran, dan bank soal. (PIN Demo: <strong>1234</strong>)</p>
+      <p class="text-xs mut">Masukkan PIN Guru untuk mengelola materi, video, tujuan pembelajaran, dan bank soal. <span id="pin-hint">(PIN Demo: <strong>1234</strong>)</span></p>
       <input type="password" id="pin" onkeydown="if(event.key==='Enter')unlock()" placeholder="Masukkan PIN" class="inp text-center font-bold tracking-widest" />
       <button onclick="unlock()" class="btn w-full">Buka Panel Edit Guru</button>
     </div>
@@ -336,7 +407,8 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
         <button onclick="cmsTab('c-tp',this)" class="tab cms-tab">2. Tujuan Pembelajaran</button>
         <button onclick="cmsTab('c-mat',this)" class="tab cms-tab">3. Kartu Materi</button>
         <button onclick="cmsTab('c-soal',this)" class="tab cms-tab">4. Bank Soal Tes</button>
-        <button onclick="cmsTab('c-game',this)" class="tab cms-tab">5. Misi Gamifikasi</button>
+        <button onclick="cmsTab('c-game',this)" class="tab cms-tab">5. Arena Bercabang</button>
+        <button onclick="cmsTab('c-pin',this)" class="tab cms-tab">6. Ganti PIN</button>
       </div>
       <div class="p-5 overflow-y-auto flex-1 space-y-5 text-xs sm:text-sm">
 
@@ -375,14 +447,22 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
           <div id="soal-cms" class="space-y-2"></div>
         </div>
 
+        <div id="c-pin" class="cms-panel hidden space-y-4">
+          <div class="soft space-y-3"><p class="font-bold text-xs" style="color:#8F6004">Ganti PIN Panel Guru</p>
+            <input type="password" id="pin-new" placeholder="PIN baru (minimal 4 karakter)" class="inp" />
+            <input type="password" id="pin-new2" placeholder="Ulangi PIN baru" class="inp" />
+            <div class="flex gap-2"><button onclick="savePin()" class="btn btn-s">Simpan PIN</button><button onclick="resetPin()" class="btn btn-g btn-s">Kembalikan PIN Bawaan</button></div>
+            <p class="text-xs mut">PIN disimpan di perangkat ini saja dan tidak ikut dalam Backup JSON. Catat PIN barumu di tempat aman.</p></div>
+        </div>
         <div id="c-game" class="cms-panel hidden space-y-4">
-          <div class="soft space-y-3"><p class="font-bold text-xs" style="color:#8F6004" id="game-mode">Tambah Misi Gamifikasi Arena</p>
+          <div class="soft space-y-3"><p class="font-bold text-xs" style="color:#8F6004" id="game-mode">Tambah Adegan Arena</p>
             <input type="hidden" id="game-idx" value="-1" />
-            <input type="text" id="gm-l" placeholder="Judul Misi (Contoh: Misi 4 • Etika Komentar)" class="inp" />
-            <textarea id="gm-p" rows="2" placeholder="Deskripsi situasi kasus..." class="inp"></textarea>
-            <input type="text" id="gm-g" placeholder="Tindakan TEPAT (Upstander)..." class="inp" style="background:#ecfdf5;border-color:#6ee7b7" />
-            <input type="text" id="gm-b" placeholder="Tindakan KURANG TEPAT..." class="inp" style="background:#fff1f2;border-color:#fda4af" />
-            <div class="flex gap-2"><button onclick="saveGame()" class="btn btn-s">Simpan Misi</button><button onclick="resetGame()" class="btn btn-g btn-s">Batal</button></div></div>
+            <select id="gm-type" class="inp" onchange="gmType()"><option value="choice">Adegan dengan pilihan</option><option value="end">Akhir cerita</option></select>
+            <input type="text" id="gm-l" placeholder="Judul adegan (Contoh: Babak 2 • Komentar Jahat)" class="inp" />
+            <textarea id="gm-p" rows="2" placeholder="Situasi / narasi..." class="inp"></textarea>
+            <input type="text" id="gm-badge" placeholder="Lencana akhir cerita (Contoh: 🏆 Duta Reda)" class="inp hidden" />
+            <div id="gm-choices" class="space-y-2"><div class="gm-ch space-y-2 p-3 rounded-xl" style="background:#fff;border:1px solid var(--b)"><p class="text-xs font-bold">Pilihan 1</p><input type="text" id="gc1-t" placeholder="Teks pilihan..." class="inp" /><div class="grid grid-cols-2 gap-2"><select id="gc1-k" class="inp"><option value="good">Tepat (Upstander)</option><option value="gray">Kurang menolong</option><option value="bad">Berisiko</option></select><select id="gc1-n" class="inp gm-next"></select></div><input type="text" id="gc1-m" placeholder="Konsekuensi & alasan..." class="inp" /></div><div class="gm-ch space-y-2 p-3 rounded-xl" style="background:#fff;border:1px solid var(--b)"><p class="text-xs font-bold">Pilihan 2</p><input type="text" id="gc2-t" placeholder="Teks pilihan..." class="inp" /><div class="grid grid-cols-2 gap-2"><select id="gc2-k" class="inp"><option value="good">Tepat (Upstander)</option><option value="gray">Kurang menolong</option><option value="bad">Berisiko</option></select><select id="gc2-n" class="inp gm-next"></select></div><input type="text" id="gc2-m" placeholder="Konsekuensi & alasan..." class="inp" /></div><div class="gm-ch space-y-2 p-3 rounded-xl" style="background:#fff;border:1px solid var(--b)"><p class="text-xs font-bold">Pilihan 3 (opsional)</p><input type="text" id="gc3-t" placeholder="Teks pilihan..." class="inp" /><div class="grid grid-cols-2 gap-2"><select id="gc3-k" class="inp"><option value="good">Tepat (Upstander)</option><option value="gray">Kurang menolong</option><option value="bad">Berisiko</option></select><select id="gc3-n" class="inp gm-next"></select></div><input type="text" id="gc3-m" placeholder="Konsekuensi & alasan..." class="inp" /></div><p class="text-xs mut">Adegan pertama dalam daftar menjadi awal cerita. Akhir cerita dengan kode e_bad dipakai bila nyawa habis.</p></div>
+            <div class="flex gap-2"><button onclick="saveGame()" class="btn btn-s">Simpan Adegan</button><button onclick="resetGame()" class="btn btn-g btn-s">Batal</button></div></div>
           <div id="game-cms" class="space-y-2"></div>
         </div>
       </div>
@@ -399,6 +479,7 @@ table.t thead{background:var(--sogan)!important}table.t thead th{color:#FBF3DC!i
   </div>
 </div>
 
+<button id="mute" onclick="SND=!SND;this.textContent=SND?'🔊':'🔇'" class="no-print fixed bottom-4 right-4 z-40 w-10 h-10 rounded-full text-lg shadow-lg" style="background:var(--o);color:#2A1A0C" title="Suara">🔊</button>
 <div id="print-sheet" class="hidden p-8 text-slate-900 bg-white"></div>
 
 <script>
@@ -430,6 +511,7 @@ const DEF = {
     {q:"Urutan langkah teknis yang paling tepat saat menghadapi serangan cyberbullying adalah...",options:["Balas komentar pelaku - Hapus akun - Diam saja","Stop (jangan membalas) - Block akun pelaku - Save bukti screenshot - Tell (lapor guru/orang tua)","Sebarkan balik foto pelaku - Blokir - Lupakan","Ganti nomor HP tanpa menyimpan bukti apa pun"],ans:1},
     {q:"Berdasarkan nilai dalam video 'Reda yang Meredakan', sikap yang tepat ketika melihat teman menjadi korban perundungan adalah...",options:["Menjadi penonton diam agar tidak ikut terbawa masalah","Ikut menertawakan supaya dianggap kompak oleh pelaku","Menjadi Upstander: menguatkan korban, menyuarakan penolakan perundungan, dan melapor ke guru","Membalas pelaku dengan tindakan kasar yang sama"],ans:2},
     {q:"Membagikan tangkapan layar curhatan rahasia teman ke grup publik tanpa izin termasuk bentuk cyberbullying...",options:["Outing","Flaming","Cyberstalking","Trolling"],ans:0}],
+  scenes:[{"id": "s1", "title": "Babak 1 • Meme di Grup Kelas", "prompt": "Mira menolak memberi contekan. Tak lama, Raka mengirim meme foto Mira bertuliskan \"Si Sok Pintar\" ke grup WhatsApp kelas. Belasan teman membalas emoji tertawa. Apa yang kamu lakukan?", "choices": [{"text": "Ikut membalas emoji tertawa agar tidak dikucilkan.", "kind": "bad", "msg": "Ikut tertawa memperkuat pelaku dan membuat Mira merasa semua orang menolaknya.", "next": "s2a"}, {"text": "Membaca saja dan tidak membalas apa pun.", "kind": "gray", "msg": "Diam memang tidak menyakiti, tetapi juga tidak menolong. Pelaku merasa dibiarkan.", "next": "s2b"}, {"text": "Mengirim pesan pribadi ke Mira: \"Aku di pihakmu, kamu baik-baik saja?\"", "kind": "good", "msg": "Menguatkan korban secara pribadi adalah langkah Upstander yang aman dan cepat.", "next": "s2c"}]}, {"id": "s2a", "title": "Babak 2 • Meme Menyebar", "prompt": "Meme itu dibagikan ulang ke Story dan TikTok oleh anak kelas lain. Mira tidak masuk sekolah. Kamu sadar emoji tertawamu ikut berperan.", "choices": [{"text": "Menghapus emoji, lalu minta maaf kepada Mira lewat pesan pribadi.", "kind": "good", "msg": "Mengakui kesalahan dan memperbaikinya menunjukkan keberanian dan empati.", "next": "s3a"}, {"text": "Menyimpan meme lalu mengirimnya ke grup lain untuk bercanda.", "kind": "bad", "msg": "Menyebarkan konten penghinaan memperpanjang luka korban dan melanggar etika digital.", "next": "s3b"}, {"text": "Pura-pura tidak tahu dan berharap masalah hilang sendiri.", "kind": "gray", "msg": "Masalah tidak hilang sendiri. Jejak digital terus beredar.", "next": "s3b"}]}, {"id": "s2b", "title": "Babak 2 • Mira Mulai Menjauh", "prompt": "Mira keluar dari grup kelas. Raka mengirim meme kedua yang lebih kasar dan beberapa teman kembali tertawa.", "choices": [{"text": "Screenshot bukti lalu melapor kepada wali kelas.", "kind": "good", "msg": "SAVE dan TELL adalah langkah tepat: bukti aman dan orang dewasa dapat bertindak.", "next": "s3c"}, {"text": "Menulis di grup: \"Sudah, hentikan, ini tidak lucu.\"", "kind": "good", "msg": "Menolak perundungan secara santun menunjukkan teman lain bahwa ada yang berani bersuara.", "next": "s3d"}, {"text": "Tetap diam karena takut ikut jadi sasaran.", "kind": "bad", "msg": "Rasa takutmu wajar, tetapi diam membuat perundungan terus berlanjut.", "next": "s3b"}]}, {"id": "s2c", "title": "Babak 2 • Pesan Mira", "prompt": "Mira membalas: ia takut ke sekolah. Ia juga menerima DM dari akun anonim yang memaksa meminta uang jajan dan mengancam menyebar fitnah.", "choices": [{"text": "Menyarankan Mira menyimpan screenshot, memblokir akun, dan melapor ke orang tua atau guru BK.", "kind": "good", "msg": "Prinsip SAVE – BLOCK – TELL mengamankan bukti dan menghentikan ancaman.", "next": "s3c"}, {"text": "Menyarankan Mira membalas dengan kata-kata kasar.", "kind": "bad", "msg": "Membalas provokasi hanya memperpanjang konflik dan bisa membuat Mira ikut bermasalah.", "next": "s3d"}, {"text": "Menyarankan Mira menghapus chat dan melupakannya.", "kind": "gray", "msg": "Menghapus bukti membuat pelaporan ke sekolah menjadi sulit.", "next": "s3b"}]}, {"id": "s3a", "title": "Babak 3 • Meme Masih Beredar", "prompt": "Mira menerima permintaan maafmu. Namun meme itu masih ada di beberapa akun.", "choices": [{"text": "Mengajak teman melaporkan konten ke platform dan memberi tahu guru.", "kind": "good", "msg": "Pelaporan bersama adalah aksi Upstander yang nyata untuk menghentikan penyebaran.", "next": "e_good"}, {"text": "Membiarkannya, nanti juga hilang sendiri.", "kind": "gray", "msg": "Konten bisa bertahan lama. Tanpa tindakan, dampaknya terus terasa.", "next": "e_mid"}]}, {"id": "s3b", "title": "Babak 3 • Panggilan Guru BK", "prompt": "Meme sudah viral. Guru BK mengumpulkan siswa yang terlibat dan menanyakan peranmu.", "choices": [{"text": "Jujur mengakui peranmu dan membantu meluruskan keadaan.", "kind": "good", "msg": "Kejujuran membuka jalan pemulihan dan membantu korban mendapat dukungan.", "next": "e_good"}, {"text": "Menyangkal dan menyalahkan Raka sepenuhnya.", "kind": "bad", "msg": "Menyalahkan orang lain menghindari tanggung jawab dan memperburuk keadaan.", "next": "e_bad"}, {"text": "Menunduk dan tidak berkata apa-apa.", "kind": "gray", "msg": "Diam membuat masalah tidak selesai dan korban belum terlindungi.", "next": "e_mid"}]}, {"id": "s3c", "title": "Babak 3 • Wali Kelas Bertindak", "prompt": "Wali kelas memanggil Raka dan Mira dengan pendampingan guru BK. Raka mengaku salah dan meminta maaf dengan tulus.", "choices": [{"text": "Menerima dengan lapang dada dan mengajak teman-teman menjaga kelas yang saling menghormati.", "kind": "good", "msg": "Pemulihan hubungan dan saling menghormati adalah tujuan utama pendidikan karakter.", "next": "e_best"}, {"text": "Merekam momen itu dan mengunggahnya untuk mempermalukan Raka.", "kind": "bad", "msg": "Mempermalukan balik hanya menciptakan siklus perundungan yang baru.", "next": "e_bad"}]}, {"id": "s3d", "title": "Babak 3 • Raka Menyerangmu", "prompt": "Raka kini mengejekmu di grup karena kamu berani bersuara. Beberapa teman menunggu reaksimu.", "choices": [{"text": "Membalas dengan hinaan yang sama.", "kind": "bad", "msg": "Membalas hanya memperpanjang konflik dan membuatmu terlihat sama seperti pelaku.", "next": "e_bad"}, {"text": "Screenshot, keluar dari percakapan, lalu lapor wali kelas.", "kind": "good", "msg": "Langkah tenang dan tepat: bukti terkumpul dan orang dewasa dilibatkan.", "next": "s3c"}, {"text": "Mengajak teman lain ikut menolak perundungan di grup.", "kind": "good", "msg": "Dukungan bersama membuat pelaku sulit meneruskan aksinya.", "next": "s3c"}]}, {"id": "e_best", "ending": true, "title": "Akhir: Kelas Pulih, Kamu Duta Reda", "prompt": "Raka belajar dari kesalahannya, Mira kembali percaya diri, dan kelas membuat kesepakatan saling menghormati di grup. Kamu menunjukkan bahwa satu langkah berani bisa meredakan banyak luka.", "badge": "🏆 Lencana: Duta Reda & Cyber Defender"}, {"id": "e_good", "ending": true, "title": "Akhir: Sahabat yang Berani Bertanggung Jawab", "prompt": "Masalah mulai mereda berkat pelaporan dan kejujuranmu. Masih ada yang perlu dipulihkan, tetapi kamu sudah menjadi bagian dari solusi.", "badge": "🛡️ Lencana: Sahabat Upstander"}, {"id": "e_mid", "ending": true, "title": "Akhir: Masalah Setengah Selesai", "prompt": "Keadaan sedikit membaik, tetapi luka dan jejak digital belum benar-benar hilang. Coba jalur lain untuk menemukan langkah yang lebih menolong.", "badge": "⭐ Lencana: Pengamat Digital"}, {"id": "e_bad", "ending": true, "title": "Akhir: Siklus Perundungan Berlanjut", "prompt": "Konflik makin besar dan semua pihak ikut terluka. Ingat: membalas, menyebarkan, atau menyangkal tidak pernah menyelesaikan perundungan. Mainkan ulang dan pilih jalur berbeda.", "badge": "🌧️ Lencana: Belajar dari Konsekuensi"}],
   missions:[
     {level:"Misi 1 • Solidaritas Kejujuran & Grup Kelas",prompt:"Temanmu yang jujur menolak memberi contekan saat ujian lalu diolok-olok 'anak sok pinter' dan dijadikan meme di grup WhatsApp kelas.",choices:[
       {text:"Ikut mengirim emoji tertawa agar tidak dikucilkan pelaku.",ok:false,msg:"Kurang tepat! Ikut menertawakan memperkuat aksi pelaku (reinforcer)."},
@@ -461,7 +543,7 @@ const STEPS = [["Apersepsi","fa-film"],["Pemantik","fa-circle-question"],["Tujua
 
 // ===== PENYIMPANAN =====
 let cms = load();
-function load(){ try{ const r = localStorage.getItem(KEY); if(r) return JSON.parse(r); }catch(e){} return JSON.parse(JSON.stringify(DEF)); }
+function load(){ try{ const r = localStorage.getItem(KEY); if(r){ const o=JSON.parse(r); if(!o.scenes) o.scenes=JSON.parse(JSON.stringify(DEF.scenes)); return o; } }catch(e){} return JSON.parse(JSON.stringify(DEF)); }
 function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(cms)); }catch(e){ console.warn(e); } applyCms(); }
 
 function applyCms(){
@@ -480,7 +562,7 @@ function applyCms(){
   (window.requestIdleCallback || setTimeout)(()=>{
     renderTujuan(); renderCards();
     renderAssess("pre-q","pre"); renderAssess("post-q","post");
-    gIdx=0; gLives=3; gStreak=0; gScore=0; renderGame();
+    gReset();
   }, {timeout:300});
 }
 function loadVideo(){ const f=$("video"); if(f.dataset.src && f.getAttribute("src")!==f.dataset.src) f.src=f.dataset.src; }
@@ -508,10 +590,11 @@ function renderNav(){
   $("nav").innerHTML = STEPS.map((s,i)=>{ const id=i+1, on=st.step===id, d=st.done[id];
     return `<button onclick="go(${id})" class="nv ${on?'on':d?'done':''}"><i class="fa-solid ${d&&!on?'fa-circle-check':s[1]}"></i><span>${id}. ${s[0]}</span></button>`; }).join("");
   $("progress").style.width = Math.round(st.step/9*100)+"%";
+  checkRewards();
 }
 function renderBadges(){
   const n = Object.keys(st.qAns).length;
-  $("badges").innerHTML = [["Pre-Test",st.pre!==null,4],["Gamifikasi Arena",st.gamePlayed,6],[`Kuis Interaktif (${n}/4)`,n===4,7],["Post-Test",st.post!==null,8]].map(([l,d,s])=>`
+  $("badges").innerHTML = [["Pre-Test",st.pre!==null,4],["Gamifikasi Arena",st.gamePlayed,6],["Kampanye Bonus",!!st.campaign,6],[`Kuis Interaktif (${n}/4)`,n===4,7],["Post-Test",st.post!==null,8]].map(([l,d,s])=>`
     <button type="button" onclick="go(${s})" class="btn btn-s" style="${d?'background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7':'background:var(--ol);color:#8F6004;border:1px solid #E0A10080'}">
     <i class="fa-solid ${d?'fa-circle-check':'fa-clock'}"></i>${l}: ${d?'Selesai':'Belum'}</button>`).join("");
 }
@@ -600,33 +683,96 @@ function renderCards(){
 }
 
 // ===== SINTAK 6 =====
-let gIdx=0, gLives=3, gStreak=0, gScore=0;
+let gDep=false,gCur=null,gPath=[],gLives=3,gStreak=0,gScore=0,gFound={};
 function hud(){ $("g-lives").textContent = "❤️".repeat(Math.max(0,gLives)) + "🤍".repeat(Math.max(0,3-gLives)); $("g-streak").textContent=gStreak; $("g-score").textContent=gScore; st.game=gScore; }
+const gById = id => cms.scenes.find(x=>x.id===id);
+function gReset(){ gCur = cms.scenes[0] ? cms.scenes[0].id : null; gPath=[]; gLives=3; gStreak=0; gScore=0; gDep=false; renderGame(); }
+const KIND = {good:["ok","✅ Langkah Upstander"],gray:["gr","⚠️ Kurang menolong"],bad:["no","❌ Berisiko"]};
 function renderGame(){
   hud();
-  const box = $("arena"), M = cms.missions;
-  if(gIdx>=M.length || gLives<=0){
-    st.gamePlayed = true; st.done[6] = true; renderNav();
-    const b = gScore>=250 ? "🏆 Lencana: Duta Reda & Cyber Defender" : gScore>=150 ? "🛡️ Lencana: Sahabat Upstander" : "⭐ Lencana: Pengamat Digital";
-    box.innerHTML = `<div class="text-center space-y-3 py-4"><div class="chip" style="background:var(--ol);border-color:var(--o);color:#8F6004;font-weight:700">${b}</div>
-      <h3 class="text-2xl font-extrabold">Misi Gamifikasi Selesai!</h3><p class="text-sm mut">Total Skor Arena Kamu: <strong class="text-lg" style="color:#047857">${gScore} Poin</strong></p>
-      <button onclick="gIdx=0;gLives=3;gStreak=0;gScore=0;renderGame()" class="btn btn-g"><i class="fa-solid fa-rotate-right" style="color:var(--od)"></i>Mainkan Ulang Misi</button></div>`;
+  const box = $("arena"); let sc = gById(gCur);
+  if(gLives<=0 && !(sc&&sc.ending)) sc = gById("e_bad");
+  if(!sc || sc.ending){
+    const ends = cms.scenes.filter(x=>x.ending);
+    if(sc) gFound[sc.id]=1; const n = Object.keys(gFound).filter(k=>gById(k)).length;
+    st.gamePlayed = true; st.done[6] = true; st.ending = sc ? sc.title : "Selesai"; renderNav(); depositBoard(); if(sc&&/best|good/.test(sc.id)){ sfx("win"); burst(); }
+    const trail = gPath.map(p=>`<li>${KIND[p.kind][1].slice(0,2)} ${esc(p.text)}</li>`).join("");
+    box.innerHTML = `<div class="space-y-3 py-2"><div class="text-center"><div class="chip" style="background:var(--ol);border-color:var(--o);font-weight:700">${esc(sc&&sc.badge||"⭐ Arena selesai")}</div>
+      <h3 class="text-xl font-extrabold mt-2">${esc(sc?sc.title:"Cerita selesai")}</h3></div>
+      <p class="text-sm leading-relaxed bg-white p-4 rounded-xl" style="border:1px solid var(--b)">${esc(sc?sc.prompt:"")}</p>
+      <p class="text-sm">Skor arena: <strong>${gScore} poin</strong> • Akhir cerita ditemukan: <strong>${n} dari ${ends.length}</strong></p>
+      ${trail?`<div><p class="text-xs font-bold mb-1">Jalur yang kamu pilih:</p><ol class="text-xs space-y-1 list-decimal pl-5">${trail}</ol></div>`:""}
+      <p class="text-xs mut">Coba jalur lain untuk menemukan akhir cerita yang berbeda.</p>
+      <div class="text-center"><button onclick="gReset()" class="btn btn-g"><i class="fa-solid fa-rotate-right" style="color:var(--od)"></i>Mainkan Ulang, Pilih Jalur Lain</button></div></div>`;
     return;
   }
-  const m = M[gIdx];
-  box.innerHTML = `<div class="space-y-4"><div class="flex items-center justify-between"><span class="text-xs font-bold" style="color:var(--od)">${esc(m.level)}</span><span class="text-xs mut">Tantangan ${gIdx+1} dari ${M.length}</span></div>
-    <p class="text-sm sm:text-base font-semibold leading-relaxed bg-white p-4 rounded-xl" style="border:1px solid var(--b)">${esc(m.prompt)}</p>
-    <div class="space-y-2">${m.choices.map((c,i)=>`<button onclick="answerGame(${i})" class="opt w-full text-left" style="padding:.85rem">${esc(c.text)}</button>`).join("")}</div>
+  box.innerHTML = `<div class="space-y-4"><div class="flex items-center justify-between"><span class="text-xs font-bold" style="color:var(--od)">${esc(sc.title)}</span><span class="text-xs mut">Keputusan ke-${gPath.length+1}</span></div>
+    <p class="text-sm sm:text-base font-semibold leading-relaxed bg-white p-4 rounded-xl" style="border:1px solid var(--b)">${esc(sc.prompt)}</p>
+    <div class="space-y-2">${sc.choices.map((c,i)=>`<button onclick="answerGame(${i})" class="opt w-full text-left" style="padding:.85rem">${esc(c.text)}</button>`).join("")}</div>
     <div id="g-fb" class="hidden note"></div></div>`;
 }
 function answerGame(i){
-  const c = cms.missions[gIdx].choices[i], fb = $("g-fb");
+  const c = gById(gCur).choices[i], fb = $("g-fb");
   if(!fb.classList.contains("hidden")) return;
-  fb.classList.remove("hidden");
-  if(c.ok){ gStreak++; gScore += 100 + (gStreak>1?25:0); fb.classList.add("ok"); } else { gLives--; gStreak=0; fb.classList.add("no"); }
-  hud();
-  fb.innerHTML = `<p>${esc(c.msg)}</p><button onclick="gIdx++;renderGame()" class="btn btn-s mt-2.5">Lanjut →</button>`;
+  fb.classList.remove("hidden"); const k = KIND[c.kind]||KIND.gray; fb.classList.add(k[0]);
+  if(c.kind==="good"){ gStreak++; gScore += 100 + (gStreak>1?25:0); } else if(c.kind==="bad"){ gLives--; gStreak=0; } else { gStreak=0; gScore+=40; }
+  gPath.push(c); hud(); sfx(c.kind==='good'?'ok':c.kind==='bad'?'bad':'gr');
+  fb.innerHTML = `<p class="font-bold">${k[1]}</p><p class="mt-1">${esc(c.msg)}</p><button onclick="gCur='${esc(c.next||"")}';renderGame()" class="btn btn-s mt-2.5">Lanjut →</button>`;
 }
+
+
+// ===== TANTANGAN KAMPANYE =====
+function cpWrap(c,t,x,y,w,lh,maxL){ const words=t.split(/\s+/); let line="",n=0; for(const wd of words){ const tst=line?line+" "+wd:wd; if(c.measureText(tst).width>w&&line){ c.fillText(line,x,y); y+=lh; line=wd; if(++n>=maxL) return y; } else line=tst; } c.fillText(line,x,y); return y+lh; }
+function makeCampaign(){
+  const sl=$("cp-slogan").value.trim(), ps=$("cp-pesan").value.trim(), tema=$("cp-tema").value, er=$("cp-err");
+  const ok=[...document.querySelectorAll(".cp-chk")].every(x=>x.checked);
+  if(sl.length<8||ps.length<20||!ok){ er.textContent="Isi slogan (min. 8 huruf), pesan (min. 20 huruf), dan centang ketiga pemeriksaan kampanye."; er.classList.remove("hidden"); return; }
+  er.classList.add("hidden");
+  const cv=$("cp-canvas"), c=cv.getContext("2d"), F="'Plus Jakarta Sans',sans-serif";
+  c.fillStyle="#E0A100"; c.fillRect(0,0,1080,1080);
+  c.fillStyle="#2A1A0C"; for(let y=0;y<1080;y+=90) for(let x=((y/90)%2)*45;x<1080;x+=90){ c.beginPath(); c.moveTo(x+22,y+5); c.lineTo(x+40,y+30); c.lineTo(x+22,y+55); c.lineTo(x+4,y+30); c.fill(); }
+  c.fillStyle="#FBF3DC"; c.beginPath(); c.roundRect(80,80,920,920,48); c.fill();
+  c.fillStyle="#2A1A0C"; c.fillRect(80,80,920,16);
+  c.textAlign="center"; c.fillStyle="#B07F00"; c.font="800 34px "+F; c.fillText("#STOPCYBERBULLYING",540,190);
+  c.fillStyle="#E0A100"; c.fillRect(440,215,200,8);
+  c.fillStyle="#2A1A0C"; c.font="800 78px "+F; let y=cpWrap(c,sl,540,340,780,92,4);
+  c.fillStyle="#5C4630"; c.font="500 38px "+F; cpWrap(c,ps,540,y+40,760,54,5);
+  c.fillStyle="#2A1A0C"; c.beginPath(); c.roundRect(240,820,600,64,32); c.fill();
+  c.fillStyle="#FBF3DC"; c.font="700 28px "+F; c.fillText(tema,540,862);
+  c.fillStyle="#8F6004"; c.font="600 24px "+F; c.fillText("CyberShield 8"+(st.name?" • "+st.name:"")+(st.cls?" • "+st.cls:""),540,950);
+  cv.classList.remove("hidden"); $("cp-dl").classList.remove("hidden");
+  st.campaign={slogan:sl,pesan:ps,tema}; renderNav();
+}
+function dlCampaign(){ const a=document.createElement("a"); a.href=$("cp-canvas").toDataURL("image/png"); a.download="Kampanye_CyberShield8.png"; a.click(); }
+
+
+// ===== PIN, SUARA, STIKER, MOTIVASI, PAPAN SKOR =====
+function getPin(){ try{ return localStorage.getItem("cs8_pin")||"1234"; }catch(e){ return "1234"; } }
+function hintPin(){ try{ if(localStorage.getItem("cs8_pin")) $("pin-hint").textContent=""; }catch(e){} }
+function savePin(){ const a=$("pin-new").value.trim(), b=$("pin-new2").value.trim(); if(a.length<4){ alert("PIN minimal 4 karakter."); return; } if(a!==b){ alert("Kedua PIN tidak sama."); return; }
+  try{ localStorage.setItem("cs8_pin",a); }catch(e){ alert("PIN tidak dapat disimpan di perangkat ini."); return; } $("pin-new").value=$("pin-new2").value=""; hintPin(); alert("PIN berhasil diganti."); }
+function resetPin(){ if(!confirm("Kembalikan PIN ke bawaan (1234)?")) return; try{ localStorage.removeItem("cs8_pin"); }catch(e){} location.reload(); }
+let SND=true, AC;
+function sfx(t){ if(!SND) return; try{ AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+  const q={ok:[[660,.08],[880,.12]],gr:[[440,.12]],bad:[[220,.18],[180,.2]],pop:[[523,.07],[659,.07],[784,.1]],win:[[523,.1],[659,.1],[784,.1],[1047,.25]]}[t]||[]; let at=AC.currentTime;
+  q.forEach(([f,d])=>{ const o=AC.createOscillator(), g=AC.createGain(); o.type="triangle"; o.frequency.value=f; g.gain.setValueAtTime(.15,at); g.gain.exponentialRampToValueAtTime(.001,at+d); o.connect(g); g.connect(AC.destination); o.start(at); o.stop(at+d); at+=d; }); }catch(e){} }
+function burst(){ const em=["🎉","⭐","🏵️","✨"]; for(let i=0;i<16;i++){ const e=document.createElement("span"); e.textContent=em[i%4]; e.style.cssText=`position:fixed;top:-5vh;left:${Math.random()*100}vw;font-size:${18+Math.random()*16}px;z-index:60;pointer-events:none;animation:fall ${1.6+Math.random()*1.4}s ease-in forwards`; document.body.appendChild(e); setTimeout(()=>e.remove(),3200); } }
+const STK=[["Parang","🏵️"],["Kawung","🔶"],["Mega Mendung","☁️"],["Truntum","⭐"],["Sekar Jagad","🌸"],["Gedog","🧵"],["Lasem","🐉"],["Sido Mukti","🏅"],["Duta Reda","🛡️"]];
+function checkRewards(){ st.rw=st.rw||{};
+  Object.keys(st.done).forEach(k=>{ if(st.done[k]&&!st.rw[k]&&STK[k-1]){ st.rw[k]=1; const t=document.createElement("div"); t.textContent=`${STK[k-1][1]} Stiker Batik ${STK[k-1][0]} didapat!`;
+    t.style.cssText="position:fixed;top:5rem;left:50%;z-index:70;background:#2A1A0C;color:#FBF3DC;padding:.7rem 1.2rem;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 8px 24px #0004;animation:pop 2.8s ease forwards;pointer-events:none"; document.body.appendChild(t); setTimeout(()=>t.remove(),2900); sfx("pop"); if(+k===9) burst(); } });
+  const el=$("stickers"); if(el) el.innerHTML=STK.map((x,i)=>st.rw[i+1]?`<span class="chip" style="background:var(--ol);border-color:var(--o);font-weight:700">${x[1]} ${x[0]}</span>`:`<span class="chip" style="opacity:.4">🔒 ${i+1}</span>`).join(""); }
+const MOT=["Satu pesan baik darimu bisa menjadi alasan temanmu bertahan hari ini.","Berani berkata \"tidak\" pada perundungan itu keren, bukan tanda sok jagoan.","Kamu tidak harus sempurna untuk menjadi teman yang menguatkan.","Jejak digital yang baik adalah hadiah untuk dirimu di masa depan.","Diam bukan netral. Satu langkah kecil bisa meredakan banyak luka.","Kelas yang saling menjaga dimulai dari satu orang yang mau memulai.","Meminta bantuan orang dewasa adalah tanda kuat, bukan lemah.","Kata-kata di layar tetap menyentuh hati orang sungguhan."];
+function newMot(){ $("mot-text").textContent=MOT[Math.floor(Math.random()*MOT.length)]; sfx("pop"); }
+function loadBoard(){ try{ return JSON.parse(localStorage.getItem("cs8_board")||"{}"); }catch(e){ return {}; } }
+function renderBoard(){ const b=loadBoard(), teams=[...$("bd-team").options].map(o=>o.value).filter(Boolean), mx=Math.max(1,...teams.map(t=>(b[t]||{}).pts||0));
+  const rows=teams.map(t=>({t,p:(b[t]||{}).pts||0,r:(b[t]||{}).runs||0})).sort((a,c)=>c.p-a.p), med=["🥇","🥈","🥉"];
+  $("bd-list").innerHTML=rows.map((x,i)=>`<div class="text-xs"><div class="flex justify-between font-bold"><span>${med[i]&&x.p?med[i]:"▫️"} Kelompok ${esc(x.t)} <span class="mut font-normal">• ${x.p>=500?"🛡️ Tim Tangguh":x.p>=250?"⭐ Tim Solid":"🌱 Tim Tumbuh"}</span></span><span>${x.p} poin (${x.r}x main)</span></div><div style="background:#EFE5D1;border-radius:99px;height:8px"><div style="width:${Math.round(x.p/mx*100)}%;background:var(--o);height:8px;border-radius:99px"></div></div></div>`).join(""); }
+function depositBoard(){ if(!st.team||gDep||gScore<=0) return; gDep=true; const b=loadBoard(); b[st.team]={pts:((b[st.team]||{}).pts||0)+gScore,runs:((b[st.team]||{}).runs||0)+1}; try{ localStorage.setItem("cs8_board",JSON.stringify(b)); }catch(e){} renderBoard(); }
+function resetBoard(){ if(!unlocked){ alert("Reset papan skor hanya dapat dilakukan guru. Buka Panel Guru terlebih dahulu."); return; } if(!confirm("Hapus seluruh skor kelompok?")) return; try{ localStorage.removeItem("cs8_board"); }catch(e){} renderBoard(); }
+let MOOD="-"; function setMood(v,b){ MOOD=v; document.querySelectorAll(".mood-btn").forEach(x=>x.style.background=""); b.style.background="var(--o)"; sfx("pop"); }
+function refText(){ return `Perasaan: ${MOOD}; Ingin dipahami lebih baik: ${$("ref-bingung").value}; Harapan untuk guru: ${$("ref-asp").value.trim()||"-"}`; }
+function svText(){ return `Seru: ${$("sv-1").value}; Mudah dipahami: ${$("sv-2").value}; Lebih berani: ${$("sv-3").value}; Cara belajar paling membantu: ${$("sv-fav").value}; Bagian kurang jelas: ${$("sv-sulit").value}; Waktu belajar: ${$("sv-waktu").value}`+($("sv-saran").value.trim()?`; Saran: ${$("sv-saran").value.trim()}`:""); }
 
 // ===== SINTAK 7 =====
 function renderQuick(){
@@ -648,7 +794,7 @@ function validate(){
   syncId("ref");
   const q1=$("ref-q1").value.trim(), q2=$("ref-q2").value.trim();
   if(!st.name){ alert("Silakan isi Nama Lengkap Siswa terlebih dahulu."); $("s-name-ref").focus(); return null; }
-  if(!q1||!q2){ alert("Silakan isi kedua pertanyaan refleksi terlebih dahulu."); return null; }
+  if(!q1||!q2){ alert("Silakan isi pertanyaan nomor 2 dan 3 pada refleksi terlebih dahulu."); return null; }
   if(!$("ikrar").checked){ alert("Silakan centang pernyataan komitmen warga digital terlebih dahulu."); return null; }
   const miss = [];
   if(st.pre===null) miss.push("Pre-Test"); if(!st.gamePlayed) miss.push("Gamifikasi Arena");
@@ -660,12 +806,12 @@ function validate(){
     tgl:new Date().toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"})};
 }
 function reportHtml(d){
-  const m = cms.meta, rows = [["Nama Peserta Didik",st.name],["Kelas",st.cls],["Skor Pre-Test (Asesmen Awal)",d.preText],["Skor Gamifikasi (CyberShield Arena)",st.game+" Poin"],["Kuis Interaktif (Klasifikasi Kasus)",st.qCorrect+" / 4 Kasus Benar"],["Skor Post-Test (Evaluasi Akhir)",d.postText],["Peningkatan Hasil Belajar",d.deltaText],["Rating Kepuasan Media",st.rating+" / 5 Bintang"]];
+  const m = cms.meta, rows = [["Nama Peserta Didik",st.name],["Kelas",st.cls],["Skor Pre-Test (Asesmen Awal)",d.preText],["Skor Gamifikasi (CyberShield Arena)",st.game+" Poin"],["Akhir Cerita Arena",st.ending||"-"],["Slogan Kampanye (Bonus)",st.campaign?st.campaign.slogan:"-"],["Kelompok Batik",st.team||"-"],["Kesan & Aspirasi Siswa",refText()],["Angket Kepuasan",svText()],["Kuis Interaktif (Klasifikasi Kasus)",st.qCorrect+" / 4 Kasus Benar"],["Skor Post-Test (Evaluasi Akhir)",d.postText],["Peningkatan Hasil Belajar",d.deltaText],["Rating Kepuasan Media",st.rating+" / 5 Bintang"]];
   return `<div class="flex flex-wrap justify-between items-start gap-2 pb-4 mb-4" style="border-bottom:2px solid var(--e)">
     <div><p class="text-xs font-bold uppercase tracking-wider" style="color:var(--od)">${esc(m.school)}</p><h3 class="text-lg sm:text-xl font-extrabold">LAPORAN HASIL BELAJAR INTERAKTIF (${esc(m.title.toUpperCase())})</h3><p class="text-xs mut">Mata Pelajaran: ${esc(m.subject)} (${esc(m.grade)})</p></div>
     <div class="text-xs mut"><p><strong>Tanggal:</strong> ${d.tgl}</p><p><strong>Status:</strong> Selesai (9 Sintak)</p></div></div>
     <table class="t mb-4" style="font-size:.85rem">${rows.map((r,i)=>`<tr ${i%2?'':'style="background:var(--c)"'}><td class="font-bold" style="width:40%">${r[0]}</td><td>${esc(r[1])}</td></tr>`).join("")}</table>
-    <div class="soft space-y-2.5 text-xs sm:text-sm"><p><strong>Hipotesis Awal (Pertanyaan Pemantik):</strong> ${esc(d.pemantik)}</p><p><strong>Refleksi Pemahaman & Karakter:</strong> ${esc(d.q1)}</p><p><strong>Komitmen Aksi Nyata Upstander:</strong> ${esc(d.q2)}</p></div>
+    <div class="soft space-y-2.5 text-xs sm:text-sm"><p><strong>Hipotesis Awal (Pertanyaan Pemantik):</strong> ${esc(d.pemantik)}</p><p><strong>Hal Baru yang Kupelajari:</strong> ${esc(d.q1)}</p><p><strong>Yang Akan Kulakukan Jika Melihat Perundungan:</strong> ${esc(d.q2)}</p></div>
     <div class="grid grid-cols-2 gap-6 pt-6 text-xs text-center"><div><p>Mengetahui,</p><p class="font-bold">Guru Mata Pelajaran ${esc(m.subject)}</p><div class="h-14"></div><p class="font-bold underline">${esc(m.author)}</p></div>
     <div><p>Kenduruan, ${d.tgl}</p><p class="font-bold">Peserta Didik</p><div class="h-14"></div><p class="font-bold underline">${esc(st.name)}</p></div></div>`;
 }
@@ -689,7 +835,7 @@ async function downloadPDF(){
   doc.setFontSize(13); doc.text("LAPORAN HASIL BELAJAR INTERAKTIF (CYBERSHIELD 8)", mg+5, y+14);
   doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.text(`${m.subject} (${m.grade}) • Materi: Cyberbullying`, mg+5, y+20);
   y += 31;
-  const rows = [["Nama Peserta Didik",st.name],["Kelas",st.cls],["Tanggal Pengerjaan",d.tgl],["Skor Pre-Test (Asesmen Awal)",d.preText],["Skor Gamifikasi (CyberShield Arena)",st.game+" Poin"],["Kuis Interaktif (Deteksi Kasus)",st.qCorrect+" / 4 Kasus Benar"],["Skor Post-Test (Evaluasi Akhir)",d.postText],["Peningkatan Hasil Belajar",d.deltaText],["Rating Kepuasan Media (User Satisfaction)",st.rating+" / 5 Bintang"]];
+  const rows = [["Nama Peserta Didik",st.name],["Kelas",st.cls],["Tanggal Pengerjaan",d.tgl],["Skor Pre-Test (Asesmen Awal)",d.preText],["Skor Gamifikasi (CyberShield Arena)",st.game+" Poin"],["Akhir Cerita Arena",st.ending||"-"],["Slogan Kampanye (Bonus)",st.campaign?st.campaign.slogan:"-"],["Kelompok Batik",st.team||"-"],["Kesan & Aspirasi Siswa",refText()],["Angket Kepuasan",svText()],["Kuis Interaktif (Deteksi Kasus)",st.qCorrect+" / 4 Kasus Benar"],["Skor Post-Test (Evaluasi Akhir)",d.postText],["Peningkatan Hasil Belajar",d.deltaText],["Rating Kepuasan Media (User Satisfaction)",st.rating+" / 5 Bintang"]];
   rows.forEach((r,i)=>{
     if(i%2===0){ doc.setFillColor(253,248,238); doc.rect(mg,y,cw,8,"F"); }
     doc.setDrawColor(214,197,165); doc.rect(mg,y,cw*.45,8); doc.rect(mg+cw*.45,y,cw*.55,8);
@@ -697,7 +843,7 @@ async function downloadPDF(){
     doc.setFont("helvetica", i>=6&&i<=7?"bold":"normal"); doc.text(String(r[1]),mg+cw*.45+3,y+5.5); y+=8;
   });
   y += 7;
-  [["1. Catatan Pemantik Awal (Sintak 2):",d.pemantik],["2. Refleksi Pemahaman & Karakter:",d.q1],["3. Komitmen Aksi Nyata Upstander:",d.q2]].forEach(([lb,tx])=>{
+  [["1. Catatan Pemantik Awal (Sintak 2):",d.pemantik],["2. Hal Baru yang Kupelajari:",d.q1],["3. Yang Akan Kulakukan Jika Melihat Perundungan:",d.q2]].forEach(([lb,tx])=>{
     const lines = doc.splitTextToSize(tx, cw-6), h = 8+lines.length*4.8;
     if(y+h>265){ doc.addPage(); y=20; }
     doc.setFillColor(253,248,238); doc.setDrawColor(214,197,165); doc.rect(mg,y,cw,h,"FD");
@@ -726,8 +872,8 @@ function openModal(){
 function closeModal(){ $("teacher-modal").classList.add("hidden"); }
 function unlock(){
   const p = $("pin").value.trim();
-  if(p==="1234" || p.toLowerCase()==="kenduruan"){ unlocked=true; $("auth").classList.add("hidden"); $("cms").classList.remove("hidden"); fillCms(); }
-  else alert("PIN salah. Gunakan PIN default: 1234");
+  if(p===getPin()){ unlocked=true; $("auth").classList.add("hidden"); $("cms").classList.remove("hidden"); fillCms(); }
+  else alert("PIN salah.");
 }
 function cmsTab(id, btn){
   document.querySelectorAll(".cms-panel").forEach(p=>p.classList.add("hidden")); $(id).classList.remove("hidden");
@@ -781,20 +927,31 @@ function editSoal(i){ const t=cms.questions[i]; $("soal-idx").value=i; $("soal-m
 function delSoal(i){ if(cms.questions.length<=1){ alert("Minimal harus tersisa 1 soal."); return; } if(!confirm("Hapus soal ini?")) return; cms.questions.splice(i,1); persist(); listSoal(); }
 function resetSoal(){ $("soal-idx").value=-1; $("soal-mode").textContent="Tambah Soal Pre-Test & Post-Test"; $("soal-q").value=""; [0,1,2,3].forEach(k=>$("so-"+k).value=""); $("soal-ans").value=0; }
 // Game
-function listGame(){ editList("game-cms", cms.missions, t=>esc(t.level), t=>esc(t.prompt), "editGame", "delGame"); }
+function gmType(){ const e=$("gm-type").value==="end"; $("gm-choices").classList.toggle("hidden",e); $("gm-badge").classList.toggle("hidden",!e); }
+function fillNext(){ const o='<option value="">(akhir permainan)</option>'+cms.scenes.map(x=>`<option value="${esc(x.id)}">${esc(x.title)}${x.ending?" [AKHIR]":""}</option>`).join(""); [1,2,3].forEach(n=>$("gc"+n+"-n").innerHTML=o); }
+function listGame(){ fillNext(); editList("game-cms", cms.scenes, t=>(t.ending?"🏁 ":"")+esc(t.title), t=>esc(t.prompt), "editGame", "delGame"); }
 function saveGame(){
-  const i=+$("game-idx").value, level=$("gm-l").value.trim(), prompt=$("gm-p").value.trim(), good=$("gm-g").value.trim(), bad=$("gm-b").value.trim();
-  if(!level||!prompt||!good||!bad){ alert("Lengkapi semua kolom misi gamifikasi."); return; }
-  const o = {level, prompt, choices:[{text:bad,ok:false,msg:"Kurang tepat! Tindakan ini berpotensi memperpanjang konflik."},{text:good,ok:true,msg:"Tepat sekali! Kamu menerapkan sikap Upstander dan perlindungan digital."}]};
-  if(i>=0) cms.missions[i]=o; else cms.missions.push(o);
+  const i=+$("game-idx").value, end=$("gm-type").value==="end", title=$("gm-l").value.trim(), prompt=$("gm-p").value.trim();
+  if(!title||!prompt){ alert("Lengkapi judul dan narasi adegan."); return; }
+  const id = i>=0 ? cms.scenes[i].id : "s"+Date.now().toString(36); let o;
+  if(end){ o={id,ending:true,title,prompt,badge:$("gm-badge").value.trim()||"⭐ Arena selesai"}; }
+  else{
+    const choices=[1,2,3].map(n=>({text:$("gc"+n+"-t").value.trim(),kind:$("gc"+n+"-k").value,msg:$("gc"+n+"-m").value.trim(),next:$("gc"+n+"-n").value})).filter(c=>c.text);
+    if(choices.length<2||choices.some(c=>!c.msg)){ alert("Isi minimal 2 pilihan, masing-masing dengan konsekuensi."); return; }
+    o={id,title,prompt,choices};
+  }
+  if(i>=0) cms.scenes[i]=o; else cms.scenes.push(o);
   resetGame(); persist(); listGame();
 }
 function editGame(i){
-  const t=cms.missions[i], g=t.choices.find(c=>c.ok)||t.choices[0], b=t.choices.find(c=>!c.ok)||t.choices[1]||t.choices[0];
-  $("game-idx").value=i; $("game-mode").textContent=`Edit Misi Gamifikasi #${i+1}`; $("gm-l").value=t.level; $("gm-p").value=t.prompt; $("gm-g").value=g.text; $("gm-b").value=b.text;
+  const t=cms.scenes[i]; fillNext(); $("game-idx").value=i; $("game-mode").textContent=`Edit Adegan #${i+1}`;
+  $("gm-type").value=t.ending?"end":"choice"; $("gm-l").value=t.title; $("gm-p").value=t.prompt; $("gm-badge").value=t.badge||"";
+  [1,2,3].forEach(n=>{ const c=(t.choices||[])[n-1]||{text:"",kind:"good",msg:"",next:""}; $("gc"+n+"-t").value=c.text; $("gc"+n+"-k").value=c.kind; $("gc"+n+"-m").value=c.msg; $("gc"+n+"-n").value=c.next||""; });
+  gmType();
 }
-function delGame(i){ if(cms.missions.length<=1){ alert("Minimal harus tersisa 1 misi."); return; } if(!confirm("Hapus misi ini?")) return; cms.missions.splice(i,1); persist(); listGame(); }
-function resetGame(){ $("game-idx").value=-1; $("game-mode").textContent="Tambah Misi Gamifikasi Arena"; ["gm-l","gm-p","gm-g","gm-b"].forEach(id=>$(id).value=""); }
+function delGame(i){ if(cms.scenes.length<=2){ alert("Minimal harus tersisa 2 adegan."); return; } if(!confirm("Hapus adegan ini? Pilihan yang menuju adegan ini akan menjadi akhir permainan.")) return;
+  const id=cms.scenes[i].id; cms.scenes.splice(i,1); cms.scenes.forEach(x=>(x.choices||[]).forEach(c=>{ if(c.next===id) c.next=""; })); persist(); listGame(); }
+function resetGame(){ $("game-idx").value=-1; $("game-mode").textContent="Tambah Adegan Arena"; $("gm-type").value="choice"; ["gm-l","gm-p","gm-badge"].forEach(id=>$(id).value=""); [1,2,3].forEach(n=>{ $("gc"+n+"-t").value=""; $("gc"+n+"-m").value=""; $("gc"+n+"-k").value="good"; $("gc"+n+"-n").value=""; }); gmType(); }
 // Backup / restore
 function exportJson(){
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(cms,null,2)],{type:"application/json"}));
@@ -804,7 +961,7 @@ function importJson(e){
   const f = e.target.files[0]; if(!f) return;
   const r = new FileReader();
   r.onload = ev => { try{ const p = JSON.parse(ev.target.result);
-      if(p.meta && p.questions && p.tujuan && p.materiCards && p.missions){ cms=p; persist(); fillCms(); alert("Data materi & soal berhasil dipulihkan dari file JSON!"); }
+      if(p.meta && p.questions && p.tujuan && p.materiCards && (p.scenes||p.missions)){ cms=p; if(!cms.scenes) cms.scenes=JSON.parse(JSON.stringify(DEF.scenes)); persist(); fillCms(); alert("Data materi & soal berhasil dipulihkan dari file JSON!"); }
       else alert("Format file JSON tidak sesuai."); }catch(err){ alert("Gagal membaca file JSON."); } };
   r.readAsText(f);
 }
@@ -817,6 +974,7 @@ function resetAll(){
 const clsOpts = CLASSES.map(c=>`<option value="${c}">Kelas ${c}</option>`).join("");
 $("s-class").innerHTML = clsOpts; $("s-class-ref").innerHTML = clsOpts;
 $("pemantik-list").innerHTML = PEMANTIK.map((p,i)=>`<div class="soft space-y-2" style="border-color:#E0A10066"><span class="w-7 h-7 rounded-lg text-[#2A1A0C] font-extrabold text-xs flex items-center justify-center" style="background:var(--o)">?${i+1}</span><h3 class="font-bold text-sm">${p[0]}</h3><p class="text-xs mut leading-relaxed">${p[1]}</p></div>`).join("");
+newMot(); renderBoard(); hintPin(); checkRewards();
 $("stars").innerHTML = [1,2,3,4,5].map(n=>`<button type="button" onclick="setRating(${n})" class="star-btn text-2xl transition" style="color:#cbd5e1">★</button>`).join("");
 applyCms(); renderNav(); renderScene(); renderQuick(); setRating(5);
 </script>
